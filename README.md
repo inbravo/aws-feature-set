@@ -16,7 +16,10 @@
 ## [CloudFormation](https://aws.amazon.com/cloudformation)
 -  AWS CloudFormation gives developers and systems administrators an easy way to create and manage a collection of related AWS resources, provisioning and updating them in an orderly and predictable fashion
 -  [Documentation](https://aws.amazon.com/documentation/cloudformation)
--  [CloudFormation Designer](https://aws.amazon.com/cloudformation/details/#designer)
+-  [Designer](https://aws.amazon.com/cloudformation/details/#designer)
+-  [Concepts](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-whatis-concepts.html)
+-  [User Guide](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
+-  [Pricing](https://aws.amazon.com/cloudformation/pricing)
 
 ## [CodeDeploy](https://aws.amazon.com/codedeploy)
 -  AWS CodeDeploy is a service that automates code deployments to any instance, including Amazon EC2 instances and instances running on-premises
