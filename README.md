@@ -18,6 +18,7 @@
 -  [Documentation](https://aws.amazon.com/documentation/cloudformation)
 -  [Designer](https://aws.amazon.com/cloudformation/details/#designer)
 -  [Concepts](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-whatis-concepts.html)
+-  [Template Anatomy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 -  [User Guide](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
 -  [Pricing](https://aws.amazon.com/cloudformation/pricing)
 
@@ -28,3 +29,10 @@
 ## [Elastic Beanstalk](https://aws.amazon.com/elasticbeanstalk)
 -  AWS Elastic Beanstalk is an easy-to-use service for deploying and scaling web applications and services developed with Java, .NET, PHP, Node.js, Python, Ruby, Go, and Docker on familiar servers such as Apache, Nginx, Passenger, and IIS
 -  [Documentation](https://aws.amazon.com/documentation/elasticbeanstalk)
+
+## [Virtual Private Cloud](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Introduction.html)
+-  Amazon Virtual Private Cloud (Amazon VPC) enables you to launch AWS resources into a virtual network that you've defined
+-  [VPC NAT](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat.html)
+-  [VPC Subnet](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html)
+-  [VPC NAT Gateway](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html)
+-  [Pricing](https://aws.amazon.com/vpc/pricing)
