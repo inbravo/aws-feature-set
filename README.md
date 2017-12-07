@@ -8,6 +8,8 @@
 -  Amazon S3 is object storage built to store and retrieve any amount of data 
 -  [Documentation](https://aws.amazon.com/documentation/s3)
 
+![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/storage-and-content-delivery/s3.jpg)
+
 ### [Glacier](https://aws.amazon.com/glacier)
 -  Amazon Glacier is a secure, durable, and extremely low-cost cloud storage service for data archiving and long-term backup
 -  [Documentation](https://aws.amazon.com/documentation/glacier)
