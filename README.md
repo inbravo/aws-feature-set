@@ -2,6 +2,28 @@
 
 ![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/aws-all-services/aws-all-services.jpg)
 
+## Storage and Content Delivery
+
+### [S3](https://aws.amazon.com/s3)
+-  Amazon S3 is object storage built to store and retrieve any amount of data 
+-  [Documentation](https://aws.amazon.com/documentation/s3)
+
+### [Glacier](https://aws.amazon.com/glacier)
+-  Amazon Glacier is a secure, durable, and extremely low-cost cloud storage service for data archiving and long-term backup
+-  [Documentation](https://aws.amazon.com/documentation/glacier)
+
+### [EBS](https://aws.amazon.com/ebs)
+-  Amazon Elastic Block Store (EBS) provides persistent block storage volumes for use with Amazon EC2 instances 
+-  [Documentation](https://aws.amazon.com/documentation/ebs)
+
+### [Storage Gateway](https://aws.amazon.com/storagegateway)
+-  AWS Storage Gateway is a hybrid storage service that enables your on-premises applications to seamlessly use AWS cloud storage
+-  [Documentation](https://aws.amazon.com/documentation/storagegateway)
+
+### [Cloud Front](https://aws.amazon.com/cloudfront)
+-  Amazon CloudFront is a global content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to your viewers with low latency and high transfer speeds
+-  [Documentation](https://aws.amazon.com/documentation/cloudfront)
+
 ## Compute and Networking Services
 
 ### [EC2](https://aws.amazon.com/ec2)
@@ -33,28 +55,6 @@
 -  [VPC Subnet](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html)
 -  [VPC NAT Gateway](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html)
 -  [Pricing](https://aws.amazon.com/vpc/pricing)
-
-## Storage and Content Delivery
-
-### [S3](https://aws.amazon.com/s3)
--  Amazon S3 is object storage built to store and retrieve any amount of data 
--  [Documentation](https://aws.amazon.com/documentation/s3)
-
-### [Glacier](https://aws.amazon.com/glacier)
--  Amazon Glacier is a secure, durable, and extremely low-cost cloud storage service for data archiving and long-term backup
--  [Documentation](https://aws.amazon.com/documentation/glacier)
-
-### [EBS](https://aws.amazon.com/ebs)
--  Amazon Elastic Block Store (EBS) provides persistent block storage volumes for use with Amazon EC2 instances 
--  [Documentation](https://aws.amazon.com/documentation/ebs)
-
-### [Storage Gateway](https://aws.amazon.com/storagegateway)
--  AWS Storage Gateway is a hybrid storage service that enables your on-premises applications to seamlessly use AWS cloud storage
--  [Documentation](https://aws.amazon.com/documentation/storagegateway)
-
-### [Cloud Front](https://aws.amazon.com/cloudfront)
--  Amazon CloudFront is a global content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to your viewers with low latency and high transfer speeds
--  [Documentation](https://aws.amazon.com/documentation/cloudfront)
 
 ## Database Services
 
