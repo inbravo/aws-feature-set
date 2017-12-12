@@ -1,0 +1,24 @@
+----------------------------------------------------------------------------------------------
+Must have
+----------------------------------------------------------------------------------------------
+#.	Cloud Certification from AWS
+#.	Cloud Certification from Azure
+#.	Cloud Certification from Google
+#.	Must have extensive and deep knowledge on Public AWS cloud platform
+#.	Must have extensive and deep knowledge on Public Azure cloud platform 
+#.	Must have extensive and deep knowledge on Public AWS cloud platform
+#.	Strong understanding of Digital technologies (Mobility, IOT, AI, Analytics etc.) and their impact on Cloud
+#.	Good in Overall Enterprise Architect Domain
+#.	Expert knowledge for overseeing Customers Cloud computing Strategy
+#.	Help Customers to adopt Cloud options plans, Cloud application Design, cloud Management and Monitoring
+#.	Must have at least 2-3 Cloud Migrating projects on Public Cloud platform like AWS/Azure
+#.	Ability to design Cloud Road map for Customers
+#.	Experience of solutioning with Cloud competence and migrating into Private/Public/Hybrid Cloud Options
+#.	Specifically :	Hands-on experience with executing & consulting on:
+	#.	Lift and Shift Migration into Private/Public/Hybrid Cloud options using Platform like AWS/Azure
+	#.	Greenfield/Browne Field Cloud Implementation as Cloud Architect
+	#.	Analyze and interpret KPIs to identify areas for improvement. Lead and manage identified projects in these and allied areas to deliver the stated outcomes
+	#.	Lead consulting / SI engagements from a SME perspective. Deep understanding of business process flows, typical pain areas, Use Cases, critical metrics, Business case, etc.
+	#.	Strong business development, interpersonal, consultative and negotiation skills with a dedication to making a positive lasting client impact.
+		a. Understanding of digital technology trends, should be able to visualize disruptions in industry processes and apply them to the Customer Experience domain 
+		b. Capable of identifying white space and develop solutions, platforms & IPs across technologies

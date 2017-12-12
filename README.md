@@ -2,11 +2,14 @@
 
 ![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/aws-all-services/aws-all-services.jpg)
 
+## [New annoucements](https://aws.amazon.com/new/reinvent)
+
 ## Storage and Content Delivery
 
 ### [S3](https://aws.amazon.com/s3)
 -  Amazon S3 is object storage built to store and retrieve any amount of data 
 -  [Documentation](https://aws.amazon.com/documentation/s3)
+-  [Consistency Models](https://cloudacademy.com/blog/consistency-models-of-amazon-cloud-services)
 
 ![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/storage-and-content-delivery/s3.jpg)
 
