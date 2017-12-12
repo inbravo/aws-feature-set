@@ -17,6 +17,8 @@
 -  Amazon Glacier is a secure, durable, and extremely low-cost cloud storage service for data archiving and long-term backup
 -  [Documentation](https://aws.amazon.com/documentation/glacier)
 
+![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/storage-and-content-delivery/glacier.jpg)
+
 ### [EBS](https://aws.amazon.com/ebs)
 -  Amazon Elastic Block Store (EBS) provides persistent block storage volumes for use with Amazon EC2 instances 
 -  [Documentation](https://aws.amazon.com/documentation/ebs)
