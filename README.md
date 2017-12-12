@@ -34,6 +34,9 @@
 ## [EC2](https://aws.amazon.com/ec2)
 -  Amazon Elastic Compute Cloud (EC2) is a web service that provides secure, resizable compute capacity in the cloud
 -  [Documentation](https://aws.amazon.com/documentation/ec2)
+-  [List of EC2 instances](https://ec2instances.info)
+
+![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/compute-and-networking-services/ec2.jpg)
 
 ## [Auto Scaling](https://aws.amazon.com/autoscaling)
 -  Auto Scaling helps you maintain application availability and allows you to dynamically scale your Amazon EC2 capacity up or down automatically according to conditions you define
@@ -71,6 +74,7 @@
 -  [Designer](https://aws.amazon.com/cloudformation/details/#designer)
 -  [Concepts](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-whatis-concepts.html)
 -  [Template Anatomy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
+-  [Sample templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-sample-templates.html)
 -  [User Guide](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
 -  [Pricing](https://aws.amazon.com/cloudformation/pricing)
 
@@ -78,4 +82,7 @@
 
 # Application Services
 
-## [AWS new feature annoucements](https://aws.amazon.com/new/reinvent)
+## Additionals
+
+- [AWS new feature annoucements](https://aws.amazon.com/new/reinvent)
+- [AWS cost calculator](https://calculator.s3.amazonaws.com/index.html)
