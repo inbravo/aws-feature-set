@@ -35,8 +35,13 @@
 -  Amazon Elastic Compute Cloud (EC2) is a web service that provides secure, resizable compute capacity in the cloud
 -  [Documentation](https://aws.amazon.com/documentation/ec2)
 -  [List of EC2 instances](https://ec2instances.info)
+-  [Placement Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
+	-  [Cluster Placement Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html#placement-groups-cluster)
+	-  [Spread Placement Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html#placement-groups-spread)
+-  [Enhanced Networking](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
 
 ![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/compute-and-networking-services/ec2.jpg)
+![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/compute-and-networking-services/ec2-networking.jpg)
 
 ## [Auto Scaling](https://aws.amazon.com/autoscaling)
 -  Auto Scaling helps you maintain application availability and allows you to dynamically scale your Amazon EC2 capacity up or down automatically according to conditions you define
