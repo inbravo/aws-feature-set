@@ -39,6 +39,7 @@
 	-  [Cluster Placement Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html#placement-groups-cluster)
 	-  [Spread Placement Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html#placement-groups-spread)
 -  [Enhanced Networking](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
+-  [Amazon Paravirtual (PV) and Hardware Virtual Machine (HVM)](https://cloudacademy.com/blog/aws-ami-hvm-vs-pv-paravirtual-amazon)
 
 ![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/compute-and-networking-services/ec2.jpg)
 ![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/compute-and-networking-services/ec2-networking.jpg)
