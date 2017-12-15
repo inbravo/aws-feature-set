@@ -14,6 +14,7 @@
 ## [Glacier](https://aws.amazon.com/glacier)
 -  Amazon Glacier is a secure, durable, and extremely low-cost cloud storage service for data archiving and long-term backup
 -  [Documentation](https://aws.amazon.com/documentation/glacier)
+-  [Glacier Data Retrieval Policy](http://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html)
 
 ![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/storage-and-content-delivery/glacier.jpg)
 
@@ -38,7 +39,7 @@
 -  [Placement Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
 	-  [Cluster Placement Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html#placement-groups-cluster)
 	-  [Spread Placement Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html#placement-groups-spread)
--  [Enhanced Networking](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
+-  [Enhanced Networking](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html)
 -  [Amazon Paravirtual (PV) and Hardware Virtual Machine (HVM)](https://cloudacademy.com/blog/aws-ami-hvm-vs-pv-paravirtual-amazon)
 
 ![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/compute-and-networking-services/ec2.jpg)
