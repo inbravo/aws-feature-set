@@ -2,16 +2,33 @@
 
 ![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/aws-all-services/aws-all-services.jpg)
 
+# Generic
+-  [Amazon Resource Names (ARNs) and AWS Service Namespaces](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+
 # Storage and Content Delivery
 
 ## [S3](https://aws.amazon.com/s3) [Documentation](https://aws.amazon.com/documentation/s3)
--  [Object Lifecycle Management](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html)
+-  Properties
+	-  Bucket is uniquely identified by ARN (example: arn:aws:s3:::10-dec)
+	-  [Versioning enables you to keep multiple versions of an object in one bucket](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/enable-versioning.html)
+	-  [Server Access Logging](https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html)
+	-  [Hosting a Static Website on S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html)
+	-  [Object level logging](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html?icmpid=docs_cloudtrail_console#logging-data-events)
+	-  [Amazon S3 Default Encryption for S3 Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html)
+-  Permissions	
+   -  [Access control list enable you to manage access to buckets and objects](http://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html)
    -  [Object Lifecycle Management using Bucket Policies (IAM)](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html)
    -  [AWS Policy Generator](https://awspolicygen.s3.amazonaws.com/policygen.html)
--  [Cross-Origin Resource Sharing (CORS)](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html)
--  [Hosting a Static Website on S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html)
--  [Object versioning enables you to keep multiple versions of an object in one bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/ObjectVersioning.html)
-
+   -  [Cross-Origin Resource Sharing (CORS)](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html)
+-  Management	
+   -  [You can manage an object's lifecycle by using a lifecycle rule, which defines how Amazon S3 manages objects during their lifetime](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html)
+   -  [Lifecycle rules enable you to automatically transition objects to the Standard - IA and/or to the Amazon Glacier storage class](https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-transition-general-considerations.html)
+   -  [Using a lifecycle rule, you can automatically expire objects based on your retention needs or clean up incomplete multipart uploads](https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-expire-general-considerations.html)
+   -  [Cross-region Replication enables automatic and asynchronous copying of objects across buckets in different AWS regions](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html)
+   -  [Amazon S3 analyzes your access patterns and suggests a candidate age to transition objects to Standard - IA for a lifecycle rule](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/configure-analytics-storage-class.html)
+   -  [Metrics is to add filters (prefix or tags) to get more granular data about usage](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/configure-metrics-filter.html)
+   -  [Inventory provides your object inventory on a daily or weekly basis for the entire bucket or a shared prefix](http://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html)
+   
 ![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/storage-and-content-delivery/s3.jpg)
 
 ## [Glacier](https://aws.amazon.com/glacier) [Documentation](https://aws.amazon.com/documentation/glacier)
