@@ -4,69 +4,56 @@
 
 # Storage and Content Delivery
 
-## [S3](https://aws.amazon.com/s3)
--  Amazon S3 is object storage built to store and retrieve any amount of data 
--  [Documentation](https://aws.amazon.com/documentation/s3)
--  [Consistency Models](https://cloudacademy.com/blog/consistency-models-of-amazon-cloud-services)
+## [S3](https://aws.amazon.com/s3) [Documentation](https://aws.amazon.com/documentation/s3)
+-  [Object Lifecycle Management](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html)
+   -  [Object Lifecycle Management using Bucket Policies (IAM)](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html)
+   -  [AWS Policy Generator](https://awspolicygen.s3.amazonaws.com/policygen.html)
+-  [Cross-Origin Resource Sharing (CORS)](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html)
+-  [Hosting a Static Website on S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html)
+-  [Object versioning enables you to keep multiple versions of an object in one bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/ObjectVersioning.html)
 
 ![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/storage-and-content-delivery/s3.jpg)
 
-## [Glacier](https://aws.amazon.com/glacier)
--  Amazon Glacier is a secure, durable, and extremely low-cost cloud storage service for data archiving and long-term backup
--  [Documentation](https://aws.amazon.com/documentation/glacier)
+## [Glacier](https://aws.amazon.com/glacier) [Documentation](https://aws.amazon.com/documentation/glacier)
 -  [Glacier Data Retrieval Policy](http://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html)
 
 ![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/storage-and-content-delivery/glacier.jpg)
 
-## [EBS](https://aws.amazon.com/ebs)
--  Amazon Elastic Block Store (EBS) provides persistent block storage volumes for use with Amazon EC2 instances 
--  [Documentation](https://aws.amazon.com/documentation/ebs)
+## [EBS](https://aws.amazon.com/ebs) Documentation](https://aws.amazon.com/documentation/ebs)
+-  [Amazon EBS Volume Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
+-  [Amazon EBS Snapshots](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html)
 
-## [Storage Gateway](https://aws.amazon.com/storagegateway)
--  AWS Storage Gateway is a hybrid storage service that enables your on-premises applications to seamlessly use AWS cloud storage
--  [Documentation](https://aws.amazon.com/documentation/storagegateway)
+## [Storage Gateway](https://aws.amazon.com/storagegateway) [Documentation](https://aws.amazon.com/documentation/storagegateway)
 
-## [Cloud Front](https://aws.amazon.com/cloudfront)
--  Amazon CloudFront is a global content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to your viewers with low latency and high transfer speeds
--  [Documentation](https://aws.amazon.com/documentation/cloudfront)
+## [Cloud Front](https://aws.amazon.com/cloudfront) [Documentation](https://aws.amazon.com/documentation/cloudfront)
 
 # Compute and Networking Services
 
-## [EC2](https://aws.amazon.com/ec2)
--  Amazon Elastic Compute Cloud (EC2) is a web service that provides secure, resizable compute capacity in the cloud
--  [Documentation](https://aws.amazon.com/documentation/ec2)
+## [EC2](https://aws.amazon.com/ec2) [Documentation](https://aws.amazon.com/documentation/ec2)
 -  [List of EC2 instances](https://ec2instances.info)
 -  [Placement Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
 	-  [Cluster Placement Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html#placement-groups-cluster)
 	-  [Spread Placement Groups](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html#placement-groups-spread)
 -  [Enhanced Networking](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html)
 -  [Amazon Paravirtual (PV) and Hardware Virtual Machine (HVM)](https://cloudacademy.com/blog/aws-ami-hvm-vs-pv-paravirtual-amazon)
+-  [Add Instance Store Volumes to Your EC2 Instance ](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/add-instance-store-volumes.html)
+-  [Elastic File System (EFS)](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEFS.html)
 
 ![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/compute-and-networking-services/ec2.jpg)
 ![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/compute-and-networking-services/ec2-networking.jpg)
 
-## [Auto Scaling](https://aws.amazon.com/autoscaling)
--  Auto Scaling helps you maintain application availability and allows you to dynamically scale your Amazon EC2 capacity up or down automatically according to conditions you define
--  [Documentation](https://aws.amazon.com/documentation/autoscaling)
+## [Auto Scaling](https://aws.amazon.com/autoscaling) [Documentation](https://aws.amazon.com/documentation/autoscaling)
 -  [Scaling Types](https://aws.amazon.com/autoscaling/#application)
 -  [Fleet Management Made Easy with Auto Scaling](https://aws.amazon.com/blogs/compute/fleet-management-made-easy-with-auto-scaling)
 
-## [ECS](https://aws.amazon.com/ecs)
--  Amazon EC2 Container Service (ECS) is a highly scalable, high performance container management service that supports Docker containers and allows you to easily run applications on a managed cluster of Amazon EC2 instances
--  [Documentation](https://aws.amazon.com/documentation/ecs)
+## [ECS](https://aws.amazon.com/ecs) [Documentation](https://aws.amazon.com/documentation/ecs)
 -  [ECS for Microservices](https://github.com/awslabs/ecs-refarch-cloudformation)
 
-## [CodeDeploy](https://aws.amazon.com/codedeploy)
--  AWS CodeDeploy is a service that automates code deployments to any instance, including Amazon EC2 instances and instances running on-premises
--  [Documentation](https://aws.amazon.com/documentation/codedeploy)
+## [CodeDeploy](https://aws.amazon.com/codedeploy) [Documentation](https://aws.amazon.com/documentation/codedeploy)
 
-## [Elastic Beanstalk](https://aws.amazon.com/elasticbeanstalk)
--  AWS Elastic Beanstalk is an easy-to-use service for deploying and scaling web applications and services developed with Java, .NET, PHP, Node.js, Python, Ruby, Go, and Docker on familiar servers such as Apache, Nginx, Passenger, and IIS
--  [Documentation](https://aws.amazon.com/documentation/elasticbeanstalk)
+## [Elastic Beanstalk](https://aws.amazon.com/elasticbeanstalk) [Documentation](https://aws.amazon.com/documentation/elasticbeanstalk)
 
-## [VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Introduction.html)
--  Amazon Virtual Private Cloud (Amazon VPC) enables you to launch AWS resources into a virtual network that you've defined
--  [VPC NAT](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat.html)
+## [VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Introduction.html) [VPC NAT](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat.html)
 -  [VPC Subnet](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html)
 -  [VPC NAT Gateway](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html)
 -  [Pricing](https://aws.amazon.com/vpc/pricing)
@@ -75,9 +62,7 @@
 
 # Management Tools
 
-## [CloudFormation](https://aws.amazon.com/cloudformation)
--  AWS CloudFormation gives developers and systems administrators an easy way to create and manage a collection of related AWS resources, provisioning and updating them in an orderly and predictable fashion
--  [Documentation](https://aws.amazon.com/documentation/cloudformation)
+## [CloudFormation](https://aws.amazon.com/cloudformation) [Documentation](https://aws.amazon.com/documentation/cloudformation)
 -  [Designer](https://aws.amazon.com/cloudformation/details/#designer)
 -  [Concepts](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-whatis-concepts.html)
 -  [Template Anatomy](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
