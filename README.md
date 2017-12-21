@@ -1,5 +1,3 @@
-# Amazon Web Service feature set
-
 ![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/aws-all-services/aws-all-services.jpg)
 
 # Storage and Content Delivery
@@ -26,12 +24,14 @@
    -  [Metrics is to add filters (prefix or tags) to get more granular data about usage](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/configure-metrics-filter.html)
    -  [Inventory provides reports on a daily or weekly basis for the entire bucket](http://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html)
 
+![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/storage-and-content-delivery/s3.jpg)
+   
 ## [Glacier](https://aws.amazon.com/glacier) [Documentation](https://aws.amazon.com/documentation/glacier)
 -  [Glacier Data Retrieval Policy](http://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html)
 
-## [EBS](https://aws.amazon.com/ebs) Documentation](https://aws.amazon.com/documentation/ebs)
--  [Amazon EBS Volume Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
--  [Amazon EBS Snapshots](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html)
+## [EBS](https://aws.amazon.com/ebs) [Documentation](https://aws.amazon.com/documentation/ebs)
+-  [EBS Volume Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
+-  [EBS Snapshots](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html)
 
 ## [Storage Gateway](https://aws.amazon.com/storagegateway) [Documentation](https://aws.amazon.com/documentation/storagegateway)
 
