@@ -7,8 +7,8 @@
 ## [S3](https://aws.amazon.com/s3) [Documentation](https://aws.amazon.com/documentation/s3)
 -  Properties
 	-  [Bucket is uniquely identified by ARN (example: arn:aws:s3:::10-dec)](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
-	-  [Versioning enables you to keep multiple versions of an object in one bucket](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/enable-versioning.html)
-	-  [Server Access Logging](https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html)
+	-  [Versioning enables you to keep multiple versions of object in bucket](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/enable-versioning.html)
+	-  [Server Access Logging to track requests for access to your bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html)
 	-  [Hosting a Static Website on S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html)
 	-  [Object level logging](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html?#logging-data-events)
 	-  [Amazon S3 Default Encryption for S3 Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html)
@@ -19,19 +19,15 @@
    -  [Cross-Origin Resource Sharing (CORS)](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html)
 -  Management	
    -  [Manage an object's lifecycle by using a lifecycle rule](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html)
-   -  [Automatically transition objects to the Standard-IA and/or to the Glacier](https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-transition-general-considerations.html)
+   -  [Automatic transition objects to the Standard-IA and/or to the Glacier](https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-transition-general-considerations.html)
    -  [Automatically expire objects or clean up incomplete multipart uploads](https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-expire-general-considerations.html)
    -  [Cross-region Replication enables automatic and asynchronous copying of objects in different AWS regions](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html)
    -  [Amazon S3 analyzes your access patterns and suggests a lifecycle rule](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/configure-analytics-storage-class.html)
    -  [Metrics is to add filters (prefix or tags) to get more granular data about usage](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/configure-metrics-filter.html)
    -  [Inventory provides reports on a daily or weekly basis for the entire bucket](http://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html)
-   
-![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/storage-and-content-delivery/s3.jpg)
 
 ## [Glacier](https://aws.amazon.com/glacier) [Documentation](https://aws.amazon.com/documentation/glacier)
 -  [Glacier Data Retrieval Policy](http://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html)
-
-![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/storage-and-content-delivery/glacier.jpg)
 
 ## [EBS](https://aws.amazon.com/ebs) Documentation](https://aws.amazon.com/documentation/ebs)
 -  [Amazon EBS Volume Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
@@ -52,9 +48,6 @@
 -  [Amazon Paravirtual (PV) and Hardware Virtual Machine (HVM)](https://cloudacademy.com/blog/aws-ami-hvm-vs-pv-paravirtual-amazon)
 -  [Add Instance Store Volumes to Your EC2 Instance ](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/add-instance-store-volumes.html)
 -  [Elastic File System (EFS)](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEFS.html)
-
-![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/compute-and-networking-services/ec2.jpg)
-![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/compute-and-networking-services/ec2-networking.jpg)
 
 ## [Auto Scaling](https://aws.amazon.com/autoscaling) [Documentation](https://aws.amazon.com/documentation/autoscaling)
 -  [Scaling Types](https://aws.amazon.com/autoscaling/#application)
