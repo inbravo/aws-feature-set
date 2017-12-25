@@ -95,7 +95,7 @@
 	|9|P2|Graphics / General Purpose GPU[Parallel Processing]|Machine Learning / Bit Coin Mining.| |
 	|10|X1|Memory Optimized|SAP HANA / Apache Spark| - |
 
-|D – Density , I - IOPS , R – RAM , T – cheap T2, M – Main Choice ( default) – Apps, C – Compute, G – Graphics, F – FPGA , P – Graphics – Pics – Parallel Processing , X – Extreme Memory - *|
+	D – Density , I - IOPS , R – RAM , T – cheap T2, M – Main Choice ( default) – Apps, C – Compute, G – Graphics, F – FPGA , P – Graphics – Pics – Parallel Processing , X – Extreme Memory - *
 
 ## [Auto Scaling](https://aws.amazon.com/autoscaling) [Documentation](https://aws.amazon.com/documentation/autoscaling)
 -  [Scaling Types](https://aws.amazon.com/autoscaling/#application)
