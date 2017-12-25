@@ -5,8 +5,8 @@
 ## [S3](https://aws.amazon.com/s3) [Documentation](https://aws.amazon.com/documentation/s3)
 -  Properties
 	-  [Bucket is uniquely identified by ARN (example: arn:aws:s3:::10-dec)](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+		-	Amazon Resource Names (ARNs) uniquely identify AWS resources
 	-  [Versioning enables you to keep multiple versions of object in bucket](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/enable-versioning.html)
-		-	Versioning enables you to keep multiple versions of an object in one bucket
 	-  [Server Access Logging to track requests for access to your bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html)
 		-	To track requests for access to your bucket, you can enable access logging
 		-	Each access log record provides details such as the requester, bucket name, request time etc
@@ -16,18 +16,23 @@
 	-  [Amazon S3 Default Encryption for S3 Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html)
 -  Permissions	
    -  [Access control list enable you to manage access to buckets and objects](http://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html)
+		-	Amazon S3 access control lists (ACLs) enable you to manage access to buckets and objects
+		-	Each bucket and object has an ACL attached to it as a subresource
    -  [Object Lifecycle Management using Bucket Policies (IAM)](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html)
+		-	Bucket policy and user policy are two of the access policy options available for you to grant permission to your Amazon S3 resources
    -  [AWS Policy Generator](https://awspolicygen.s3.amazonaws.com/policygen.html)
+		-	The AWS Policy Generator is a tool that enables you to create policies that control access to AWS resources
    -  [Cross-Origin Resource Sharing (CORS)](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html)
+		-	CORS defines a way for client web applications that are loaded in one domain to interact with resources in a different domain
 -  Management	
    -  [Manage an object's lifecycle by using a lifecycle rule](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html)
 		-	Transition actions – define when objects transition to another storage class
 		-	Expiration actions – In which you specify when the objects expire
    -  [Automatic transition objects to the Standard-IA and/or to the Glacier](https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-transition-general-considerations.html)
-		-	Transition objects to the STANDARD_IA storage class when you know those objects are infrequently accessed
+		-	Transition objects to the STANDARD_IA storage class when objects are infrequently accessed
 		-	Archive objects that don't need real-time access to the GLACIER storage class
    -  [Automatically expire objects or clean up incomplete multipart uploads](https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-expire-general-considerations.html)
-		-	When an object reaches the end of its lifetime, S3 queues it for removal and removes it asynchronously
+		-	When an object reaches the end of its lifetime, S3 queues and removes it asynchronously
    -  [Cross-region Replication enables automatic and asynchronous copying of objects in different AWS regions](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html)
 		-	The source and destination buckets must have versioning enabled
    -  [Amazon S3 analyzes your access patterns and suggests a lifecycle rule](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/configure-analytics-storage-class.html)
