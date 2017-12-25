@@ -81,20 +81,21 @@
 -  [Add Instance Store Volumes to Your EC2 Instance ](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/add-instance-store-volumes.html)
 -  [Elastic File System (EFS)](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEFS.html)
 -  [EC2 Instance Types](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
-	-	D – Density , I - IOPS , R – RAM , T – cheap T2, M – Main Choice ( default) – Apps, C – Compute, G – Graphics, F – FPGA , P – Graphics – Pics – Parallel Processing , X – Extreme Memory - *
 	
-|Sr. No| Family| Specialty| Use Case| Type|
-| ------------- |:-------------:| -----:|-----:|-----:|
-|1 |D2 |Dense Storage | File Servers / DWH / Hadoop | Storage Optimized|
-|2| R4. R3| Memory Optimized|Memory Intensive / DBs|Memory Optimized|
-|3|M4. M3|General Purpose|Application Servers|General Purpose|
-|4|C4, C3|Compute Optimized|CPU Intensive Apps, DBs|Compute O|
-|5|G2|Graphics Intensive|Video Encoding / 3D Application Streaming||
-|6|I2|High speed storage (IOPS)|NoSQL DBs, DWH||
-|7|F1|Field Programmable Gate Array|Hardware acceleration of Code||
-|8|T2|Lowest Cost, General Purpose|Web Servers/ Small DBs| General Purpose|
-|9|P2|Graphics / General Purpose GPU[Parallel Processing]|Machine Learning / Bit Coin Mining.| |
-|10|X1|Memory Optimized|SAP HANA / Apache Spark| - |
+	|Sr. No| Family| Specialty| Use Case| Type|
+	| ------------- |:-------------:| -----:|-----:|-----:|
+	|1 |D2 |Dense Storage | File Servers / DWH / Hadoop | Storage Optimized|
+	|2| R4. R3| Memory Optimized|Memory Intensive / DBs|Memory Optimized|
+	|3|M4. M3|General Purpose|Application Servers|General Purpose|
+	|4|C4, C3|Compute Optimized|CPU Intensive Apps, DBs|Compute O|
+	|5|G2|Graphics Intensive|Video Encoding / 3D Application Streaming||
+	|6|I2|High speed storage (IOPS)|NoSQL DBs, DWH||
+	|7|F1|Field Programmable Gate Array|Hardware acceleration of Code||
+	|8|T2|Lowest Cost, General Purpose|Web Servers/ Small DBs| General Purpose|
+	|9|P2|Graphics / General Purpose GPU[Parallel Processing]|Machine Learning / Bit Coin Mining.| |
+	|10|X1|Memory Optimized|SAP HANA / Apache Spark| - |
+
+|D – Density , I - IOPS , R – RAM , T – cheap T2, M – Main Choice ( default) – Apps, C – Compute, G – Graphics, F – FPGA , P – Graphics – Pics – Parallel Processing , X – Extreme Memory - *|
 
 ## [Auto Scaling](https://aws.amazon.com/autoscaling) [Documentation](https://aws.amazon.com/documentation/autoscaling)
 -  [Scaling Types](https://aws.amazon.com/autoscaling/#application)
