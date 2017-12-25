@@ -6,9 +6,13 @@
 -  Properties
 	-  [Bucket is uniquely identified by ARN (example: arn:aws:s3:::10-dec)](http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 	-  [Versioning enables you to keep multiple versions of object in bucket](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/enable-versioning.html)
+		-	Versioning enables you to keep multiple versions of an object in one bucket
 	-  [Server Access Logging to track requests for access to your bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html)
+		-	To track requests for access to your bucket, you can enable access logging
+		-	Each access log record provides details such as the requester, bucket name, request time etc
 	-  [Hosting a Static Website on S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html)
 	-  [Object level logging](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html?#logging-data-events)
+		-	Data events provide insight into the resource operations performed on or within a resource
 	-  [Amazon S3 Default Encryption for S3 Buckets](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html)
 -  Permissions	
    -  [Access control list enable you to manage access to buckets and objects](http://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html)
@@ -17,18 +21,40 @@
    -  [Cross-Origin Resource Sharing (CORS)](https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html)
 -  Management	
    -  [Manage an object's lifecycle by using a lifecycle rule](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html)
+		-	Transition actions – define when objects transition to another storage class
+		-	Expiration actions – In which you specify when the objects expire
    -  [Automatic transition objects to the Standard-IA and/or to the Glacier](https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-transition-general-considerations.html)
+		-	Transition objects to the STANDARD_IA storage class when you know those objects are infrequently accessed
+		-	Archive objects that don't need real-time access to the GLACIER storage class
    -  [Automatically expire objects or clean up incomplete multipart uploads](https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-expire-general-considerations.html)
+		-	When an object reaches the end of its lifetime, S3 queues it for removal and removes it asynchronously
    -  [Cross-region Replication enables automatic and asynchronous copying of objects in different AWS regions](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html)
+		-	The source and destination buckets must have versioning enabled
    -  [Amazon S3 analyzes your access patterns and suggests a lifecycle rule](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/configure-analytics-storage-class.html)
-   -  [Metrics is to add filters (prefix or tags) to get more granular data about usage](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/configure-metrics-filter.html)
+		-	Choose the name of the bucket for which you want to configure storage class analysis
+   -  [Add metrics filters to get more granular usage data in CloudWatch Metrics](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/configure-metrics-filter.html)
+		-	CloudWatch Storage metrics are reported once per day and are provided to all customers at no additional cost
+		-	CloudWatch Request metrics are available at 1 minute intervals after some latency to process 
    -  [Inventory provides reports on a daily or weekly basis for the entire bucket](http://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html)
+		-	Use it to audit and report on the replication and encryption status of your objects for business, compliance, and regulatory needs
 
 ![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/storage-and-content-delivery/s3.jpg)
    
 ## [Glacier](https://aws.amazon.com/glacier) [Documentation](https://aws.amazon.com/documentation/glacier)
--  [Glacier Data Retrieval Policy](http://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html)
-
+-  Vaults
+	-  [Creating a Vault in Amazon Glacier](https://docs.aws.amazon.com/amazonglacier/latest/dev/creating-vaults.html)
+		-	Vault names must be unique within an account and the region in which the vault is being created
+	-  [Creating Data Retrieval Policy](http://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html)
+		-	Data Retrieval Policies
+			-	Free Tier Only 
+			-	Max Retrieval Rate
+			-	No Retrieval Limit
+		-	Retrieving an archive from a vault inventory, is a two-step process
+			-	Initiate a retrieval job
+			-	After the job completes, download the job output
+	-  [Configuring Vault Notifications in Amazon Glacier](http://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html)
+		-	Set a notification configuration on a vault so that when a job completes a message is sent to an Amazon SNS) topic 
+	
 ![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/storage-and-content-delivery/glacier.jpg)
 
 ## [EBS](https://aws.amazon.com/ebs) [Documentation](https://aws.amazon.com/documentation/ebs)
