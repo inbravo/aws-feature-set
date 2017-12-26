@@ -8,6 +8,11 @@
       - **Directory Service** :  to run MS active directory service on cloud
       - **WAF** : Web Application Firewall. Allows application level protection. Different from traditional network level firewalls. You can inspect headers / content
       - **Artifacts** : All documentation under compliance and reports
+  - **Storage** 
+      - **S3** : Object Store
+      - **Glacier** : Archive files from S3 into Glacier 
+      - **EFS** : Elastic File Service. It can be attached to multiple EC2 instances
+      - **Storage Gateway** : Communicates between your data center and S3 storage
   - **Networking & Content Delivery**
       - **VPC** - You can have multiple VPCs per region. VPCs can also be connected to each other.
       - **Route 53** – Amazon’s DNS Service
@@ -19,11 +24,6 @@
       - **Elastic Beanstalk** : Elastic Bean stalk will provision all infrastructure required
       - **Lambda** : Alexa, Echo devices rely on Lambda
       - **Lightsail** : Out of the box cloud e.g. WordPress, Drupal
-  - **Storage** 
-      - **S3** : Object Store
-      - **Glacier** : Archive files from S3 into Glacier 
-      - **EFS** : Elastic File Service. It can be attached to multiple EC2 instances
-      - **Storage Gateway** : Communicates between your data center and S3 storage
   - **Database Services**
       - **RDS** : Relational Data Services : MySQL, PostgreSQL, SQL Server, MariaDB, Aurora
       - **DynamoDB** : Non relational DB
@@ -35,7 +35,7 @@
 	  - **SMS** : Server migration services : Migrate existing VM on premise to the Cloud
   - **Analytics**
       - **Athena** : Allow SQL queries on S3. Run queries on csv files in S3 buckets
-      - **EMR** : Elastic Map Reduce - process large amounts of data. Based on Hadoop, Apache Spark. Log Analytics etc.
+      - **EMR** : Elastic Map Reduce : Process large amounts of data. Based on Hadoop, Apache Spark etc
       - **Cloud Search** : Managed services provided by AWS
       - **Elastic Search** : Search service which uses the Elastic product
       - **Kinesis** : Streaming and analysis real time data. Used for collating large amounts of data streamed from multiple sources
@@ -68,8 +68,8 @@
 	  -	**IoT Greengrass** :  lets you run local compute, messaging & data caching
 	  -	**IoT Analytics** : Ffully-managed service that makes it easy to run sophisticated analytics
   - **Desktop and App Streaming**
-      - **WorkSpaces** : Desktop on cloud. Citrix Receiver
-      - **App Stream** : Atream desktop apps to users
+      - **WorkSpaces** : Desktop on cloud
+      - **App Stream** : Stream desktop apps to users
 	  - **Work Docs** : Store work documents on cloud
       - **Work Mail** : Exchange on AWS
   - **Artificial Intelligence**
@@ -170,7 +170,7 @@
   - Versioning is a good backup tool.
   - For versioning. MFA can be setup for Delete capability for object / bucket – Complicated setup.
 
-### Cross Region Replication
+### S3 Cross Region Replication
   - To allow for cross region replication, the both source and target buckets must have versioning enabled.
   - When cross region replication is enabled, all existing objects in the bucket are not copied over to replica site. Only Updates to existing objects and newer objects are replicated over. All previous versions of the updated objects are replicated.
   - Permissions are also replicated from one bucket to another.
@@ -267,6 +267,7 @@ The farther you are from S3 bucket region the higher is the improvement you can 
 |8|T2|Lowest Cost, General Purpose|Web Servers/ Small DBs| General Purpose|
 |9|P2|Graphics / General Purpose GPU[Parallel Processing]|Machine Learning / Bit Coin Mining.| |
 |10|X1|Memory Optimized|SAP HANA / Apache Spark| - |
+
 Acronym – **DIRT MCG FPX*  - 	
 *D – Density , I  - IOPS , R – RAM , T – cheap T2, M – Main Choice ( default) – Apps, C – Compute,  G – Graphics, F – FPGA , P – Graphics – Pics – Parallel Processing , X – Extreme Memory*  - *
 Use M3 for general purpose instances – balanced compute, memory and network resources
