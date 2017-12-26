@@ -1,39 +1,39 @@
-![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/aws-all-services/aws-all-services.jpg)
+![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/aws-all-services/aws-core-dimensions.jpg)
 
 # Core AWS Dimensions
-  - Security & Identity
+  - **Security & Identity**
       - **IAM** : How you setup and assign users / groups etc
       - **Inspector** : Agent which inspects your VMs and does security reporting
       - **Certificate Manager** : free SSL certs for your domain names.
       - **Directory Service** :  to run MS active directory service on cloud
       - **WAF** : Web Application Firewall. Allows application level protection. Different from traditional network level firewalls. You can inspect headers / content
       - **Artifacts** : All documentation under compliance and reports
-  - Networking & Content Delivery
+  - **Networking & Content Delivery**
       - **VPC** - You can have multiple VPCs per region. VPCs can also be connected to each other.
       - **Route 53** – Amazon’s DNS Service
       - **CloudFront** – Content delivery network. Edge locations cache assets.
       - **Direct Connect** – Connect your physical DCs to AWS using dedicated telephone lines
-  - Compute 
+  - **Compute** 
       - **EC2** – Elastic Compute Cloud
       - **ECS** : EC2 Container Services
       - **Elastic Beanstalk** : Elastic Bean stalk will provision all infrastructure required
       - **Lambda** : Alexa, Echo devices rely on Lambda
       - **Lightsail** : Out of the box cloud e.g. WordPress, Drupal
-  - Storage 
+  - **Storage** 
       - **S3** : Object Store
       - **Glacier** : Archive files from S3 into Glacier 
       - **EFS** : Elastic File Service. It can be attached to multiple EC2 instances
       - **Storage Gateway** : Communicates between your data center and S3 storage
-  - Database Services
+  - **Database Services**
       - **RDS** : Relational Data Services : MySQL, PostgreSQL, SQL Server, MariaDB, Aurora
       - **DynamoDB** : Non relational DB
       - **Redshift** : Data warehousing system 
       - **ElastiCache** : Cloud in-memory DB
-  - Migration
+  - **Migration**
       - **Snowball** : Transfer Data : Store all your data from enterprise into Snowball and then ship to AWS
 	  - **DMS** : Database migration services : Migrate existing DB to Cloud
 	  - **SMS** : Server migration services : Migrate existing VM on premise to the Cloud
-  - Analytics
+  - **Analytics**
       - **Athena** : Allow SQL queries on S3. Run queries on csv files in S3 buckets
       - **EMR** : Elastic Map Reduce - process large amounts of data. Based on Hadoop, Apache Spark. Log Analytics etc.
       - **Cloud Search** : Managed services provided by AWS
@@ -41,14 +41,14 @@
       - **Kinesis** : Streaming and analysis real time data. Used for collating large amounts of data streamed from multiple sources
       - **Data Pipeline** : Move data from one place to another. e.g. S3 into DynamoDB and vice versa
       - **Quick Sight** : BA tools for rich visualizations and dashboards.
-  - Management Tools
+  - **Management Tools**
       - **Cloud Watch** : Monitor performance of AWS environment – standard infrastructure metrics
       - **Cloud Formation** : Infrastructure into Code - document which describes the infrastructure which uses AWS resources
       - **Cloud Trail** : Audit usage of AWS Resources. Important for security exam
       - **OpsWorks** : Automate deployments using Chef. Important for sysops exam
       - **Config Manager** : Monitors environments and **provides alerts for events**. e.g. someone creates a security group which is against policy
       - **Trusted Advisor** : Automated tips for cost & performance optimization, security tips, architecture and design
-  - Application Services
+  - **Application Services**
       - **API Gateway** : Create secure api service
 	  - **Elastic Transcoder** : Media transcoding in cloud
 	  - **SNS** : Simple notification service
@@ -58,7 +58,7 @@
       - **Step functions** : Visualize Application internals : Which micro services is your application using
       - **SWF** : Simple Workflow Service. Used in Amazon fulfillment center
 	  - **AppStream** : Stream desktop services via browser
-  - Mobile Service & IoT
+  - **Mobile Service & IoT**
 	  -	**Mobile Hub** : For mobile Applications
 	  -	**Cognito** : Social identity providers for Gmail, Facebook OAuth 
 	  -	**Device Farm** : Testing your apps across multitude of devices
@@ -67,12 +67,12 @@
 	  -	**FreeRTOS** : A operating system for microcontrollers
 	  -	**IoT Greengrass** :  lets you run local compute, messaging & data caching
 	  -	**IoT Analytics** : Ffully-managed service that makes it easy to run sophisticated analytics
-  - Desktop and App Streaming
+  - **Desktop and App Streaming**
       - **WorkSpaces** : Desktop on cloud. Citrix Receiver
       - **App Stream** : Atream desktop apps to users
 	  - **Work Docs** : Store work documents on cloud
       - **Work Mail** : Exchange on AWS
-  - Artificial Intelligence
+  - **Artificial Intelligence**
       - **Alexa** (which uses Lambda) + Lex. Echo isn’t required anymore to use Alexa. 
       - **Polly** : Text to Speech
       - **Machine Learning** : AWS will predict outcomes for future decisions based on demographics etc
