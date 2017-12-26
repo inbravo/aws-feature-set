@@ -1,5 +1,6 @@
 ![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/aws-all-services/aws-all-services.jpg)
-# AWS Dimensions and Attributes
+
+# Core AWS Dimensions
   - Networking & Content Delivery
       - VPC - You can have multiple VPCs per region. VPCs can also be connected to each other.
       - Route 53 – Amazon’s DNS Service
@@ -22,24 +23,24 @@
       - Redshift  - Data warehousing system 
       - ElastiCache - Cloud in-memory DB
   - Migration
-      - Snowball - Transfer Data - next step over Export Import gateway. Store all your data from enterprise into Snowball and then ship to AWS. Also released Snowball edge – add compute capacity to storage device – so that you can run analytics on top of the huge dataset collected, without having to transfer to cloud. AWS Lambda is supported on Snowball edge.
-      - DMS - Database migration services - migrate existing DBs to Cloud, also migrate existing Cloud DBs to other regions. Can migrate from Oracle/MySQL/PostgreSQL/ to Aurora.  
-      - SMS - Server migration services - migrate existing VMs on premise to the Cloud -up to 50 concurrent ones.
+      - Snowball : Transfer Data : Store all your data from enterprise into Snowball and then ship to AWS
+	  - DMS : Database migration services : Migrate existing DB to Cloud
+	  - SMS : Server migration services : Migrate existing VM on premise to the Cloud
   - Analytics
-      - Athena - allow SQL queries on S3. Run queries on csv files in S3 buckets.
-      - EMR -Elastic Map Reduce - process large amounts of data. Based on Hadoop, Apache Spark. Log Analytics etc.
-      - Cloud Search - Managed services provided by AWS
-      - Elastic Search – Search service which uses the Elastic product
-      - Kinesis - streaming and analysis real time data (important for architect exam). used for collating large amounts of data streamed from multiple sources
-      - Data Pipeline - move data from one place to another. e.g. S3 into DynamoDB and vice versa
-      - Quick Sight- BA tools for rich visualizations and dashboards.
+      - Athena : Allow SQL queries on S3. Run queries on csv files in S3 buckets.
+      - EMR : Elastic Map Reduce - process large amounts of data. Based on Hadoop, Apache Spark. Log Analytics etc.
+      - Cloud Search : Managed services provided by AWS
+      - Elastic Search : Search service which uses the Elastic product
+      - Kinesis : Streaming and analysis real time data. Used for collating large amounts of data streamed from multiple sources
+      - Data Pipeline : Move data from one place to another. e.g. S3 into DynamoDB and vice versa
+      - Quick Sight : BA tools for rich visualizations and dashboards.
   - Security & Identity
-      - IAM – Important for all AWS exams. How you setup and assign users / groups etc.
-      - Inspector - Agent which inspects your VMs and does security reporting
-      - Certificate Manager – free SSL certs for your domain names.
-      - Directory Service - (important for architect exam)
-      - WAF - Web Application Firewall. Allows application level protection. Different from traditional network level firewalls. You can inspect headers / content
-      - Artifacts - All Documentation - under compliance and reports.
+      - IAM : Important for all AWS exams. How you setup and assign users / groups etc.
+      - Inspector : Agent which inspects your VMs and does security reporting
+      - Certificate Manager : free SSL certs for your domain names.
+      - Directory Service :  to run MS active directory service on cloud
+      - WAF : Web Application Firewall. Allows application level protection. Different from traditional network level firewalls. You can inspect headers / content
+      - Artifacts : All documentation under compliance and reports.
   - Management Tools
       - Cloud Watch - monitor performance of AWS environment – standard infrastructure metrics.
       - Cloud Formation - Infrastructure into Code - document which describes the infrastructure which uses AWS resources.
@@ -48,39 +49,34 @@
       - Config manager - monitors environments and **provides alerts for events**. e.g. someone creates a security group which is against policy
       - Trusted Advisor - automated tips for cost & performance optimization, security tips, architecture and design
   - Application Services
-      - Step functions – visualize application internals – which micro services is your application using.
-      - SWF - Simple Workflow Service. Used in Amazon fulfillment center.
-      - API Gateway - Create, Publish & monitor API services. Access back-end services. 
-      - AppStream - Stream desktop services via browser
-      - Elastic Transcoder - convert video into multiple formats to suit all devices.
-  - Developer Tools
-      - Code Commit - GitHub
-      - Code Build - pay by minute of build & compilation
-      - Code Deploy – deploy code to EC2 instances.
-      - Code Pipeline – Track code versions in different environments.
-  - Mobile Service
-      - Mobile Hub - for mobile apps - separate console.
-      - Cognito - identity provider for mobile applications. Social identity providers – Gmail, Facebook OAuth providers.  
-      - Device Farm - testing your apps across multitude of devices
-      - Mobile Analytics – Collect application usage data in a cost-effective way.
-      - Pinpoint - GA for mobile apps
-  - Business Productivity
-      - Work Docs – Store work documents on cloud
-      - Work Mail – Exchange on AWS
-  - IoT
-      - IoT Gateway
+      - API Gateway : create secure api service
+	  - Elastic Transcoder : media transcoding in cloud
+	  - SNS : simple notification service
+	  - SES : simple email service
+	  - SWF : simple workflow service
+      - SQS : simple message service
+      - Step functions : Visualize Application internals : Which micro services is your application using
+      - SWF : Simple Workflow Service. Used in Amazon fulfillment center
+	  - AppStream : Stream desktop services via browser
+  - Mobile Service & IoT
+	  -	Mobile Hub : For mobile Applications
+	  -	Cognito :  Social identity providers for Gmail, Facebook OAuth 
+	  -	Device Farm : Testing your apps across multitude of devices
+	  -	Mobile Analytics : Collect application usage data in a cost-effective way
+	  -	Pinpoint : Collects metrics to help understand the impact of customer communications
+	  -	FreeRTOS : A operating system for microcontrollers
+	  -	IoT Greengrass :  lets you run local compute, messaging & data caching
+	  -	IoT Analytics : Ffully-managed service that makes it easy to run sophisticated analytics
   - Desktop and App Streaming
       - WorkSpaces - aka VDI. Desktop on cloud. Citrix Receiver
-      - App Stream 2.0 - stream desktop apps to users.
+      - App Stream 2.0 - stream desktop apps to users
+	  - Work Docs – Store work documents on cloud
+      - Work Mail – Exchange on AWS
   - Artificial Intelligence
       - Alexa (which uses Lambda) + Lex. Echo isn’t required anymore to use Alexa. It can be accessed via software.
       - Polly - Text to Speech
       - Machine Learning – based on dataset, AWS will predict outcomes for future decisions – based on demographics etc.
       - Rekognition – Image recognition, Facial recognition based on Databases.
-  - Messaging  
-      - SNS – Notify by email / text messages/ http-end points
-      - SQS - Post messages to Queue. De-couple your applications.
-      - SES – send email via AWS
 	  
 ## Global Infrastructure
   - A Region is geographical area consisting of 2 or more availability zones.
