@@ -85,7 +85,7 @@
   
 # Security & Identity
 
-## IAM  ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/iam.png)
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/iam.png) IAM  
   - Configure who uses AWS and their level of access to the AWS Console.
   - Centralized control over AWS Account
   - Share access for AWS Account
@@ -123,7 +123,7 @@
 
 # Storage
 
-## S3 ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/s3.png)
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/s3.png) S3 
 
 ### S3 Storage Types
   - S3-Standard - Durability of 99.999999999% and availability of 99.99%.
@@ -184,10 +184,10 @@
   - Objects can be transitioned to S3-IA after 30 days and to Glacier class storage - 30 days IA.
   - You can also permanently delete objects.
 
-## Glacier ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/glacier.png)
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/glacier.png) Glacier 
   - For archival only. Takes 3 - 5 hours to restore files. Durability of 99.999999999%
   
-## Storage Gateway ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/storagegateway.png)
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/storagegateway.png) Storage Gateway 
   - It is a service which connects an on-premises software appliance (virtual) with cloud based storage to provide seamless and secure connectivity between the two. Either via internet or Direct connect.
   - It can also provide connectivity from EC2 instance in VPC to S3 via Storage Gateway in same VPC
   - The virtual appliance will asynchronously replicate information up to S3 or Glacier
@@ -203,7 +203,7 @@
   Volume gateway interface presents applications with disk volumes using iSCSI protocol. They take virtual hard disks on premise and back them up to virtual hard disks on AWS. Data written to these volumes can be asynchronously backed up as point in time snapshots of volumes and stored in cloud as EBS snapshots.
  3.Gateway Virtual Tape Library (VTL) – Backup and Archiving solution. Create tapes and send to S3. You can use existing backup applications like NetBackup, Backup Exec, and Veam etc.
  
-## Snowball ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/snowball.png)
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/snowball.png) Snowball 
   - Next version of Import / Export Gateway
   - You could accelerate moving large amounts of data into and out of AWS using portable storage devices for transport. 
   - Ship the storage device – no need to transfer over the internet. Problem arose with different types of disks
@@ -233,7 +233,7 @@ Using snowball – Import / Export S3. If using Glacier first need to import int
 It utilizes the CloudFront Edge Network to accelerate uploads to S3. Instead of uploading directly to S3, you can use a distinct URL to upload directly to an edge location which will then transfer to S3 using Amazon’s backbone network.
 The farther you are from S3 bucket region the higher is the improvement you can observe using S3 Transfer Acceleration. High cost for usage than standard S3 transfer rates.
 
-# EC2  ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/ec2.png)
+# ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/ec2.png) EC2
 
 ### EC2 Pricing
   - On demand.
@@ -273,7 +273,7 @@ Use M3 for general purpose instances – balanced compute, memory and network re
 [Exam Tip] You will be asked to provide which instance type to use for a given scenario. Usually 3 options are fictitious.
 EC2 Key Pairs are region specific
 
-## EBS
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/ebs.png) EBS
 - Block based storage
 - You can install OS, Database on it, unlike S3
 - Placed in specific AZ. Automatically replicated within the AZ to protect from failure.
@@ -397,7 +397,7 @@ The following are examples of problems that can cause instance status checks to 
   - Logical grouping of instances within a single AZ
   - Instances can participate in low latency, 10 GBPs network.
 
-## CloudFront ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/cloudfront.png)
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/cloudfront.png) CloudFront 
 
 ### Important terms
   - CDN – collection of distributed servers where the content is served to users based on the user’s location and the location of content origin.
