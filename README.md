@@ -3,37 +3,38 @@
 # Core AWS Dimensions
 
 - **Security & Identity**
-	-	**IAM** : How you setup and assign users / groups etc
+	-	[**IAM**](https://github.com/inbravo/aws-feature-set#-iam--identity--access-management) : How you setup and assign users / groups etc
 	- 	**Inspector** : Agent which inspects your VMs and does security reporting
 	- 	**Certificate Manager** : Free SSL certs for your domain names
 	- 	**Directory Service** :  Run MS active directory service on cloud
 	- 	**WAF** : Web Application Firewall
 	- 	**Artifacts** : All documentation under compliance and reports
 - **Compute** 
-	-	**EC2** : Elastic Compute Cloud
+	-	[**EC2**](https://github.com/inbravo/aws-feature-set#-ec2--elastic-compute-cloud) : Elastic Compute Cloud
 	-	**ECS** : EC2 Container Services
+	-	[**EBS**](https://github.com/inbravo/aws-feature-set#-ebs--elastic-block-storage) : Elastic Block Storage
 	-	**Elastic Beanstalk** : Elastic Bean stalk will provision all infrastructure required
 	-	**Lambda** : Alexa, Echo devices rely on Lambda
 	- 	**Lightsail** : Out of the box cloud e.g. WordPress, Drupal
 - **Storage** 
-	-	**S3** : Object Store
-	-	**Glacier** : Archive files from S3 into Glacier 
+	-	[**S3**](https://github.com/inbravo/aws-feature-set#-s3--simple-storage-service) : Object Store
+	-	[**Glacier**](https://github.com/inbravo/aws-feature-set#-glacier) : Archive files from S3 into Glacier 
 	-	**EFS** : Elastic File Service. It can be attached to multiple EC2 instances
-	-	**Storage Gateway** : Communicates between your data center and S3 storage
+	-	[**Storage Gateway**](https://github.com/inbravo/aws-feature-set#-storage-gateway) : Communicates between your data center and S3 storage
 - **Networking & Content Delivery**
 	-	**VPC** : You can have multiple VPCs per region
 	-	**Route 53** : Amazon’s DNS Service
-	-	**CloudFront** : Content delivery network. Edge locations cache assets
+	-	[**CloudFront**](https://github.com/inbravo/aws-feature-set#-cloudfront) : Content delivery network. Edge locations cache assets
 	-	**Direct Connect** : Connect your physical DCs to AWS using dedicated telephone lines
 - **Database Services**
-	-	**RDS** : Relational Data Services : MySQL, PostgreSQL, SQL Server, MariaDB, Aurora
-	-	**DynamoDB** : Non relational DB
-	-	**Redshift** : Data warehousing system 
-	-	**ElastiCache** : Cloud in-memory DB
+	-	[**RDS**](https://github.com/inbravo/aws-feature-set#-rds--relational-database-service) : Relational Data Services : MySQL, PostgreSQL, SQL Server, MariaDB, Aurora
+	-	[**DynamoDB**](https://github.com/inbravo/aws-feature-set#-dynamodb) : Non relational DB
+	-	[**Redshift**](https://github.com/inbravo/aws-feature-set#-redshift) : Data warehousing system 
+	-	[**ElastiCache**](https://github.com/inbravo/aws-feature-set#-elasticache) : Cloud in-memory DB
 - **Migration**
-	-	**Snowball** : Transfer Data : Store all your data from enterprise into Snowball and then ship to AWS
-	-	**DMS** : Database migration services : Migrate existing DB to Cloud
+	-	[**DMS**](https://github.com/inbravo/aws-feature-set#-dms--database-migration-service) : Database migration services : Migrate existing DB to Cloud
 	-	**SMS** : Server migration services : Migrate existing VM on premise to the Cloud
+	-	[**Snowball**](https://github.com/inbravo/aws-feature-set#-snowball) : Transfer Data : Store all your data from enterprise into Snowball and then ship to AWS
 - **Analytics**
 	-	**Athena** : Allow SQL queries on S3. Run queries on csv files in S3 buckets
 	-	**EMR** : Elastic Map Reduce : Process large amounts of data. Based on Hadoop, Apache Spark etc
