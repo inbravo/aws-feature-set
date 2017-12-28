@@ -94,89 +94,88 @@
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/iam.png) IAM 101 : [Identity & Access Management](https://aws.amazon.com/iam)
 
 ### IAM Resources
-	- Users 
-	- Groups 
-	- Roles 
-	- Policies (JSON doc which defines one or more permissions)
-	- Identity Provider (Single Sign On)
+- Users 
+- Groups 
+- Roles 
+- Policies (JSON doc which defines one or more permissions)
+- Identity Provider (Single Sign On)
 	
 ### IAM Purpose
-	- Configure who uses AWS and their level of access to the AWS Console
-	- Centralized control over AWS Account
-	- Share access for AWS Account
-	- Granular permissions (grant system privileges) for users / services
-	- Identity Federation – Facebook, LinkedIn and Active Directory
-	- Multi-factor authentication (**MFA**)
-		-	Virtual device
-		-	Hardware device
-	- Temporary access to users and services
-	- Setup password rotation policy
-	- Integration with other AWS services
-	- Supports Payment Card Industry Data Security Standard (**PCI-DSS**) compliance
+- Configure who uses AWS and their level of access to the AWS Console
+- Centralized control over AWS Account
+- Share access for AWS Account
+- Granular permissions (grant system privileges) for users / services
+- Identity Federation – Facebook, LinkedIn and Active Directory
+- Multi-factor authentication (**MFA**)
+	- Virtual device
+	- Hardware device
+- Temporary access to users and services
+- Setup password rotation policy
+- Integration with other AWS services
+- Supports Payment Card Industry Data Security Standard (**PCI-DSS**) compliance
 
 ### IAM Features
-	- IAM is global and its not region specific
-	- Root account is the email address you use to sign up for AWS
-	- AWS recommends very limited usage of root account
-	- Setup Multi Factor Authentication (MFA) on root account
-	- You can attach permissions to individual users and groups
-	- Secret access key can be retrieved only once during user creation. In case you lose it then you can re-generate it
-	- IAM Password policy can be set to access the admin console
-	- New users have no permissions when first created. Everything has to be explicitly added
-	- Power User Access allows Access to all AWS services except the management of groups and users within IAM
+- IAM is global and its not region specific
+- Root account is the email address you use to sign up for AWS
+- AWS recommends very limited usage of root account
+- Setup Multi Factor Authentication (MFA) on root account
+- You can attach permissions to individual users and groups
+- Secret access key can be retrieved only once during user creation. In case you lose it then you can re-generate it
+- IAM Password policy can be set to access the admin console
+- New users have no permissions when first created. Everything has to be explicitly added
+- Power User Access allows Access to all AWS services except the management of groups and users within IAM
   
 ### Manage AWS resources via
-	- AWS Management console : Using username and password
-	- Rest API : Using Access Key ID and Secret Access Key
-	- AWS Command Line Interface (**CLI**) : Using Access Key ID and Secret Access Key
-	- AWS Software Development Kit (**SDK**) : Using Access Key ID and Secret Access Key
+- AWS Management console : Using username and password
+- Rest API : Using Access Key ID and Secret Access Key
+- AWS Command Line Interface (**CLI**) : Using Access Key ID and Secret Access Key
+- AWS Software Development Kit (**SDK**) : Using Access Key ID and Secret Access Key
 
 # ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/ec2.png) EC2 : [Elastic Compute Cloud](https://aws.amazon.com/ec2)
 
 ### EC2 Pricing
-	-	On demand. Pay per hour of usage
-	-	Applications with short term, spiky usage patterns or unpredictable workloads that cannot be interrupted
-	-	New apps on AWS
-	-	Reserved pricing
-	-	Reserve capacity over significant period of time. Significant discount.
-	-	Applications with steady or predictable usage over a period of time. Reserved capacity required.
-	-	Further discount if upfront payment
-	-	Spot pricing –
-	-	Bid your price for compute. When bid price is higher than Spot price, then you can provision it. When it goes lower, instance is terminated. Useful for applications who have flexible start / stop times
-	-	**If AWS terminates instance, you are not charged for partial hour. If you terminate, you will be charged for the hour**
-	-	Applications that are feasible only at very low compute prices. E.g. pharma simulations
-	-	Applications with urgent computing capacity
-	-	Dedicated physical machines – pay by hour.
-	-	Massive discount for reserved instances over a long period of time – upto 70% for 3 years
-	-	Useful for regulatory requirements
-	-	Certain licensing agreements prevent usage on virtual machine / multi-tenancy deployments
-	-	EC2 Key Pairs are region specific
+- On demand. Pay per hour of usage
+- Applications with short term, spiky usage patterns or unpredictable workloads that cannot be interrupted
+- New apps on AWS
+- Reserved pricing
+- Reserve capacity over significant period of time. Significant discount.
+- Applications with steady or predictable usage over a period of time. Reserved capacity required.
+- Further discount if upfront payment
+- Spot pricing : When bid price is higher than Spot price, then you can provision it. When it goes lower, instance is terminated
+- **If AWS terminates instance, you are not charged for partial hour. If you terminate, you will be charged for the hour**
+- Applications that are feasible only at very low compute prices. E.g. pharma simulations
+- Applications with urgent computing capacity
+- Dedicated physical machines – pay by hour.
+- Massive discount for reserved instances over a long period of time – upto 70% for 3 years
+- Useful for regulatory requirements
+- Certain licensing agreements prevent usage on virtual machine / multi-tenancy deployments
+- EC2 Key Pairs are region specific
   
 ### EC2 Instance types
-	|Sr. No| Family| Specialty| Use Case| Type|
-	| ------------- |:-------------:| -----:|-----:|-----:|
-	|1 |D2 |Dense Storage | File Servers / DWH / Hadoop | Storage Optimized|
-	|2| R4. R3| Memory Optimized|Memory Intensive / DBs|Memory Optimized|
-	|3|M4. M3|General Purpose|Application Servers|General Purpose|
-	|4|C4, C3|Compute Optimized|CPU Intensive Apps, DBs|Compute O|
-	|5|G2|Graphics Intensive|Video Encoding / 3D Application Streaming||
-	|6|I2|High speed storage (IOPS)|NoSQL DBs, DWH||
-	|7|F1|Field Programmable Gate Array|Hardware acceleration of Code||
-	|8|T2|Lowest Cost, General Purpose|Web Servers/ Small DBs| General Purpose|
-	|9|P2|Graphics / General Purpose GPU[Parallel Processing]|Machine Learning / Bit Coin Mining.| |
-	|10|X1|Memory Optimized|SAP HANA / Apache Spark| - |
+|Sr. No| Family| Specialty| Use Case| Type|
+| ------------- |:-------------:| -----:|-----:|-----:|
+|1 |D2 |Dense Storage | File Servers / DWH / Hadoop | Storage Optimized|
+|2| R4. R3| Memory Optimized|Memory Intensive / DBs|Memory Optimized|
+|3|M4. M3|General Purpose|Application Servers|General Purpose|
+|4|C4, C3|Compute Optimized|CPU Intensive Apps, DBs|Compute O|
+|5|G2|Graphics Intensive|Video Encoding / 3D Application Streaming||
+|6|I2|High speed storage (IOPS)|NoSQL DBs, DWH||
+|7|F1|Field Programmable Gate Array|Hardware acceleration of Code||
+|8|T2|Lowest Cost, General Purpose|Web Servers/ Small DBs| General Purpose|
+|9|P2|Graphics / General Purpose GPU[Parallel Processing]|Machine Learning / Bit Coin Mining.| |
+|10|X1|Memory Optimized|SAP HANA / Apache Spark| - |
 
 ### EC2 Instance type Acronym (**DIRT MCG FPX** : )  	
-	-	**D** : Density , 
-	-	**I** : IOPS , 
-	-	**R** : RAM 
-	-	**T** : Cheap T2
-	-	**M** : Main Choice for Apps
-	-	**C** : Compute
-	-	**G** : Graphics
-	-	**F** : FPGA
-	-	**P** : Graphics, Pics, Parallel Processing
-	-	**X** : Extreme Memory
+- **D** : Density , 
+- **I** : IOPS , 
+- **R** : RAM 
+- **T** : Cheap T2
+- **M** : Main Choice for Apps
+- **C** : Compute
+- **G** : Graphics
+- **F** : FPGA
+- **P** : Graphics, Pics, Parallel Processing
+- **X** : Extreme Memory
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/ebs.png) EBS
 - Block based storage
@@ -205,77 +204,84 @@ Magnetic Drives
 - Instance Status Check – Health of instance. If they arise, reboot the instance.
 
 ## EC2 Security Groups
-  - A security group is a virtual firewall.
-  - First line of defense. Network ACLs are second line.
-  - 1 instance can have multiple security groups. As each security group only "allows" inbound traffic, there will never be a conflict on security group rules.
-  - Security group changes are applied immediately.
-  - Security groups are "stateful". Rules added as inbound rules – automatic outbound rules are added. Response back on the same channel. NACLs are stateless.
-  - All inbound traffic is blocked by default. You have to allow specific inbound rules for protocols
-  - All outbound traffic is allowed by default.
-  - Only allow rules, no deny rules exist. Use NACLs to deny specific IPs
-  - Any number of EC2 instances in a security group.
-  - EC2 instances in the default security group can communicate with each other.
-  - Multiple security groups can be attached to an instance.
+- A security group is a virtual firewall.
+- First line of defense. Network ACLs are second line.
+- 1 instance can have multiple security groups. As each security group only "allows" inbound traffic, there will never be a conflict on security group rules.
+- Security group changes are applied immediately.
+- Security groups are "stateful". Rules added as inbound rules – automatic outbound rules are added. Response back on the same channel. NACLs are stateless.
+- All inbound traffic is blocked by default. You have to allow specific inbound rules for protocols
+- All outbound traffic is allowed by default.
+- Only allow rules, no deny rules exist. Use NACLs to deny specific IPs
+- Any number of EC2 instances in a security group.
+- EC2 instances in the default security group can communicate with each other.
+- Multiple security groups can be attached to an instance
+
 ## Volumes and Snapshots
-  - Volumes are virtual hard disks.
-  - You can attach volume to EC2 instance belonging to same AZ
-  - To Detach a volume from EC2 instance, you have to umount it first
-  - Snapshots are point in time copies of volumes – stored in S3. Taking first snapshot takes a while.
-  - Subsequent snapshots will only store the delta in S3. Only changed blocks are stored in S3.
-  - You can create volumes from Snapshots. During this you can also change Volume Storage Type
-  - Volume is just block data. You need to format it create specific file system e.g. ext4
-  - Root Volume is one where OS is installed / booted. It is not encrypted by default on AWS AMIs
+- Volumes are virtual hard disks.
+- You can attach volume to EC2 instance belonging to same AZ
+- To Detach a volume from EC2 instance, you have to umount it first
+- Snapshots are point in time copies of volumes – stored in S3. Taking first snapshot takes a while.
+- Subsequent snapshots will only store the delta in S3. Only changed blocks are stored in S3.
+- You can create volumes from Snapshots. During this you can also change Volume Storage Type
+- Volume is just block data. You need to format it create specific file system e.g. ext4
+- Root Volume is one where OS is installed / booted. It is not encrypted by default on AWS AMIs
+  
 ### RAID, Volumes & Snapshots.
-  - RAID 0 – Striped, No Redundancy , Good Performance – No Backup/Failover
-  - RAID 1 – mirrored, Redundancy
-  - RAID 5 – Good for reads, bad for writes. AWS doesn’t recommend using RAID 5 on EBS
-  - RAID 10 – Raid 0 + Raid 1
-  - Use RAID Arrays when a single volume IOPs are not sufficient for your need. E.g. Database. Then you create RAID Array to meet IOPs requirements.
-  - To take snapshot of RAID Array –
-    1. Stop the application from writing to cache and  flush all cache to Disk
-    2. Freeze the file system
-    3. Umount the RAID Array
-    4. Shutdown the EC2 instance
-  - Snapshots of encrypted volumes are encrypted automatically.
-  - You can copy snapshot to another region while encrypting it.
-  - Create Image from snapshot.
-  - The EC2 instance thus created will have root volume encrypted.
-  - You can’t share encrypted snapshots as the encryption key is tied to your account.
+- RAID 0 – Striped, No Redundancy , Good Performance – No Backup/Failover
+- RAID 1 – mirrored, Redundancy
+- RAID 5 – Good for reads, bad for writes. AWS doesn’t recommend using RAID 5 on EBS
+- RAID 10 – Raid 0 + Raid 1
+- Use RAID Arrays when a single volume IOPs are not sufficient for your need. E.g. Database. Then you create RAID Array to meet IOPs requirements.
+- To take snapshot of RAID Array
+	- Stop the application from writing to cache and  flush all cache to Disk
+	- Freeze the file system
+	- Umount the RAID Array
+	- Shutdown the EC2 instance
+- Snapshots of encrypted volumes are encrypted automatically.
+- You can copy snapshot to another region while encrypting it.
+- Create Image from snapshot.
+- The EC2 instance thus created will have root volume encrypted.
+- You can’t share encrypted snapshots as the encryption key is tied to your account
+
 ## EBS backed v/s Instance store
-  - You can reboot or terminate instance store backed EC2 VMs
-  - You can start , stop , reboot or terminate EBS backed EC2 VMs
-  - EC2 instance on instance store is lost if host hypervisor fails. Not so with EBS backed instances.
-  - EBS volumes can be attached / detached to EC2 instances. One at a time
-  - EBS backed AMI is from EBS snapshot
-  - Instance store back volume is from template in S3. Hence slower to provision
-  - You will not lose data is you reboot for both.
-  - With EBS, you can ask AWS not to delete the volume upon instance termination.
+- You can reboot or terminate instance store backed EC2 VMs
+- You can start , stop , reboot or terminate EBS backed EC2 VMs
+- EC2 instance on instance store is lost if host hypervisor fails. Not so with EBS backed instances.
+- EBS volumes can be attached / detached to EC2 instances. One at a time
+- EBS backed AMI is from EBS snapshot
+- Instance store back volume is from template in S3. Hence slower to provision
+- You will not lose data is you reboot for both.
+- With EBS, you can ask AWS not to delete the volume upon instance termination
+  
 ## EC2 Status Checks
-There are two types of status checks: system status checks and instance status checks.
+
 ### System Status Checks
 Monitor the AWS systems required to use your instance to ensure they are working properly. These checks detect problems with your instance that require AWS involvement to repair. When a system status check fails, you can choose to wait for AWS to fix the issue, or you can resolve it yourself (for example, by stopping and starting an instance, or by terminating and replacing an instance).
 The following are examples of problems that can cause system status checks to fail:
-  - Loss of network connectivity
-  - Loss of system power
-  - Software issues on the physical host
-  - Hardware issues on the physical host that impact network reachability
+- Loss of network connectivity
+- Loss of system power
+- Software issues on the physical host
+- Hardware issues on the physical host that impact network reachability
+  
 ## Instance Status Checks
 Monitor the software and network configuration of your individual instance. These checks detect problems that require your involvement to repair. When an instance status check fails, typically you will need to address the problem yourself (for example, by rebooting the instance or by making instance configuration changes).
 The following are examples of problems that can cause instance status checks to fail:
-  - Failed system status checks
-  - Incorrect networking or startup configuration
-  - Exhausted memory
-  - Corrupted file system
-  - Incompatible kernel
+- Failed system status checks
+- Incorrect networking or startup configuration
+- Exhausted memory
+- Corrupted file system
+- Incompatible kernel
+
 ## CloudWatch
-  - Default Metrics – Network, Disk , CPU and Status check ( Instance and System)
-  - Memory – RAM is a custom metric
-  - You can create custom dashboards all CloudWatch metrics.
-  - CloudWatch alarms – set notifications when particular thresholds are hit.
-  - CloudWatch events help you respond to state changes. E.g. run Lambda function in response to.
-  - CloudWatch logs helps you monitor EC2 instance/application/system logs. Logs send data to CloudWatch
-  - Standard monitoring 5 mins. Detailed monitoring 1 minute.
-  - CloudWatch is for logging. CloudTrail is for auditing your calls.
+- Default Metrics – Network, Disk , CPU and Status check ( Instance and System)
+- Memory – RAM is a custom metric
+- You can create custom dashboards all CloudWatch metrics.
+- CloudWatch alarms – set notifications when particular thresholds are hit.
+- CloudWatch events help you respond to state changes. E.g. run Lambda function in response to.
+- CloudWatch logs helps you monitor EC2 instance/application/system logs. Logs send data to CloudWatch
+- Standard monitoring 5 mins. Detailed monitoring 1 minute.
+- CloudWatch is for logging. CloudTrail is for auditing your calls
+
 ## AWS CLI Usage
   - Users can login with Access Key ID and Secret Access Key. If anything is compromised, you can regenerate the secret access key.
   - Also you can delete the user and recreate.
