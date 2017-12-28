@@ -85,11 +85,11 @@
 	-	**Rekognition** : Image recognition, Facial recognition based on Databases
 	  
 ## Global Infrastructure
-	- A Region is geographical area consisting of 2 or more availability zones.
-	- Availability zone is logical data center
-	- Edge Locations are CDN End Points for CloudFront. Many more edge locations exist than regions
+- A Region is geographical area consisting of 2 or more availability zones.
+- Availability zone is logical data center
+- Edge Locations are CDN End Points for CloudFront. Many more edge locations exist than regions
   
-# Security & Identity
+# **Security & Identity**
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/iam.png) IAM 101 : [Identity & Access Management](https://aws.amazon.com/iam)
 
@@ -241,7 +241,7 @@ The following are examples of problems that can cause instance status checks to 
 - Logical grouping of instances within a single AZ
 - Instances can participate in low latency, 10 GBPs network
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/ebs.png) EBS
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/ebs.png) EBS : [Elastic Block Storage](https://aws.amazon.com/ebs)
 
 ### EBS Features
 - Block based storage
@@ -307,7 +307,7 @@ The following are examples of problems that can cause instance status checks to 
 - You will not lose data is you reboot for both.
 - With EBS, you can ask AWS not to delete the volume upon instance termination
   
-# Storage
+# **Storage**
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/s3.png) S3 : [Simple Storage Service](https://aws.amazon.com/s3)
 
