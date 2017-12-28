@@ -464,12 +464,7 @@ The farther you are from S3 bucket region the higher is the improvement you can 
 - DynamoDB
 - NoSQL storage : Collection = Table, Document = Row, Keys-Value Pairs = Fields
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/elasticache.png) [ElastiCache](https://aws.amazon.com/elasticache)  
-- In memory cache in cloud
-- Memcached
-- Redis
-
-## OLTP vs OLAP
+### RDS OLTP vs OLAP
 - OLTP
 	- Pulls out specific / narrow record set
 - OLAP 
@@ -478,8 +473,43 @@ The farther you are from S3 bucket region the higher is the improvement you can 
 	- Differ in terms of queries run on top of data
 	- OLAP is more about aggregation
 
+### RDS Backups
+- Automated Backups. Full daily snapshot & will also store transaction logs
+- Enabled by default. Stored in S3. Free backup storage in S3 upto the RDS Instance size
+- You can define backup window. Choose wisely
+- Backups are deleted when the RDS Instance is deleted
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/dms.png) DMS : [Database Migration Service](https://aws.amazon.com/dms)
+### RDS Snapshots
+- Done manually. They are stored even after you delete the instance.
+- You can copy snapshots across regions.
+- You can publish the snapshot to make it publically available.
+- Restoring Backups/ Snapshots – The restored version will be a new RDS instance with new end point.
+- You can check the instance size to restore
+- You cannot restore to existing instance
+  
+### RDS Encryption
+- Encryption at rest is supported for MySQL, SQL Server, Oracle and PostgreSQL & MariaDB
+- Managed by AWS KMS.
+- Cannot encrypt an already present instance. To encrypt, create new instance with encryption enabled and then migrate your data to it
+  
+### RDS Multi-AZ Deployment
+- A standby copy is created in another AZ. AWS handles replication and auto-failover
+- AWS can automatically failover RDS instance to another instance.
+- In case of failover, No need to change connection string.
+- This can be used for DR purpose only. This option has to be selected at instance creation time. This option is not useful for improving performance / scaling.
+ 
+### RDS Read Replica Databases
+- Read-replica – async data transfer to another RDS instance. You can actually read from these instances, unlike Multi-AZ deployments. You can also have read replicas of read-replicas up to 5 copies. (Watch out as async causes latency)-
+- Read-replicas can be used for Dev/Test environments, run certain workloads only against them and not against direct production deployment – Intensive workloads.
+- *MySQL , MariaDB, PostgreSQL only for read-replicas , no Oracle & SQL Server*
+- You cannot have read-replicas that have multi-AZ. However, you can create read replicas of Multi AZ source databases.
+- Read replicas can be of a different size than source DB.
+- Each read-replica will have its own DNS end point
+- Automatic backups must be turned on in order to deploy a read replica
+- Read Replicas can be promoted to be their own databases. This breaks replication. E.g. Dev/Test can be connected to the replica by first promoting it as DB itself.
+- Read Replicas can be done in a second region for MySQL and MariaDB – no PostgreSQL.
+- Application re-architecture is required to make use of Read replicas
+- Read replicas are not used for DR. they are used for performance scaling only## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/dms.png) DMS : [Database Migration Service](https://aws.amazon.com/dms)
 
 ## DMS Features
 - Migrate production database to AWS
@@ -493,47 +523,6 @@ The farther you are from S3 bucket region the higher is the improvement you can 
 		- Views
 		- Stored procedures
 		- Functions
-
-## RDS – Back Ups, Multi AZs & Read Replicas
-OLTP systems
-
-### Backups
-  - Automated Backups. Full daily snapshot & will also store transaction logs.  
-  - Enabled by default. Stored in S3. Free backup storage in S3 upto the RDS Instance size.  
-  - You can define backup window. Choose wisely.
-  - Backups are deleted when the RDS Instance is deleted.
-
-### Snapshots
-  - Done manually. They are stored even after you delete the instance.
-  - You can copy snapshots across regions.
-  - You can publish the snapshot to make it publically available.
-  - Restoring Backups/ Snapshots – The restored version will be a new RDS instance with new end point.
-  - You can check the instance size to restore.
-  - You cannot restore to existing instance
-  
-### Encryption
-- Encryption at rest is supported for MySQL, SQL Server, Oracle and PostgreSQL & MariaDB.
-- Managed by AWS KMS.
-- Cannot encrypt an already present instance. To encrypt, create new instance with encryption enabled and then migrate your data to it
-  
-### Multi-AZ Deployment
-- A standby copy is created in another AZ. AWS handles replication and auto-failover
-- AWS can automatically failover RDS instance to another instance.
-- In case of failover, No need to change connection string.
-- This can be used for DR purpose only. This option has to be selected at instance creation time. This option is not useful for improving performance / scaling.
- 
-### Read Replica Databases.
-- Read-replica – async data transfer to another RDS instance. You can actually read from these instances, unlike Multi-AZ deployments. You can also have read replicas of read-replicas up to 5 copies. (Watch out as async causes latency)-
-- Read-replicas can be used for Dev/Test environments, run certain workloads only against them and not against direct production deployment – Intensive workloads.
-- *MySQL , MariaDB, PostgreSQL only for read-replicas , no Oracle & SQL Server*
-- You cannot have read-replicas that have multi-AZ. However, you can create read replicas of Multi AZ source databases.
-- Read replicas can be of a different size than source DB.
-- Each read-replica will have its own DNS end point
-- Automatic backups must be turned on in order to deploy a read replica
-- Read Replicas can be promoted to be their own databases. This breaks replication. E.g. Dev/Test can be connected to the replica by first promoting it as DB itself.
-- Read Replicas can be done in a second region for MySQL and MariaDB – no PostgreSQL.
-- Application re-architecture is required to make use of Read replicas
-- Read replicas are not used for DR. they are used for performance scaling only
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/dynamodb.png) [DynamoDB](https://aws.amazon.com/dynamodb)
 
@@ -561,73 +550,78 @@ Select type based on application needs
 - Use RDS if data requires joins and relationships.
 - In RDBMS database structure cannot be dynamically altered. With DynamoDB you can
 
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/elasticache.png) [ElastiCache](https://aws.amazon.com/elasticache)  
+- In memory cache in cloud
+- Memcached
+- Redis
+
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/redshift.png) [Redshift](https://aws.amazon.com/redshift)
 Petabyte scale DW solution in cloud.  Used for OLAP – sum of various columns and joining the data.
 
 ### Configurations
-  - Single Node – 160 GB. Used by Small and Medium Size businesses.
-  - Multi-Node – Leader Node (handles all incoming connections & receives queries) & compute Node (store data and perform queries and computations – up to 128 Compute Nodes)
+- Single Node – 160 GB. Used by Small and Medium Size businesses.
+- Multi-Node – Leader Node (handles all incoming connections & receives queries) & compute Node (store data and perform queries and computations – up to 128 Compute Nodes)
 ### Performance
-  - Redshift is 10 times faster than usual OLAP systems.
-  - It uses Columnar Data Store.  Columnar data is stored sequentially on storage system. Hence low I/O required – improving performance.
-  - Advanced Compression (easier to do it via Columns instead of via Rows – which have different data types). Columns have similar type of data. Doesn’t use indexes and views – hence less storage required.
-  - Based on data, appropriate data compression scheme is used.
-  - Allows for massive parallel processing
+- Redshift is 10 times faster than usual OLAP systems.
+- It uses Columnar Data Store.  Columnar data is stored sequentially on storage system. Hence low I/O required – improving performance.
+- Advanced Compression (easier to do it via Columns instead of via Rows – which have different data types). Columns have similar type of data. Doesn’t use indexes and views – hence less storage required.
+- Based on data, appropriate data compression scheme is used.
+- Allows for massive parallel processing
 ### Pricing  
-  - Based on Compute Node hours (compute node only – no leader node).
-  - Backup and Data Transfer (only within VPC)
+- Based on Compute Node hours (compute node only – no leader node).
+- Backup and Data Transfer (only within VPC)
 ### Security
-  - Transit encrypted via SSL,
-  - At rest using AES-256 encryption
-  - Can use your own HSM or default AWSK Key management.
+- Transit encrypted via SSL,
+- At rest using AES-256 encryption
+- Can use your own HSM or default AWSK Key management
   
 ### Availability
 Not Multi-AZs. Can restore snapshots
 Exam Tips – Database warehousing service, cheap, faster. Best seller AWS Service. Speed achieved due to columnar storage. And Data stored sequentially on disk – hence faster.
 
 ## ElastiCache
-  - Easy to deploy, operate and scale an in-memory cache in the cloud.
-  - Improve performance by avoiding repeated calls to DB.
-  - Improve latency and throughput for read-heavy applications.
-  - Can be used for compute intensive data
+- Easy to deploy, operate and scale an in-memory cache in the cloud
+- Improve performance by avoiding repeated calls to DB
+- Improve latency and throughput for read-heavy applications
+- Can be used for compute intensive data
 ### Memcached
-  - All Memcached tooling can be easily ported over.
+- All Memcached tooling can be easily ported over
 ### Redis
-  - Supports Master / Slave replication and multi-AZ deployment to get redundancy.
+- Supports Master / Slave replication and multi-AZ deployment to get redundancy.
 Exam Tips
-  - ElastiCache is used if DB is primarily read-heavy and not frequently changing
-  - Use Redshift – if application is slow due to constant OLAP transactions on top of OLTP focused DB.
+- ElastiCache is used if DB is primarily read-heavy and not frequently changing
+- Use Redshift – if application is slow due to constant OLAP transactions on top of OLTP focused DB.
 ## Aurora
-  - Bespoke Database Engine.
-  - It is MySQL compatible.
-  - However you can’t download and install on your workstation.
+- Bespoke Database Engine.
+- It is MySQL compatible.
+- However you can’t download and install on your workstation.
 ### Performance
 5 times better performance than MySQL. At a fraction of cost as compared to Oracle.
 ### Scaling
-  - Outset 10 Gb Storage, auto increment of storage
-  - No Push button scaling – unlike DynamoDB
+- Outset 10 Gb Storage, auto increment of storage
+- No Push button scaling – unlike DynamoDB
 ### Fault Tolerance
-  - Maintains 2 copies of your data in at least 3 availability zones. This is for the Data only not for the instances that runs the Database.
-  - 2 copies lost – no impact on write availability.
-  - 3 copies lost – no impact on read availability.
-  - Storage is self-healing.
+- Maintains 2 copies of your data in at least 3 availability zones. This is for the Data only not for the instances that runs the Database.
+- 2 copies lost – no impact on write availability.
+- 3 copies lost – no impact on read availability.
+- Storage is self-healing.
 ### Replicas
-  - MySQL Read Replica can be created from the Aurora source DB.(up to 5 of them)
-  - Aurora Replicas – up to 15 of them. If leader crashes, the replica with the highest tiers becomes the leader. While creating replicas, remember to assign different tier levels.
-  - Cluster Endpoint vs Individual Endpoint
+- MySQL Read Replica can be created from the Aurora source DB.(up to 5 of them)
+- Aurora Replicas – up to 15 of them. If leader crashes, the replica with the highest tiers becomes the leader. While creating replicas, remember to assign different tier levels.
+- Cluster Endpoint vs Individual Endpoint
 No Free Tier usage available. Also available only in select regions. Takes slightly longer to provision
 ## Exam Tips
-  - Why you can’t connect to DB Server from DMZ. Check the security group – if it is removed or added
-  - Have separate groups for EC2 Instance and RDS Instance.
-  - Multi-AZ for Disaster Recovery only. Not for performance improvement. For performance improvement use, multiple read-replicas
-  - Dynamo DB v/s RDS
+- Why you can’t connect to DB Server from DMZ. Check the security group – if it is removed or added
+- Have separate groups for EC2 Instance and RDS Instance.
+- Multi-AZ for Disaster Recovery only. Not for performance improvement. For performance improvement use, multiple read-replicas
+- Dynamo DB v/s RDS
 If you want push button scaling, without any downtown, you will always want to use DynamoDB.
 With RDS scaling is not so easy, you have to use a bigger instance or add read replicas (manual process).
-  - If you are using Amazon RDS Provisioned IOPS storage with a MySQL or Oracle database engine, what is the maximum size RDS volume you can have by default? – **6TB**
-  - What data transfer charge is incurred when replicating data from your primary RDS instance to your secondary RDS instance? - **There is no charge associated with this action**.
-  - When you have deployed an RDS database into multiple availability zones, can you use the secondary database as an independent read node? – **No**
-  - RDS automatically creates RDS Security Group w/ TCP port # 3306 enabled. 
-  - In VPC Security Group, the answer would be YES because you will have manually specify access to port & protocol.
+- If you are using Amazon RDS Provisioned IOPS storage with a MySQL or Oracle database engine, what is the maximum size RDS volume you can have by default? – **6TB**
+- What data transfer charge is incurred when replicating data from your primary RDS instance to your secondary RDS instance? - **There is no charge associated with this action**.
+- When you have deployed an RDS database into multiple availability zones, can you use the secondary database as an independent read node? – **No**
+- RDS automatically creates RDS Security Group w/ TCP port # 3306 enabled. 
+- In VPC Security Group, the answer would be YES because you will have manually specify access to port & protocol.
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/cloudwatch.png) [CloudWatch](https://aws.amazon.com/cloudwatch)
 
@@ -644,20 +638,20 @@ With RDS scaling is not so easy, you have to use a bigger instance or add read r
 # ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/vpc.png) [VPC](https://aws.amazon.com/vpc)
 
 ## VPC Features
-  - VPC is a logical data center within an AWS Region.
-  - Control over network environment, select IP address range, subnets and configure route tables and gateways.
-  - Do not span regions, but can span AZs.
-  - Can create public facing subnet (Web) having internet access and private facing subnet (DB) with no internet access
-  - Public Subnet – Web Servers/ Jump Boxes
-  - Private Subnet – Applications Servers / Database servers
-  - Leverage multiple layers of security – Security groups and Network ACLs to control access to EC2 instances
-  - Create hardware VPN connection between your local DC and AWS.
-  - AWS gives a maximum of /16 network.
-  - Bastion host/ Jump Box in Public subnet
-  - Security groups, Network ACLs, Route Tables can span subnets/AZs.
-  - Each subnet is always mapped to an availability zone. 1 subnet = 1 AZ
-  - Only one internet gateway per VPC. [Trick question – improve performance by adding Gateway – just not possible]
-  - Security groups are stateful. Network ACLs are stateless.
+- VPC is a logical data center within an AWS Region.
+- Control over network environment, select IP address range, subnets and configure route tables and gateways.
+- Do not span regions, but can span AZs.
+- Can create public facing subnet (Web) having internet access and private facing subnet (DB) with no internet access
+- Public Subnet – Web Servers/ Jump Boxes
+- Private Subnet – Applications Servers / Database servers
+- Leverage multiple layers of security – Security groups and Network ACLs to control access to EC2 instances
+- Create hardware VPN connection between your local DC and AWS.
+- AWS gives a maximum of /16 network.
+- Bastion host/ Jump Box in Public subnet
+- Security groups, Network ACLs, Route Tables can span subnets/AZs.
+- Each subnet is always mapped to an availability zone. 1 subnet = 1 AZ
+- Only one internet gateway per VPC. [Trick question – improve performance by adding Gateway – just not possible]
+- Security groups are stateful. Network ACLs are stateless.
   
 By default, how many VPCs am I allowed in each AWS Region? == 5
 Typical Private IP address ranges – not publically routable.
