@@ -180,7 +180,7 @@
 ### EC2 Security Groups
 - A security group is a virtual firewall.
 - First line of defense. Network ACLs are second line.
-- 1 instance can have multiple security groups. As each security group only "allows" inbound traffic, there will never be a conflict on security group rules.
+- Single instance can have multiple security groups. As each security group only "allows" inbound traffic, there will never be a conflict on security group rules.
 - Security group changes are applied immediately.
 - Security groups are "stateful". Rules added as inbound rules – automatic outbound rules are added. Response back on the same channel. NACLs are stateless.
 - All inbound traffic is blocked by default. You have to allow specific inbound rules for protocols
@@ -240,16 +240,6 @@ The following are examples of problems that can cause instance status checks to 
 ### EC2 Placement groups
 - Logical grouping of instances within a single AZ
 - Instances can participate in low latency, 10 GBPs network
-
-### CloudWatch
-- Default Metrics – Network, Disk, CPU and Status check (Instance and System)
-- Memory – RAM is a custom metric
-- You can create custom dashboards all CloudWatch metrics.
-- CloudWatch alarms – set notifications when particular thresholds are hit.
-- CloudWatch events help you respond to state changes. E.g. run Lambda function in response to.
-- CloudWatch logs helps you monitor EC2 instance/application/system logs. Logs send data to CloudWatch
-- Standard monitoring 5 mins. Detailed monitoring 1 minute.
-- CloudWatch is for logging. CloudTrail is for auditing your calls
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/ebs.png) EBS
 
@@ -374,19 +364,23 @@ The following are examples of problems that can cause instance status checks to 
 - Permissions are also replicated from one bucket to another.
 - Transitive replications do not work. E.g. if you setup bucket C to replicate content from bucket B which replicates content from bucket A – Changes made to bucket A will not get propagated to C. You will need to manually upload content to bucket B to trigger replication to C.
 - Delete markers are replicated.
-- If you delete source replication bucket objects, they are deleted from replica target bucket too. When you delete a Delete marker or version from source, that action is not replicated.
-  
-### Lifecycle Management
-- Objects stored in Glacier incur minimum 90 day storage cost.
-- Lifecycle management can be used in conjunction with versioning
-- Objects can be transitioned to S3-IA after 30 days and to Glacier class storage - 30 days IA.
-- You can also permanently delete objects.
+- If you delete source replication bucket objects, they are deleted from replica target bucket too. When you delete a Delete marker or version from source, that action is not replicated
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/glacier.png) Glacier 
+## S3 Transfer Acceleration
+It utilizes the CloudFront Edge Network to accelerate uploads to S3. Instead of uploading directly to S3, you can use a distinct URL to upload directly to an edge location which will then transfer to S3 using Amazon’s backbone network.
+The farther you are from S3 bucket region the higher is the improvement you can observe using S3 Transfer Acceleration. High cost for usage than standard S3 transfer rates.
+  
+### Storage Object Lifecycle Management
+- Objects stored in Glacier incur minimum 90 day storage cost
+- Lifecycle management can be used in conjunction with versioning
+- Objects can be transitioned to S3-IA after 30 days and to Glacier class storage - 30 days IA
+- You can also permanently delete objects
+
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/glacier.png) [Glacier](https://aws.amazon.com/glacier)
 - For archival only. Takes 3 - 5 hours to restore files. Durability of 99.999999999%
   
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/storagegateway.png) Storage Gateway 
-  - It is a service which connects an on-premises software appliance (virtual) with cloud based storage to provide seamless and secure connectivity between the two. Either via internet or Direct connect.
+  - It is a service which connects an on-premises software appliance (virtual) with cloud based storage to provide seamless and secure connectivity between the two. Either via internet or Direct connect
   - It can also provide connectivity from EC2 instance in VPC to S3 via Storage Gateway in same VPC
   - The virtual appliance will asynchronously replicate information up to S3 or Glacier
   - Can be downloaded as a VM – VMware ESXi / Hyper-V.
@@ -401,18 +395,18 @@ The following are examples of problems that can cause instance status checks to 
   Volume gateway interface presents applications with disk volumes using iSCSI protocol. They take virtual hard disks on premise and back them up to virtual hard disks on AWS. Data written to these volumes can be asynchronously backed up as point in time snapshots of volumes and stored in cloud as EBS snapshots.
  3.Gateway Virtual Tape Library (VTL) – Backup and Archiving solution. Create tapes and send to S3. You can use existing backup applications like NetBackup, Backup Exec, and Veam etc.
  
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/snowball.png) Snowball 
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/snowball.png) [Snowball](https://aws.amazon.com/snowball) 
 - Next version of Import / Export Gateway
-- You could accelerate moving large amounts of data into and out of AWS using portable storage devices for transport. 
-- Ship the storage device – no need to transfer over the internet. Problem arose with different types of disks
+- You could accelerate moving large amounts of data into and out of AWS using portable storage devices for transport
+- Ship the storage device : no need to transfer over the internet. Problem arose with different types of disks
   
 ### Snowball Standard
 - Bigger than briefcase sized storage devices
 - Petabyte scale data transport solution used to transfer data in/out of AWS
-- Cost is 1/5th as compared to transfer via high speed internet.
-- 80TB snowball available.
+- Cost is 1/5th as compared to transfer via high speed internet
+- 80TB snowball available
 - Multiple layers of security to protect data. Tamper resistant enclosure, 256-bit encryption
-- Once data is transferred, AWS performs software erasure of Snowball appliance.
+- Once data is transferred, AWS performs software erasure of Snowball appliance
 
 ### Snowball Edge
 - 100 TB data transfer device which has onboard storage and compute capabilities.
@@ -427,27 +421,23 @@ The following are examples of problems that can cause instance status checks to 
 - You can use it for data center migration.
 - Snowball import/export to/from S3: If using Glacier first need to import into S3 and then into Snowball
 
-## S3 Transfer Acceleration
-It utilizes the CloudFront Edge Network to accelerate uploads to S3. Instead of uploading directly to S3, you can use a distinct URL to upload directly to an edge location which will then transfer to S3 using Amazon’s backbone network.
-The farther you are from S3 bucket region the higher is the improvement you can observe using S3 Transfer Acceleration. High cost for usage than standard S3 transfer rates.
-
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/cloudfront.png) CloudFront 
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/cloudfront.png) [CloudFront](https://aws.amazon.com/cloudfront) 
 
 ### Important terms
-- CDN – collection of distributed servers where the content is served to users based on the user’s location and the location of content origin.
-- Edge location – location where content will be cached. Different from AWS Region / AZ
-- Origin – Can be S3 Bucket, an EC2 Instance, an Elastic Load Balancer or Route53
-- Distribution – is the name given to CDN collection which consists of Edge locations.
-- Web Distribution – Typically used for websites & web content only.
-- RTMP – Used for Media Streaming. Adobe Flash media server’s protocol – video streaming.
-- First request is slow as it comes from source origin. Subsequent requests improve speed as they are cached in nearest edge location and routed there until TTL expires.
-- CloudFront also works with non AWS origin which can be on premise as well. .
+- CDN : Collection of distributed servers where the content is served to users based on the user’s location and the location of content origin.
+- Edge location : location where content will be cached. Different from AWS Region / AZ
+- Origin : Can be S3 Bucket, an EC2 Instance, an Elastic Load Balancer or Route53
+- Distribution : Name given to CDN collection which consists of Edge locations
+- Web Distribution : Typically used for websites & web content only
+- RTMP : Used for Media Streaming. Adobe Flash media server’s protocol – video streaming
+- First request is slow as it comes from source origin. Subsequent requests improve speed as they are cached in nearest edge location and routed there until TTL expires
+- CloudFront also works with non AWS origin which can be on premise as well
 - Edge locations are for read and write as well. Objects PUT on edge location are sent to origin
 - Objects are cached for life of TTL. TTL can be set for 0 seconds to 365 days. Default TTL is 24 hours. If objects change more frequently update the TTL
-- You can clear cached objects, with charges.
-- Origin domain name – either S3 bucket, ELB or on premise domain
+- You can clear cached objects, with charges
+- Origin domain name : either S3 bucket, ELB or on premise domain
   
-### CloudFront Security.
+### CloudFront security
 - You can force them to use CDN URL instead of S3 DNS
 - To restrict bucket access you need to create origin access identity. And allow this user read permission S3 bucket content –
 - Set video protocol policy – redirect http to https, http or https
@@ -457,55 +447,12 @@ The farther you are from S3 bucket region the higher is the improvement you can 
 - For https access, you can either use default CloudFront certificate or own certificate can be imported via ACM.
 - Provisioning / Updating CloudFront distribution takes up to 15-20 minutes.
 - Geo-restriction can be setup. Either whitelist or blacklist – countries from where content can be accessed.
-- Invalidating removes objects from CloudFront. It can be forced to remove from Cache – obviously costs.
-- You can force users to get content via CloudFront after removing read access to S3 bucket.
+- Invalidating removes objects from CloudFront. It can be forced to remove from Cache – obviously costs
+- You can force users to get content via CloudFront after removing read access to S3 bucket
 - You can also upload content to CloudFront
-  
-# Route 53
 
-## DNS 101
-DNS = Convert Human Friendly domain names into IP addresses.
-IP4 (32 bit), IP6 (128 bits) - created to address exhaustion of IP addresses in IP4 space
-VPCs are now IP6 compatible.
-Top level domains vs second level domains
-Domain Registrars - assign domain names under one or more top level domain names
+# **Databases Services**
 
-### Types of DNS Records
-1. SOA Record 
-2. NS Record - AWS is now a Domain Registrar as well. 
-3. A Record - fundamental 
-4. CNAME - Canonical - resolve one domain name to another. Can’t use CNAME for Naked domains.
-5. ALIAS record - only on AWS - are used to map resource record sets in your hosted zone to ELBs, Cloud Front Distribution, or S3 buckets that are configured as websites. E.g. you can have DNS names which point to ELB domain names -w/o the need for changing IP when ELB Ip changes.  Route 53 automatically recognizes changes in the record sets. Most common usage- map naked domain name (zone apex) to ELB names. Always use Alias v/s CNAME as Alias has no charges. Answering CNAME queries has a cost on Route53
-6. AAAA Record – Ipv6
-TTL - Cache the DNS record for TTL seconds. Before DNS migration, shorten the TTLs - so no more responses are cached. 
-
-### Hosted Zone
-Collection of resource record sets. NS, SOA, CNAME, Alias etc. types of records for a particular domain.
-e.g. [https://www.tcpiputils.com/dns-lookup/google.com/ALL](https://www.tcpiputils.com/dns-lookup/google.com/ALL)
-
-## Route53 Routing Policies
-Most of the questions are scenario based.
-1. Simple - Default - when a single resource performs function for your domain - only one webserver serves content
-2. Weighted – send x% of traffic to site A and remainder (100 – x) % of it to site B. Need not be two different regions. Can be even two different ELBs.  This split is over length of day not based on number of individual subsequent requests.
-Weights – a number between 0 and 255. Route53 calculates auto %age
-AWS Takes Global view of DNS – not local / ISP view.
-A/B testing is perfect use case for Weighted Routing policy
-3. Latency – allows you to route traffic based on lowest network latency for your end user. To the region which gives fastest response time
-Create record set for EC2 or ELB resource in each region that hosts website. When R53 receives a query it will then determine response based on lowest latency
-How will the users get the best experience?  – evaluated dynamically by R3.
-4. Failover – When you want to create an active /passive setup. DR site. R53 monitors health of site. If active fails then R53 routes traffic to passive site.   Here you designate a primary and secondary endpoint for your hosted zone record.
-5. Geo-location – Choose where to route traffic based on geographic location of users.
-Different from Latency based as the routing is hardwired irrespective of latency.
-## DNS Exam Tips
-  - ELBs cost money – ensure to delete them when not using.
-  - ELBs always have DNS name – no public IP Addresses. Trick question might induce you into believing IP4 address for ELB
-  - Remember difference between Alias and CNAME
-  - Given a choice between Alias Record vs CNAME – always choose Alias. Alias records are free and can connect to AWS resources.
-  - R53 supports zone apex records
-  - With Route 53, there is a default limit of 50 domain names. However, this limit can be increased by contacting AWS support.
-Naked domain – which doesn’t have the www in front of the domain e.g. acloud.guru. [www.acloud.guru](http://www.acloud.guru) isn’t
-# Databases on AWS
-## Databases 101
 ### RDBMS
 RDBMS Types
   - MS-SQL Server
@@ -514,6 +461,7 @@ RDBMS Types
   - PostgreSQL
   - Aurora
   - MariaDB
+  
 ### NoSQL DBs
 Document Oriented
   - CouchDB,
@@ -604,9 +552,11 @@ Petabyte scale DW solution in cloud.  Used for OLAP – sum of various columns a
   - Transit encrypted via SSL,
   - At rest using AES-256 encryption
   - Can use your own HSM or default AWSK Key management.
+  
 ### Availability
 Not Multi-AZs. Can restore snapshots
 Exam Tips – Database warehousing service, cheap, faster. Best seller AWS Service. Speed achieved due to columnar storage. And Data stored sequentially on disk – hence faster.
+
 ## ElastiCache
   - Easy to deploy, operate and scale an in-memory cache in the cloud.
   - Improve performance by avoiding repeated calls to DB.
@@ -650,9 +600,26 @@ With RDS scaling is not so easy, you have to use a bigger instance or add read r
   - When you have deployed an RDS database into multiple availability zones, can you use the secondary database as an independent read node? – **No**
   - RDS automatically creates RDS Security Group w/ TCP port # 3306 enabled. 
   - In VPC Security Group, the answer would be YES because you will have manually specify access to port & protocol.
-# VPC
-Important section for all exams☺. You should be able to build out own VPCs from memory.
-## Introduction
+
+# **Management Tools**
+
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/cloudwatch.png) [CloudWatch](https://aws.amazon.com/cloudwatch)
+
+## CloudWatch Features
+- Default Metrics : Network, Disk, CPU and Status check (Instance and System)
+- Memory : RAM is a custom metric
+- You can create custom dashboards all CloudWatch metrics.
+- CloudWatch alarms – set notifications when particular thresholds are hit.
+- CloudWatch events help you respond to state changes. E.g. run Lambda function in response to.
+- CloudWatch logs helps you monitor EC2 instance/application/system logs. Logs send data to CloudWatch
+- Standard monitoring 5 mins. Detailed monitoring 1 minute.
+- CloudWatch is for logging. CloudTrail is for auditing your calls
+
+**Networking & Content Delivery**
+
+# ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/vpc.png) [VPC](https://aws.amazon.com/vpc)
+
+## VPC Features
   - VPC is a logical data center within an AWS Region.
   - Control over network environment, select IP address range, subnets and configure route tables and gateways.
   - Do not span regions, but can span AZs.
@@ -667,6 +634,7 @@ Important section for all exams☺. You should be able to build out own VPCs fro
   - Each subnet is always mapped to an availability zone. 1 subnet = 1 AZ
   - Only one internet gateway per VPC. [Trick question – improve performance by adding Gateway – just not possible]
   - Security groups are stateful. Network ACLs are stateless.
+  
 By default, how many VPCs am I allowed in each AWS Region? == 5
 Typical Private IP address ranges – not publically routable.
   - 10.0.0.0 - 10.255.255.255 (10/8 prefix)
@@ -695,6 +663,7 @@ To use AWS Stencils download them at the [AWS Simple Icons for Architecture Diag
   - NAT instance is single point of failure. You can place NAT instance behind Auto Scaling group, multiple subnets in different AZs and scripted failover. To improve performance increase the size of the NAT instance to allow for higher throughput.
   - You can use Network ACLs to control traffic for both NAT Instance and Gateway.
   - NAT Gateways scale up to 10GBps. No need to disable source/ destination checks on Gateways.
+
 ## Network ACLs & Security Groups
 |Security Group| Network ACL|
 |-------------|-------------| 
@@ -721,6 +690,51 @@ To use AWS Stencils download them at the [AWS Simple Icons for Architecture Diag
   - Enable to capture IP traffic flow information for the NICs of your resources. All information is reported to CloudWatch
   - Create IAM role to allow all logs to flow into CloudWatch
   - Create log group in CloudWatch and inside that create stream where you can then see all the traffic flow.
+
+# ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/53.png)  [Route 53](https://aws.amazon.com/route53)
+
+## Route 53 Features
+- Convert human friendly domain names into IP addresses
+- IP6 (128 bits) : created to address exhaustion of IP addresses in IP4 (32 bit)
+- VPCs are now IP6 compatible
+- Top level domains vs second level domains
+- Domain Registrars - assign domain names under one or more top level domain names
+
+### DNS Records types
+- SOA
+- NS : AWS is now a Domain Registrar as well
+- A : Fundamental 
+- CNAME : Canonical : Resolve one domain name to another. Can’t use CNAME for Naked domains
+- ALIAS : Only on AWS : Used to map resource record sets in your hosted zone to ELBs, Cloud Front Distribution, or S3 buckets that are configured as websites. e.g. you can have DNS names which point to ELB domain names -w/o the need for changing IP when ELB Ip changes.  Route 53 automatically recognizes changes in the record sets. Most common usage- map naked domain name (zone apex) to ELB names. Always use Alias v/s CNAME as Alias has no charges. Answering CNAME queries has a cost on Route53
+- AAAA : Ipv6
+TTL - Cache the DNS record for TTL seconds. Before DNS migration, shorten the TTLs - so no more responses are cached. 
+
+### Hosted Zone
+Collection of resource record sets. NS, SOA, CNAME, Alias etc. types of records for a particular domain.
+e.g. [https://www.tcpiputils.com/dns-lookup/google.com/ALL](https://www.tcpiputils.com/dns-lookup/google.com/ALL)
+
+## Route 53 Routing Policies
+Most of the questions are scenario based.
+1. Simple - Default - when a single resource performs function for your domain - only one webserver serves content
+2. Weighted – send x% of traffic to site A and remainder (100 – x) % of it to site B. Need not be two different regions. Can be even two different ELBs.  This split is over length of day not based on number of individual subsequent requests.
+Weights – a number between 0 and 255. Route53 calculates auto %age
+AWS Takes Global view of DNS – not local / ISP view.
+A/B testing is perfect use case for Weighted Routing policy
+3. Latency – allows you to route traffic based on lowest network latency for your end user. To the region which gives fastest response time
+Create record set for EC2 or ELB resource in each region that hosts website. When R53 receives a query it will then determine response based on lowest latency
+How will the users get the best experience?  – evaluated dynamically by R3.
+4. Failover – When you want to create an active /passive setup. DR site. R53 monitors health of site. If active fails then R53 routes traffic to passive site.   Here you designate a primary and secondary endpoint for your hosted zone record.
+5. Geo-location – Choose where to route traffic based on geographic location of users.
+Different from Latency based as the routing is hardwired irrespective of latency.
+## DNS Exam Tips
+  - ELBs cost money – ensure to delete them when not using.
+  - ELBs always have DNS name – no public IP Addresses. Trick question might induce you into believing IP4 address for ELB
+  - Remember difference between Alias and CNAME
+  - Given a choice between Alias Record vs CNAME – always choose Alias. Alias records are free and can connect to AWS resources.
+  - R53 supports zone apex records
+  - With Route 53, there is a default limit of 50 domain names. However, this limit can be increased by contacting AWS support.
+Naked domain – which doesn’t have the www in front of the domain e.g. acloud.guru. [www.acloud.guru](http://www.acloud.guru) isn’t
+
 # Application Services
 ## SQS – Simple Queue Service
   - SQS is a distributed web service that gives you access to a message queue that can be used to store messages while waiting for a computer to process them.
@@ -1120,6 +1134,7 @@ AMIs that are eligible for the free tier are marked in the Amazon EC2 Launch Wiz
 Third-party applications or services from AWS Marketplace are not eligible for the free tier.
 # FAQs of Services
 US Standard Region is renamed to US East (Northern Virginia) to keep consistency with other AWS regional naming conventions.
+
 ## RDS
   - Amazon RDS can automatically back up your database and keep your database software up to date with the latest version.
   - With optional [Multi-AZ deployments](https://aws.amazon.com/rds/faqs/#36), Amazon RDS also manages synchronous data replication across Availability Zones with automatic failover.
@@ -1154,6 +1169,7 @@ DB Snapshots are user-initiated and enable you to back up your DB instance in a 
 |To deploy, operate, and scale in-memory cache based on Memcached or Redis in the cloud.| Amazon ElastiCache| In-Memory Cache|
 |Help migrating your databases to AWS easily and inexpensively with zero downtime.| AWS Database Migration Service| Database Migration|
 |To build flexible cloud-native directories for organizing hierarchies of data along multiple dimensions |Amazon Cloud Directory | Directory|
+
 ## EC2
   - After early December 2016, all newly created instances, reservations, volumes, and snapshots will be required to use the longer ID format. Need to upgrade certain SDKs and CLIs. If you interact with AWS resources via APIs, SDKs, or the AWS CLI, you might be impacted, depending on whether your software makes assumptions about the ID format when validating or persisting resource IDs
   - Reservation IDs apply to all instances, and are different from Reserved Instances.  A reservation ID has a one-to-one relationship with an instance launch request, but can be associated with more than one instance if you launch multiple instances using the same launch request
@@ -1205,6 +1221,7 @@ DB Snapshots are user-initiated and enable you to back up your DB instance in a 
   - VM Import/Export commands only available via CLI and API
   - EC2 SLA guarantees a Monthly Uptime Percentage of at least 99.95% for Amazon EC2 and Amazon EBS within a Region.
   - ( skipped info around specialized instance types)
+
 ## S3
   - S3 is Object Store, EBS is block store
   - Individual Amazon S3 objects can range in size from a minimum of 0 bytes to a maximum of 5 terabytes. The largest object that can be uploaded in a single PUT is 5 gigabytes.
@@ -1254,6 +1271,7 @@ DB Snapshots are user-initiated and enable you to back up your DB instance in a 
   - Transfer Acceleration v/s Amazon CloudFront’s PUT/POST – Use TA for higher throughput. If you have objects that are smaller than 1GB or if the data set is less than 1GB in size, you should consider using Amazon CloudFront's PUT/POST
   - AWS Direct Connect is a good choice for customers with a private networking requirement or have access to AWS Direct Connect exchanges. Transfer Acceleration is best for submitting data from distributed client locations over the public Internet, or where variable network conditions make throughput poor
   - Amazon S3 dual-stack endpoints support requests to S3 buckets over IPv6 and IPv4. When you make a request to a dual-stack endpoint, the bucket URL resolves to an IPv6 or an IPv4 address.
+
 ## VPC
   - You have complete control over your virtual networking environment, including selection of your own IP address range, creation of subnets, and configuration of route tables and network gateways.
   - Hardware Virtual Private Network (VPN) connection between your corporate datacenter and your VPC and thus extend your own data center.
@@ -1293,6 +1311,7 @@ DB Snapshots are user-initiated and enable you to back up your DB instance in a 
   - VPC peering connections do not require an Internet Gateway.
   - VPC peering traffic within a region is not encrypted.
   - Amazon Virtual Private Cloud (VPC) ClassicLink allows EC2 instances in the EC2-Classic platform to communicate with instances in a VPC using private IP addresses.
+
 ## SQS
   - Amazon SQS can help you build a distributed application with decoupled components, 
   - Using SQS you can build a microservice architecture and use message queues to connect your microservices.
