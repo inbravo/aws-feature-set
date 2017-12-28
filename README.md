@@ -1,287 +1,191 @@
 ![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/aws-all-services/aws-core-dimensions.jpg)
 
 # Core AWS Dimensions
-  - **Security & Identity**
-      - **IAM** : How you setup and assign users / groups etc
-      - **Inspector** : Agent which inspects your VMs and does security reporting
-      - **Certificate Manager** : free SSL certs for your domain names.
-      - **Directory Service** :  to run MS active directory service on cloud
-      - **WAF** : Web Application Firewall. Allows application level protection. Different from traditional network level firewalls. You can inspect headers / content
-      - **Artifacts** : All documentation under compliance and reports
-  - **Storage** 
-      - **S3** : Object Store
-      - **Glacier** : Archive files from S3 into Glacier 
-      - **EFS** : Elastic File Service. It can be attached to multiple EC2 instances
-      - **Storage Gateway** : Communicates between your data center and S3 storage
-  - **Networking & Content Delivery**
-      - **VPC** - You can have multiple VPCs per region. VPCs can also be connected to each other.
-      - **Route 53** – Amazon’s DNS Service
-      - **CloudFront** – Content delivery network. Edge locations cache assets.
-      - **Direct Connect** – Connect your physical DCs to AWS using dedicated telephone lines
-  - **Compute** 
-      - **EC2** – Elastic Compute Cloud
-      - **ECS** : EC2 Container Services
-      - **Elastic Beanstalk** : Elastic Bean stalk will provision all infrastructure required
-      - **Lambda** : Alexa, Echo devices rely on Lambda
-      - **Lightsail** : Out of the box cloud e.g. WordPress, Drupal
-  - **Database Services**
-      - **RDS** : Relational Data Services : MySQL, PostgreSQL, SQL Server, MariaDB, Aurora
-      - **DynamoDB** : Non relational DB
-      - **Redshift** : Data warehousing system 
-      - **ElastiCache** : Cloud in-memory DB
-  - **Migration**
-      - **Snowball** : Transfer Data : Store all your data from enterprise into Snowball and then ship to AWS
-	  - **DMS** : Database migration services : Migrate existing DB to Cloud
-	  - **SMS** : Server migration services : Migrate existing VM on premise to the Cloud
-  - **Analytics**
-      - **Athena** : Allow SQL queries on S3. Run queries on csv files in S3 buckets
-      - **EMR** : Elastic Map Reduce : Process large amounts of data. Based on Hadoop, Apache Spark etc
-      - **Cloud Search** : Managed services provided by AWS
-      - **Elastic Search** : Search service which uses the Elastic product
-      - **Kinesis** : Streaming and analysis real time data. Used for collating large amounts of data streamed from multiple sources
-      - **Data Pipeline** : Move data from one place to another. e.g. S3 into DynamoDB and vice versa
-      - **Quick Sight** : BA tools for rich visualizations and dashboards.
-  - **Management Tools**
-      - **Cloud Watch** : Monitor performance of AWS environment – standard infrastructure metrics
-      - **Cloud Formation** : Infrastructure into Code - document which describes the infrastructure which uses AWS resources
-      - **Cloud Trail** : Audit usage of AWS Resources. Important for security exam
-      - **OpsWorks** : Automate deployments using Chef. Important for sysops exam
-      - **Config Manager** : Monitors environments and **provides alerts for events**. e.g. someone creates a security group which is against policy
-      - **Trusted Advisor** : Automated tips for cost & performance optimization, security tips, architecture and design
-  - **Application Services**
-      - **API Gateway** : Create secure api service
-	  - **Elastic Transcoder** : Media transcoding in cloud
-	  - **SNS** : Simple notification service
-	  - **SES** : Simple email service
-	  - **SWF** : Simple workflow service
-      - **SQS** : Simple message service
-      - **Step functions** : Visualize Application internals : Which micro services is your application using
-      - **SWF** : Simple Workflow Service. Used in Amazon fulfillment center
-	  - **AppStream** : Stream desktop services via browser
-  - **Mobile Service & IoT**
-	  -	**Mobile Hub** : For mobile Applications
-	  -	**Cognito** : Social identity providers for Gmail, Facebook OAuth 
-	  -	**Device Farm** : Testing your apps across multitude of devices
-	  -	**Mobile Analytics** : Collect application usage data in a cost-effective way
-	  -	**Pinpoint** : Collects metrics to help understand the impact of customer communications
-	  -	**FreeRTOS** : A operating system for microcontrollers
-	  -	**IoT Greengrass** :  lets you run local compute, messaging & data caching
-	  -	**IoT Analytics** : Ffully-managed service that makes it easy to run sophisticated analytics
-  - **Desktop and App Streaming**
-      - **WorkSpaces** : Desktop on cloud
-      - **App Stream** : Stream desktop apps to users
-	  - **Work Docs** : Store work documents on cloud
-      - **Work Mail** : Exchange on AWS
-  - **Artificial Intelligence**
-      - **Alexa** (which uses Lambda) + Lex. Echo isn’t required anymore to use Alexa. 
-      - **Polly** : Text to Speech
-      - **Machine Learning** : AWS will predict outcomes for future decisions based on demographics etc
-      - **Rekognition** : Image recognition, Facial recognition based on Databases
+
+- **Security & Identity**
+	-	**IAM** : How you setup and assign users / groups etc
+	- 	**Inspector** : Agent which inspects your VMs and does security reporting
+	- 	**Certificate Manager** : Free SSL certs for your domain names
+	- 	**Directory Service** :  Run MS active directory service on cloud
+	- 	**WAF** : Web Application Firewall
+	- 	**Artifacts** : All documentation under compliance and reports
+- **Compute** 
+	-	**EC2** : Elastic Compute Cloud
+	-	**ECS** : EC2 Container Services
+	-	**Elastic Beanstalk** : Elastic Bean stalk will provision all infrastructure required
+	-	**Lambda** : Alexa, Echo devices rely on Lambda
+	- 	**Lightsail** : Out of the box cloud e.g. WordPress, Drupal
+- **Storage** 
+	-	**S3** : Object Store
+	-	**Glacier** : Archive files from S3 into Glacier 
+	-	**EFS** : Elastic File Service. It can be attached to multiple EC2 instances
+	-	**Storage Gateway** : Communicates between your data center and S3 storage
+- **Networking & Content Delivery**
+	-	**VPC** : You can have multiple VPCs per region
+	-	**Route 53** : Amazon’s DNS Service
+	-	**CloudFront** : Content delivery network. Edge locations cache assets
+	-	**Direct Connect** : Connect your physical DCs to AWS using dedicated telephone lines
+- **Database Services**
+	-	**RDS** : Relational Data Services : MySQL, PostgreSQL, SQL Server, MariaDB, Aurora
+	-	**DynamoDB** : Non relational DB
+	-	**Redshift** : Data warehousing system 
+	-	**ElastiCache** : Cloud in-memory DB
+- **Migration**
+	-	**Snowball** : Transfer Data : Store all your data from enterprise into Snowball and then ship to AWS
+	-	**DMS** : Database migration services : Migrate existing DB to Cloud
+	-	**SMS** : Server migration services : Migrate existing VM on premise to the Cloud
+- **Analytics**
+	-	**Athena** : Allow SQL queries on S3. Run queries on csv files in S3 buckets
+	-	**EMR** : Elastic Map Reduce : Process large amounts of data. Based on Hadoop, Apache Spark etc
+	-	**Cloud Search** : Managed services provided by AWS
+	-	**Elastic Search** : Search service which uses the Elastic product
+	-	**Kinesis** : Streaming and analysis real time data. Used for collating large amounts of data streamed from multiple sources
+	-	**Data Pipeline** : Move data from one place to another. e.g. S3 into DynamoDB and vice versa
+	-	**Quick Sight** : BA tools for rich visualizations and dashboards
+- **Management Tools**
+	-	**Cloud Watch** : Monitor performance of AWS environment 
+	-	**Cloud Formation** : Infrastructure into Code
+	-	**Cloud Trail** : Audit usage of AWS Resources
+	-	**OpsWorks** : Automate deployments using Chef
+	-	**Config Manager** : Monitors environments and **provides alerts for events**. e.g. someone creates a security group which is against policy
+	-	**Trusted Advisor** : Automated tips for cost & performance optimization, security tips, architecture and design
+- **Application Services**
+	-	**API Gateway** : Create secure api service
+	-	**Elastic Transcoder** : Media transcoding in cloud
+	-	**SNS** : Simple notification service
+	-	**SES** : Simple email service
+	-	**SWF** : Simple workflow service
+	-	**SQS** : Simple message service
+	-	**Step functions** : Visualize Application internals : Which micro services is your application using
+	-	**SWF** : Simple Workflow Service. Used in Amazon fulfillment center
+	-	**AppStream** : Stream desktop services via browser
+- **Mobile Service & IoT**
+	-	**Mobile Hub** : For mobile Applications
+	-	**Cognito** : Social identity providers for Gmail, Facebook OAuth 
+	-	**Device Farm** : Testing your apps across multitude of devices
+	-	**Mobile Analytics** : Collect application usage data in a cost-effective way
+	-	**Pinpoint** : Collects metrics to help understand the impact of customer communications
+	-	**IoT Core** 
+	-	**Amazon FreeRTOS**  : An operating system for microcontrollers
+	-	**Greengrass** : Lets you run local compute, messaging & data caching
+	-	**IoT 1-Click**
+	-	**IoT Analytics** : Fully-managed service that makes it easy to run sophisticated analytics
+	-	**IoT Button**
+	-	**IoT Device Defender**
+	-	**IoT Device Management**
+- **Desktop and App Streaming**
+	-	**WorkSpaces** : Desktop on cloud
+	-	**App Stream** : Stream desktop apps to users
+	-	**Work Docs** : Store work documents on cloud
+	-	**Work Mail** : Exchange on AWS
+- **Artificial Intelligence**
+	-	**Alexa** (which uses Lambda) + Lex. Echo isn’t required anymore to use Alexa
+	-	**Polly** : Text to Speech
+	-	**Machine Learning** : AWS will predict outcomes for future decisions based on demographics etc
+	-	**Rekognition** : Image recognition, Facial recognition based on Databases
 	  
 ## Global Infrastructure
-  - A Region is geographical area consisting of 2 or more availability zones.
-  - Availability zone is logical data center
-  - Edge Locations are CDN End Points for CloudFront. Many more edge locations exist than regions
+	- A Region is geographical area consisting of 2 or more availability zones.
+	- Availability zone is logical data center
+	- Edge Locations are CDN End Points for CloudFront. Many more edge locations exist than regions
   
 # Security & Identity
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/iam.png) IAM  
-  - Configure who uses AWS and their level of access to the AWS Console.
-  - Centralized control over AWS Account
-  - Share access for AWS Account
-  - Granular permissions for users / services
-  - Identity Federation – Facebook, LinkedIn and Active Directory- You can login to AWS with your corporate credentials.
-  - Multi-factor authentication – helps secure the account. Especially for root account
-  - Temporary access to users and services
-  - Setup password rotation policy
-  - Integration with other AWS services.
-  - Supports PCI-DSS compliance
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/iam.png) IAM 101 : [Identity & Access Management](https://aws.amazon.com/iam)
 
-### IAM consists
-	- Users : End users / people.
-	- Groups : Users having one set of permissions.
-	- Roles : Create roles and assign them to AWS resources.
-	- Policies : Document (JSON format) that defines one or more permissions – assign to user or groups
+### IAM Resources
+	- Users 
+	- Groups 
+	- Roles 
+	- Policies (JSON doc which defines one or more permissions)
+	- Identity Provider (Single Sign On)
+	
+### IAM Purpose
+	- Configure who uses AWS and their level of access to the AWS Console
+	- Centralized control over AWS Account
+	- Share access for AWS Account
+	- Granular permissions (grant system privileges) for users / services
+	- Identity Federation – Facebook, LinkedIn and Active Directory
+	- Multi-factor authentication (**MFA**)
+		-	Virtual device
+		-	Hardware device
+	- Temporary access to users and services
+	- Setup password rotation policy
+	- Integration with other AWS services
+	- Supports Payment Card Industry Data Security Standard (**PCI-DSS**) compliance
 
 ### IAM Features
-  - IAM is a global service. It is not region specific
-  - Root account is the email address you use to sign up for AWS
-  - AWS recommends very limited usage of root account
-  - Setup Multi Factor Authentication (MFA) on root account.
-  - You can attach permissions to individual users and groups.
-  - Secret access key can be retrieved only once during user creation. In case you lose it then you can re-generate it.
-  - IAM Password policy can be set to access the admin console.
-  - New users have no permissions when first created. Everything has to be explicitly added.
-  - Power User Access allows Access to all AWS services except the management of groups and users within IAM.
+	- IAM is global and its not region specific
+	- Root account is the email address you use to sign up for AWS
+	- AWS recommends very limited usage of root account
+	- Setup Multi Factor Authentication (MFA) on root account
+	- You can attach permissions to individual users and groups
+	- Secret access key can be retrieved only once during user creation. In case you lose it then you can re-generate it
+	- IAM Password policy can be set to access the admin console
+	- New users have no permissions when first created. Everything has to be explicitly added
+	- Power User Access allows Access to all AWS services except the management of groups and users within IAM
   
 ### Manage AWS resources via
-	1. Management console – Using username and password
-	2. Rest APIs – Using Access Key ID and Secret Access Key
-	3. AWS CLI - Using Access Key ID and Secret Access Key
-	4. AWS SDK – various programming languages supported.
-	Using Access Key ID and Secret Access Key – can be used only via accessing programmatically. Akin to username and password used while accessing the console
+	- AWS Management console : Using username and password
+	- Rest API : Using Access Key ID and Secret Access Key
+	- AWS Command Line Interface (**CLI**) : Using Access Key ID and Secret Access Key
+	- AWS Software Development Kit (**SDK**) : Using Access Key ID and Secret Access Key
 
-# Storage
-
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/s3.png) S3 
-
-### S3 Storage Types
-  - S3-Standard - Durability of 99.999999999% and availability of 99.99%.
-  - S3-IA (Infrequently Accessed) - Durability of 99.999999999% and availability of 99.9%.
-  - S3-RRS (Reduced Redundancy Storage) - Durability and availability of 99.99%. Use when you don’t care if data is occasionally lost and can easily be re-created.
-
-### S3 Buckets
-  - S3 Namespace is global. Region independent.
-  - A bucket name in any region should only contain lower case characters. It has to be DNS Compliant
-  - Object versioning - Different versions of the same object in a bucket.
-  - Only Static website can be hosted. Auto scaling, Load Balancing etc. all managed automatically.
-  - You can tag buckets (or any AWS resoruce) to track costs. Tags consist of keys and (optional) value pairs.
-  - Lifecycle management of objects can be set. e.g. move to Glacier after 30 days
-  - Every bucket created, object uploaded is private by default.
-  - Object Permissions – Access to Object ACLs
-  - Prefix in bucket is a folder in the bucket.
-  - Minimum file size that I can store on S3 bucket is 0 byte.
-  - Max 100 S3 buckets per account by default.
-  - Individual Amazon S3 objects can range in size from a minimum of **0 bytes** to a maximum of **5 terabytes**. The largest object that can be uploaded in a single PUT is **5 gigabytes**. For objects larger than **100 megabytes**, customers should consider using the Multipart Upload capability.
-
-### S3 Security
-  - By default all newly created buckets are Private
-  - Control Access to buckets using
-      - Bucket Policies – bucket wide.
-      - Access Control Lists – up to individual objects.
-  - S3 buckets can log all access requests to another S3 bucket even another AWS account.
-  
-### S3 Encryption
-  - In Transit : Secured using SSL/TLS
-  - Data at rest : 
-	- Server Side
-		1. S3 Managed Keys – SSE – S3
-		2. AWS KMS Managed Keys – SSE – KMS – Envelop Key. Provides audit trail
-		3. SSE using customer provided keys. Key Management is responsibility of user. SSE-C
-	- Client Side
-		1. Encrypt data at client side and then upload to S3.
-
-### S3 Versioning
-  - Once versioning is turned on it cannot be removed. It can only be suspended. To remove versioning, you have to create a new bucket and transfer all files from old to new
-  - For newer version of an object, you still have to set permissions to allow access. It is disabled by default even if previous version is public.
-  - All versions of the file add up to the storage. Hence for larger objects, ensure that there is some lifecycle versioning in place.
-  - Version deleted cannot be restored.
-  - Object deleted can be restored – Delete the Delete marker.
-  - Versioning is a good backup tool.
-  - For versioning. MFA can be setup for Delete capability for object / bucket – Complicated setup.
-
-### S3 Cross Region Replication
-  - To allow for cross region replication, the both source and target buckets must have versioning enabled.
-  - When cross region replication is enabled, all existing objects in the bucket are not copied over to replica site. Only Updates to existing objects and newer objects are replicated over. All previous versions of the updated objects are replicated.
-  - Permissions are also replicated from one bucket to another.
-  - Transitive replications do not work. E.g. if you setup bucket C to replicate content from bucket B which replicates content from bucket A – Changes made to bucket A will not get propagated to C. You will need to manually upload content to bucket B to trigger replication to C.
-  - Delete markers are replicated.
-  - If you delete source replication bucket objects, they are deleted from replica target bucket too. When you delete a Delete marker or version from source, that action is not replicated.
-  
-### Lifecycle Management
-  - Objects stored in Glacier incur minimum 90 day storage cost.
-  - Lifecycle management can be used in conjunction with versioning
-  - Objects can be transitioned to S3-IA after 30 days and to Glacier class storage - 30 days IA.
-  - You can also permanently delete objects.
-
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/glacier.png) Glacier 
-  - For archival only. Takes 3 - 5 hours to restore files. Durability of 99.999999999%
-  
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/storagegateway.png) Storage Gateway 
-  - It is a service which connects an on-premises software appliance (virtual) with cloud based storage to provide seamless and secure connectivity between the two. Either via internet or Direct connect.
-  - It can also provide connectivity from EC2 instance in VPC to S3 via Storage Gateway in same VPC
-  - The virtual appliance will asynchronously replicate information up to S3 or Glacier
-  - Can be downloaded as a VM – VMware ESXi / Hyper-V.
-  - 4 Types of Storage Gateways.
- 1.[Brand New] *File Gateway (NFS) – Just store files in S3 – Word, Pictures, PDFs, and no OS. ( Saves a lot of money)
-  -Files are stored as objects in S3 buckets and accessed over NFS mount point
-  -File attributes as stored as S3 object metadata.
-  -Once transferred to S3, standard S3 features apply to all files.
- 2.Volumes Gateway (iSCSI) – uses block based storage – virtual hard disk, operating system.
-  - Stored Volumes – Store entire data set copy on-prem. Data async backed up to AWS S3.
-  - Cached Volumes – Stored only recently accessed data on-prem. Rest on AWS S3
-  Volume gateway interface presents applications with disk volumes using iSCSI protocol. They take virtual hard disks on premise and back them up to virtual hard disks on AWS. Data written to these volumes can be asynchronously backed up as point in time snapshots of volumes and stored in cloud as EBS snapshots.
- 3.Gateway Virtual Tape Library (VTL) – Backup and Archiving solution. Create tapes and send to S3. You can use existing backup applications like NetBackup, Backup Exec, and Veam etc.
- 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/snowball.png) Snowball 
-  - Next version of Import / Export Gateway
-  - You could accelerate moving large amounts of data into and out of AWS using portable storage devices for transport. 
-  - Ship the storage device – no need to transfer over the internet. Problem arose with different types of disks
-  
-### Snowball Standard
-  - Bigger than briefcase sized storage devices
-  - Petabyte scale data transport solution used to transfer data in/out of AWS
-  - Cost is 1/5th as compared to transfer via high speed internet.
-  - 80TB snowball available.
-  - Multiple layers of security to protect data. Tamper resistant enclosure, 256-bit encryption
-  - Once data is transferred, AWS performs software erasure of Snowball appliance.
-
-### Snowball Edge
-  - 100 TB data transfer device which has onboard storage and compute capabilities.
-  - Move large amounts of data in and out of AWS, as a temporary storage tier for large local datasets.
-  - You can run Lambda functions.
-  - Devices connect to existing applications and infrastructure using standard storage interfaces.
-  - Snowball Edges can be clustered together to process your data on premise
-
-### Snowmobile
-  - Massive 45 foot long ruggedized shipping container, pulled by a truck.
-  - Petabyte or Exabyte of data that has to be transferred to AWS. 100 PB per snowmobile.
-  - You can use it for data center migration.
-Using snowball – Import / Export S3. If using Glacier first need to import into S3 and then into Snowball.
-
-## S3 Transfer Acceleration
-It utilizes the CloudFront Edge Network to accelerate uploads to S3. Instead of uploading directly to S3, you can use a distinct URL to upload directly to an edge location which will then transfer to S3 using Amazon’s backbone network.
-The farther you are from S3 bucket region the higher is the improvement you can observe using S3 Transfer Acceleration. High cost for usage than standard S3 transfer rates.
-
-# ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/ec2.png) EC2
+# ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/ec2.png) EC2 : [Elastic Compute Cloud](https://aws.amazon.com/ec2)
 
 ### EC2 Pricing
-  - On demand.
-  - Pay per hour of usage.
-  - Applications with short term, spiky usage patterns or unpredictable workloads that cannot be interrupted.
-  - New apps on AWS
-  - Reserved pricing
-  - Reserve capacity over significant period of time. Significant discount.
-  - Applications with steady or predictable usage over a period of time. Reserved capacity required.
-  - Further discount if upfront payment
-  - Spot pricing –
-  - Bid your price for compute. When bid price is higher than Spot price, then you can provision it. When it goes lower, instance is terminated. Useful for applications who have flexible start / stop times
-  - [Exam Tip] If AWS terminates instance, you are not charged for partial hour. If you terminate, you will be charged for the hour.
-  - Applications that are feasible only at very low compute prices. E.g. pharma simulations
-  - Applications with urgent computing capacity
-  - Dedicated physical machines – pay by hour.
-  - Massive discount for reserved instances over a long period of time – upto 70% for 3 years.
-  - Useful for regulatory requirements
-  - Certain licensing agreements prevent usage on virtual machine / multi-tenancy deployments.
+	-	On demand. Pay per hour of usage
+	-	Applications with short term, spiky usage patterns or unpredictable workloads that cannot be interrupted
+	-	New apps on AWS
+	-	Reserved pricing
+	-	Reserve capacity over significant period of time. Significant discount.
+	-	Applications with steady or predictable usage over a period of time. Reserved capacity required.
+	-	Further discount if upfront payment
+	-	Spot pricing –
+	-	Bid your price for compute. When bid price is higher than Spot price, then you can provision it. When it goes lower, instance is terminated. Useful for applications who have flexible start / stop times
+	-	**If AWS terminates instance, you are not charged for partial hour. If you terminate, you will be charged for the hour**
+	-	Applications that are feasible only at very low compute prices. E.g. pharma simulations
+	-	Applications with urgent computing capacity
+	-	Dedicated physical machines – pay by hour.
+	-	Massive discount for reserved instances over a long period of time – upto 70% for 3 years
+	-	Useful for regulatory requirements
+	-	Certain licensing agreements prevent usage on virtual machine / multi-tenancy deployments
+	-	EC2 Key Pairs are region specific
   
-### EC2 Instance Types
-|Sr. No| Family| Specialty| Use Case| Type|
-| ------------- |:-------------:| -----:|-----:|-----:|
-|1 |D2 |Dense Storage | File Servers / DWH / Hadoop | Storage Optimized|
-|2| R4. R3| Memory Optimized|Memory Intensive / DBs|Memory Optimized|
-|3|M4. M3|General Purpose|Application Servers|General Purpose|
-|4|C4, C3|Compute Optimized|CPU Intensive Apps, DBs|Compute O|
-|5|G2|Graphics Intensive|Video Encoding / 3D Application Streaming||
-|6|I2|High speed storage (IOPS)|NoSQL DBs, DWH||
-|7|F1|Field Programmable Gate Array|Hardware acceleration of Code||
-|8|T2|Lowest Cost, General Purpose|Web Servers/ Small DBs| General Purpose|
-|9|P2|Graphics / General Purpose GPU[Parallel Processing]|Machine Learning / Bit Coin Mining.| |
-|10|X1|Memory Optimized|SAP HANA / Apache Spark| - |
+### EC2 Instance types
+	|Sr. No| Family| Specialty| Use Case| Type|
+	| ------------- |:-------------:| -----:|-----:|-----:|
+	|1 |D2 |Dense Storage | File Servers / DWH / Hadoop | Storage Optimized|
+	|2| R4. R3| Memory Optimized|Memory Intensive / DBs|Memory Optimized|
+	|3|M4. M3|General Purpose|Application Servers|General Purpose|
+	|4|C4, C3|Compute Optimized|CPU Intensive Apps, DBs|Compute O|
+	|5|G2|Graphics Intensive|Video Encoding / 3D Application Streaming||
+	|6|I2|High speed storage (IOPS)|NoSQL DBs, DWH||
+	|7|F1|Field Programmable Gate Array|Hardware acceleration of Code||
+	|8|T2|Lowest Cost, General Purpose|Web Servers/ Small DBs| General Purpose|
+	|9|P2|Graphics / General Purpose GPU[Parallel Processing]|Machine Learning / Bit Coin Mining.| |
+	|10|X1|Memory Optimized|SAP HANA / Apache Spark| - |
 
-Acronym – **DIRT MCG FPX*  - 	
-*D – Density , I  - IOPS , R – RAM , T – cheap T2, M – Main Choice ( default) – Apps, C – Compute,  G – Graphics, F – FPGA , P – Graphics – Pics – Parallel Processing , X – Extreme Memory*  - *
-Use M3 for general purpose instances – balanced compute, memory and network resources
-[Exam Tip] You will be asked to provide which instance type to use for a given scenario. Usually 3 options are fictitious.
-EC2 Key Pairs are region specific
+### EC2 Instance type Acronym (**DIRT MCG FPX** : )  	
+	-	**D** : Density , 
+	-	**I** : IOPS , 
+	-	**R** : RAM 
+	-	**T** : Cheap T2
+	-	**M** : Main Choice for Apps
+	-	**C** : Compute
+	-	**G** : Graphics
+	-	**F** : FPGA
+	-	**P** : Graphics, Pics, Parallel Processing
+	-	**X** : Extreme Memory
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/ebs.png) EBS
 - Block based storage
 - You can install OS, Database on it, unlike S3
 - Placed in specific AZ. Automatically replicated within the AZ to protect from failure.
-- [Exam Tips]*  - EBS Volume Types**
+- *  - EBS Volume Types**
 SSD Drives
-  - (root volume) General Purpose SSD – up to 10,000 IOPS. 3 IOPS per GB. Balances price and performance. You can burst upto 3000 IOPS for 1GB
-- (root volume) Provisioned SSD – when you need more than 10,000 IOPS. Large RDBMS DBs and NoSQL DBs. Up to 20000 IOPS now
+	- (root volume) General Purpose SSD – up to 10,000 IOPS. 3 IOPS per GB. Balances price and performance. You can burst upto 3000 IOPS for 1GB
+	- (root volume) Provisioned SSD – when you need more than 10,000 IOPS. Large RDBMS DBs and NoSQL DBs. Up to 20000 IOPS now
 Magnetic Drives
 - HDD, Throughput Optimized– ST1 – Required for data written in sequence. Big Data, DWH, Log processing. Cannot be used as boot volumes
 - HDD, Cold– SC1 – Data that isn’t frequently accessed. E.g. File Server. Cannot be used as boot volume
@@ -397,6 +301,120 @@ The following are examples of problems that can cause instance status checks to 
 ## EC2 Placement groups
   - Logical grouping of instances within a single AZ
   - Instances can participate in low latency, 10 GBPs network.
+  
+# Storage
+
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/s3.png) S3 : [Simple Storage Service](https://aws.amazon.com/s3)
+
+### S3 Storage Types
+	- S3-Standard : Durability of Eleven Nine (99.999999999%) and availability of Four Nine (99.99%)
+	- S3-IA (Infrequently Accessed) : Durability of Eleven Nine (99.999999999%) and availability of Three Nine (99.9%)
+	- S3-RRS (Reduced Redundancy Storage) : Durability and availability of Four Nine (99.99%)
+
+### S3 Buckets
+	- S3 Namespace is global. Region independent
+	- A bucket name in any region should only contain lower case characters. It has to be DNS Compliant
+	- Object versioning - Different versions of the same object in a bucket.
+	- Only Static website can be hosted. Auto scaling, Load Balancing etc. all managed automatically.
+	- You can tag buckets (or any AWS resoruce) to track costs. Tags consist of keys and (optional) value pairs.
+	- Lifecycle management of objects can be set. e.g. move to Glacier after 30 days
+	- Every bucket created, object uploaded is private by default.
+	- Object Permissions – Access to Object ACLs
+	- Prefix in bucket is a folder in the bucket.
+	- Minimum file size that I can store on S3 bucket is 0 byte.
+	- Max 100 S3 buckets per account by default.
+	- S3 objects can range from **0 bytes** to **5 terabytes**
+	- The largest object that can be uploaded in a single PUT is **5 gigabytes**
+	- For objects larger than **100 megabytes**, use  Multipart Upload capability
+
+### S3 Security
+	- By default all newly created buckets are **private**
+	- Control Access to buckets using
+	  - Bucket Policies : Bucket wide
+	  - Access Control Lists (**ACL**) : Up to individual objects
+	- S3 buckets can log all access requests to another S3 bucket even another AWS account
+  
+### S3 Encryption
+  - In Transit : Secured using SSL/TLS
+  - Data at rest : 
+	- Server Side
+		- S3 Managed Keys – SSE – S3
+		- AWS KMS Managed Keys – SSE – KMS – Envelop Key. Provides audit trail
+		- SSE using customer provided keys. Key Management is responsibility of user. SSE-C
+	- Client Side
+		- Encrypt data at client side and then upload to S3.
+
+### S3 Versioning
+  - Once versioning is turned on it cannot be removed. It can only be suspended. To remove versioning, you have to create a new bucket and transfer all files from old to new
+  - For newer version of an object, you still have to set permissions to allow access. It is disabled by default even if previous version is public
+  - All versions of the file add up to the storage. Hence for larger objects, ensure that there is some lifecycle versioning in place
+  - Version deleted cannot be restored
+  - Object deleted can be restored – Delete the Delete marker
+  - Versioning is a good backup tool.
+  - For versioning. MFA can be setup for Delete capability for object / bucket – Complicated setup.
+
+### S3 Cross Region Replication
+  - To allow for cross region replication, the both source and target buckets must have versioning enabled.
+  - When cross region replication is enabled, all existing objects in the bucket are not copied over to replica site. Only Updates to existing objects and newer objects are replicated over. All previous versions of the updated objects are replicated.
+  - Permissions are also replicated from one bucket to another.
+  - Transitive replications do not work. E.g. if you setup bucket C to replicate content from bucket B which replicates content from bucket A – Changes made to bucket A will not get propagated to C. You will need to manually upload content to bucket B to trigger replication to C.
+  - Delete markers are replicated.
+  - If you delete source replication bucket objects, they are deleted from replica target bucket too. When you delete a Delete marker or version from source, that action is not replicated.
+  
+### Lifecycle Management
+  - Objects stored in Glacier incur minimum 90 day storage cost.
+  - Lifecycle management can be used in conjunction with versioning
+  - Objects can be transitioned to S3-IA after 30 days and to Glacier class storage - 30 days IA.
+  - You can also permanently delete objects.
+
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/glacier.png) Glacier 
+  - For archival only. Takes 3 - 5 hours to restore files. Durability of 99.999999999%
+  
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/storagegateway.png) Storage Gateway 
+  - It is a service which connects an on-premises software appliance (virtual) with cloud based storage to provide seamless and secure connectivity between the two. Either via internet or Direct connect.
+  - It can also provide connectivity from EC2 instance in VPC to S3 via Storage Gateway in same VPC
+  - The virtual appliance will asynchronously replicate information up to S3 or Glacier
+  - Can be downloaded as a VM – VMware ESXi / Hyper-V.
+  - 4 Types of Storage Gateways.
+ 1.[Brand New] *File Gateway (NFS) – Just store files in S3 – Word, Pictures, PDFs, and no OS. ( Saves a lot of money)
+  -Files are stored as objects in S3 buckets and accessed over NFS mount point
+  -File attributes as stored as S3 object metadata.
+  -Once transferred to S3, standard S3 features apply to all files.
+ 2.Volumes Gateway (iSCSI) – uses block based storage – virtual hard disk, operating system.
+  - Stored Volumes – Store entire data set copy on-prem. Data async backed up to AWS S3.
+  - Cached Volumes – Stored only recently accessed data on-prem. Rest on AWS S3
+  Volume gateway interface presents applications with disk volumes using iSCSI protocol. They take virtual hard disks on premise and back them up to virtual hard disks on AWS. Data written to these volumes can be asynchronously backed up as point in time snapshots of volumes and stored in cloud as EBS snapshots.
+ 3.Gateway Virtual Tape Library (VTL) – Backup and Archiving solution. Create tapes and send to S3. You can use existing backup applications like NetBackup, Backup Exec, and Veam etc.
+ 
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/snowball.png) Snowball 
+  - Next version of Import / Export Gateway
+  - You could accelerate moving large amounts of data into and out of AWS using portable storage devices for transport. 
+  - Ship the storage device – no need to transfer over the internet. Problem arose with different types of disks
+  
+### Snowball Standard
+  - Bigger than briefcase sized storage devices
+  - Petabyte scale data transport solution used to transfer data in/out of AWS
+  - Cost is 1/5th as compared to transfer via high speed internet.
+  - 80TB snowball available.
+  - Multiple layers of security to protect data. Tamper resistant enclosure, 256-bit encryption
+  - Once data is transferred, AWS performs software erasure of Snowball appliance.
+
+### Snowball Edge
+  - 100 TB data transfer device which has onboard storage and compute capabilities.
+  - Move large amounts of data in and out of AWS, as a temporary storage tier for large local datasets.
+  - You can run Lambda functions.
+  - Devices connect to existing applications and infrastructure using standard storage interfaces.
+  - Snowball Edges can be clustered together to process your data on premise
+
+### Snowmobile
+  - Massive 45 foot long ruggedized shipping container, pulled by a truck.
+  - Petabyte or Exabyte of data that has to be transferred to AWS. 100 PB per snowmobile.
+  - You can use it for data center migration.
+Using snowball – Import / Export S3. If using Glacier first need to import into S3 and then into Snowball.
+
+## S3 Transfer Acceleration
+It utilizes the CloudFront Edge Network to accelerate uploads to S3. Instead of uploading directly to S3, you can use a distinct URL to upload directly to an edge location which will then transfer to S3 using Amazon’s backbone network.
+The farther you are from S3 bucket region the higher is the improvement you can observe using S3 Transfer Acceleration. High cost for usage than standard S3 transfer rates.
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/cloudfront.png) CloudFront 
 
