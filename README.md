@@ -89,7 +89,7 @@
 - Availability zone is logical data center
 - Edge Locations are CDN End Points for CloudFront. Many more edge locations exist than regions
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/iam.png) IAM 101 : [Identity & Access Management](https://aws.amazon.com/iam)
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/iam.png) IAM : [Identity & Access Management](https://aws.amazon.com/iam)
 
 ### IAM Resources
 - Users 
@@ -283,7 +283,7 @@ The following are examples of problems that can cause instance status checks to 
 - RAID 1 – mirrored, Redundancy
 - RAID 5 – Good for reads, bad for writes. AWS doesn’t recommend using RAID 5 on EBS
 - RAID 10 – Raid 0 + Raid 1
-- Use RAID Arrays when a single volume IOPs are not sufficient for your need e.g. Database. Then you create RAID Array to meet IOPs requirements.
+- Use RAID Arrays when a single volume IOPs are not sufficient for your need e.g. Database. Then you create RAID Array to meet IOPs requirements
 - To take snapshot of RAID Array
 	- Stop the application from writing to cache and  flush all cache to Disk
 	- Freeze the file system
@@ -375,16 +375,16 @@ The farther you are from S3 bucket region the higher is the improvement you can 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/glacier.png) [Glacier](https://aws.amazon.com/glacier)
 - For archival only. Takes 3 - 5 hours to restore files. Durability of 99.999999999%
   
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/storagegateway.png) Storage Gateway 
-  - It is a service which connects an on-premises software appliance (virtual) with cloud based storage to provide seamless and secure connectivity between the two. Either via internet or Direct connect
-  - It can also provide connectivity from EC2 instance in VPC to S3 via Storage Gateway in same VPC
-  - The virtual appliance will asynchronously replicate information up to S3 or Glacier
-  - Can be downloaded as a VM – VMware ESXi / Hyper-V.
-  - 4 Types of Storage Gateways.
- 1.[Brand New] *File Gateway (NFS) – Just store files in S3 – Word, Pictures, PDFs, and no OS. ( Saves a lot of money)
-  -Files are stored as objects in S3 buckets and accessed over NFS mount point
-  -File attributes as stored as S3 object metadata.
-  -Once transferred to S3, standard S3 features apply to all files.
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/storagegateway.png) [Storage Gateway](https://aws.amazon.com/storagegateway) 
+- It is a service which connects an on-premises software appliance (virtual) with cloud based storage to provide seamless and secure connectivity between the two. Either via internet or Direct connect
+- It can also provide connectivity from EC2 instance in VPC to S3 via Storage Gateway in same VPC
+- The virtual appliance will asynchronously replicate information up to S3 or Glacier
+- Can be downloaded as a VM  VMware ESXi / Hyper-V.
+- 4 types of Storage Gateway
+	- [Brand New] File Gateway (NFS) : Store files in S3  Word, Pictures, PDFs
+    - Files are stored as objects in S3 buckets and accessed over NFS mount point
+  - File attributes as stored as S3 object metadata
+  - Once transferred to S3, standard S3 features apply to all files
  2.Volumes Gateway (iSCSI) – uses block based storage – virtual hard disk, operating system.
   - Stored Volumes – Store entire data set copy on-prem. Data async backed up to AWS S3.
   - Cached Volumes – Stored only recently accessed data on-prem. Rest on AWS S3
@@ -534,7 +534,9 @@ OLTP systems
 - Application re-architecture is required to make use of Read replicas
 - Read replicas are not used for DR. they are used for performance scaling only
 
-## DynamoDB
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/dynamodb.png) [DynamoDB](https://aws.amazon.com/dynamodb)
+
+### DynamoDB Features
 - Fast and flexible NoSQL database
 - Consistent, single digit millisecond latency.
 - Fully managed DB – supports both document based & Key-value data models.
@@ -558,7 +560,7 @@ Select type based on application needs
 - Use RDS if data requires joins and relationships.
 - In RDBMS database structure cannot be dynamically altered. With DynamoDB you can
 
-## Redshift
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/redshift.png) [Redshift](https://aws.amazon.com/redshift)
 Petabyte scale DW solution in cloud.  Used for OLAP – sum of various columns and joining the data.
 
 ### Configurations
