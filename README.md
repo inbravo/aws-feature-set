@@ -219,7 +219,7 @@ The following are examples of problems that can cause instance status checks to 
 - Role assigned to instance is stuck to the lifetime of the instance – until you delete the role. Easier to modify existing role by adding / removing policies
 - Roles are universal. Applicable to all regions
   
-### Bootstrap scripts
+### Bootstrap Scripts
 - Scripts can be passed on to the EC2 instance at first boot time as part of user-data
   
 ### EC2 Instance Meta-Data
@@ -236,7 +236,7 @@ The following are examples of problems that can cause instance status checks to 
 - You can also delete instance based on alarms
 - When Auto scaling group is launched it creates the instances based on definition.
   
-### EC2 Placement groups
+### EC2 Placement Groups
 - Logical grouping of instances within a single AZ
 - Instances can participate in low latency, 10 GBPs network
 
@@ -260,7 +260,7 @@ The following are examples of problems that can cause instance status checks to 
 - System Status Check – Overall health of hosting infrastructure. If they arise, Terminate instance and recreate
 - Instance Status Check – Health of instance. If they arise, reboot the instance
 
-### EBS volume types
+### EBS Volume Types
 - SSD Drives
 	- (root volume) General Purpose SSD – up to 10,000 IOPS. 3 IOPS per GB. Balances price and performance. You can burst upto 3000 IOPS for 1GB
 	- (root volume) Provisioned SSD – when you need more than 10,000 IOPS. Large RDBMS DBs and NoSQL DBs. Up to 20000 IOPS now
@@ -269,7 +269,7 @@ The following are examples of problems that can cause instance status checks to 
 	- HDD Throughput Optimized : ST1 – Required for data written in sequence. Big Data, DWH, Log processing. Cannot be used as boot volumes
 	- HDD : Cold : SC1 – Data that isn’t frequently accessed. e.g. File Server. Cannot be used as boot volume
 
-### Volumes and Snapshots
+### Volumes & Snapshots
 - Volumes are virtual hard disks
 - You can attach volume to EC2 instance belonging to same AZ
 - To Detach a volume from EC2 instance, you have to umount it first
@@ -296,7 +296,7 @@ The following are examples of problems that can cause instance status checks to 
 - The EC2 instance thus created will have root volume encrypted.
 - You can’t share encrypted snapshots as the encryption key is tied to your account
 
-## EBS backed v/s Instance store
+## EBS Backed v/s Instance store
 - You can reboot or terminate instance store backed EC2 VMs
 - You can start/stop/reboot/terminate EBS backed EC2 VMs
 - EC2 instance on instance store is lost if host hypervisor fails. Not so with EBS backed instances
@@ -356,12 +356,13 @@ The following are examples of problems that can cause instance status checks to 
 - MFA can be setup for delete capability for object/bucket for versioning
 
 ### S3 Cross Region Replication
-- To allow for cross region replication, the both source and target buckets must have versioning enabled.
+- To allow for cross region replication, the both source and target buckets must have versioning enabled
 - When cross region replication is enabled, all existing objects in the bucket are not copied over to replica site
 	- Only Updates to existing objects and newer objects are replicated over
 	- All previous versions of the updated objects are replicated
 - Permissions are also replicated from one bucket to another
-- Transitive replications do not work. e.g. if you setup bucket C to replicate content from bucket B which replicates content from bucket A – Changes made to bucket A will not get propagated to C
+- Transitive replications do not work. e.g. if you setup bucket C to replicate content from bucket B which replicates content from bucket A 
+	– Changes made to bucket A will not get propagated to C
 	- You will need to manually upload content to bucket B to trigger replication to C
 - Delete markers are replicated
 - If you delete source replication bucket objects, they are deleted from replica target bucket too. When you delete a Delete marker or version from source, that action is not replicated
@@ -402,6 +403,8 @@ The following are examples of problems that can cause instance status checks to 
 - Gateway Virtual Tape Library (VTL) – Backup and Archiving solution. Create tapes and send to S3. You can use existing backup applications like NetBackup, Backup Exec, and Veam etc.
  
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/snowball.png) [Snowball](https://aws.amazon.com/snowball) 
+
+### Snowball Features
 - Next version of Import / Export Gateway
 - You could accelerate moving large amounts of data into and out of AWS using portable storage devices for transport
 - Ship the storage device : no need to transfer over the internet. Problem arose with different types of disks
@@ -489,10 +492,10 @@ The following are examples of problems that can cause instance status checks to 
 - Backups are deleted when the RDS Instance is deleted
 
 ### RDS Snapshots
-- Done manually. They are stored even after you delete the instance.
-- You can copy snapshots across regions.
-- You can publish the snapshot to make it publically available.
-- Restoring Backups/ Snapshots – The restored version will be a new RDS instance with new end point.
+- Done manually. They are stored even after you delete the instance
+- You can copy snapshots across regions
+- You can publish the snapshot to make it publically available
+- Restoring Backups/ Snapshots – The restored version will be a new RDS instance with new end point
 - You can check the instance size to restore
 - You cannot restore to existing instance
   
@@ -636,7 +639,7 @@ With RDS scaling is not so easy, you have to use a bigger instance or add read r
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/cloudwatch.png) [CloudWatch](https://aws.amazon.com/cloudwatch)
 
-## CloudWatch Features
+### CloudWatch Features
 - Default Metrics : Network, Disk, CPU and Status check (Instance and System)
 - Memory : RAM is a custom metric
 - You can create custom dashboards all CloudWatch metrics.
@@ -648,7 +651,7 @@ With RDS scaling is not so easy, you have to use a bigger instance or add read r
 
 # ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/vpc.png) [VPC](https://aws.amazon.com/vpc)
 
-## VPC Features
+### VPC Features
 - VPC is a logical data center within an AWS Region.
 - Control over network environment, select IP address range, subnets and configure route tables and gateways.
 - Do not span regions, but can span AZs.
@@ -671,19 +674,22 @@ Typical Private IP address ranges – not publically routable.
   - 192.168.0.0 - 192.168.255.255 (192.168/16 prefix)
 VPC Diagram - Public and Private subnets ![VPC with Public and Private subnets](VPC-Diagram.jpg)
 To use AWS Stencils download them at the [AWS Simple Icons for Architecture Diagrams](https://aws.amazon.com/architecture/icons/) site
-## Default v/s Custom VPC
+
+### Default v/s Custom VPC
   - When you create an account a default VPC is created for you in each Region.
   - All subnets in default VPC have a route out to the internet
   - Each EC2 instance in default VPC will have a public and private IP address
-  - If you delete default VPC, only way to restore it is by contacting Amazon.
-## Custom VPC Info
+  - If you delete default VPC, only way to restore it is by contacting Amazon
+  
+### Custom VPC Info
   - Default Security group, network ACL & route table are created for each custom VPC you create.
   - Doesn’t create subnets or internet gateways out of the box.
   - In each VPC you create, 5 IP addresses are reserved by AWS for itself. First 4 and last IP in the CIDR block.
   - You can't change the size of a VPC after you create it. If your VPC is too small to meet your needs, create a new, larger VPC, and then migrate your instances to the new VPC. To do this, create AMIs from your running instances, and then launch replacement instances in your new, larger VPC. You can then terminate your old instances, and delete your smaller VPC. 
   - You can’t attached multiple Internet Gateways to the VPC to boost performance.
-  - When creating VPCs do not modify default route table to add your custom rules. If you modify the default route, it will affect all instances. Create a new route table for customization.
-## NAT Instance & NAT Gateway
+  - When creating VPCs do not modify default route table to add your custom rules. If you modify the default route, it will affect all instances. Create a new route table for customization
+  
+### NAT Instance & NAT Gateway
   - NAT Instance is one EC2 instance. You are responsible for performance management, scale out and security groups. NAT Gateway is a managed service.
   - On NAT instance, *remember to disable source/destination IP check*. This is required to allow private subnet internet connectivity. This is not required on NAT Gateway.
   - Allow both HTTP and HTTPS access on security groups associated with NAT instances. Security groups are always associated with NAT Instances.
@@ -693,7 +699,7 @@ To use AWS Stencils download them at the [AWS Simple Icons for Architecture Diag
   - You can use Network ACLs to control traffic for both NAT Instance and Gateway.
   - NAT Gateways scale up to 10GBps. No need to disable source/ destination checks on Gateways.
 
-## Network ACLs & Security Groups
+### Network ACLs & Security Groups
 |Security Group| Network ACL|
 |-------------|-------------| 
 |Operates at the instance level (first layer of defense)| Operates at the subnet level (second layer of defense)|
@@ -703,26 +709,29 @@ To use AWS Stencils download them at the [AWS Simple Icons for Architecture Diag
 |Applies to an instance only if someone specifies the security group when launching the instance, or associates the security group with the instance later on| Automatically applies to all instances in the subnets it's associated with (backup layer of defense, so you don't have to rely on someone specifying the security group)|
   - With default ACL, all inbound and outbound traffic is allowed automatically
   - When custom ACL, all inbound and outbound traffic is denied by default
-  - 1 subnet <=> 1 AZ <=> 1 ACL.  ACLs can be associated to only 1 subnet at a time. You can reassign to another subnet. If subnet is not associated with an ACL, the default ACL is applied.
+  - 1 subnet <=> 1 AZ <=> 1 ACL.  ACLs can be associated to only 1 subnet at a time. You can reassign to another subnet. If subnet is not associated with an ACL, the default ACL is applied
   - AWS Recommends adding ACL rules in increments of 100s
-  - Ephemeral ports – Allow inbound /outbound traffic from 1024 – 65535. As clients can initiate outbound connection from any random port. Ports < 1024 reserved for super user access.
-  - If you have to block a specific IP address / range, use ACLs instead of security groups. SGs can’t deny traffic – they only allow.
-## Custom VPC & ELB
-  - To have HA in general or for ELB, ensure that you have at-least 2 public and or private subnets in different availability zones.
-## NAT & Bastion
-  - You cannot use NAT instance to SSH / RDP into private subnet. For that Bastion (Jump Box) is required.
+  - Ephemeral ports – Allow inbound /outbound traffic from 1024 – 65535. As clients can initiate outbound connection from any random port. Ports < 1024 reserved for super user access
+  - If you have to block a specific IP address / range, use ACLs instead of security groups. SGs can’t deny traffic – they only allow
+
+### Custom VPC & ELB
+  - To have HA in general or for ELB, ensure that you have at-least 2 public and or private subnets in different availability zones
+
+### NAT & Bastion
+  - You cannot use NAT instance to SSH / RDP into private subnet. For that Bastion (Jump Box) is required
   - Bastions are used for secure administrative tasks only. Bastions are placed in Public subnets and connect to private subnets via private IP
-  - For Bastion HA, have multiple Bastions in different AZs – at least 2 public subnets. Auto scaling in multiple AZ, route 53 doing health checks.
-  - NAT instance is used to provide internet connectivity to private subnets.
-## VPC Flow Logs
+  - For Bastion HA, have multiple Bastions in different AZs – at least 2 public subnets. Auto scaling in multiple AZ, route 53 doing health checks
+  - NAT instance is used to provide internet connectivity to private subnets
+  
+### VPC Flow Logs
   - Enable Flow Logs for Custom VPC to see all traffic.
   - Enable to capture IP traffic flow information for the NICs of your resources. All information is reported to CloudWatch
   - Create IAM role to allow all logs to flow into CloudWatch
   - Create log group in CloudWatch and inside that create stream where you can then see all the traffic flow.
 
-# ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/53.png)  [Route 53](https://aws.amazon.com/route53)
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/53.png)  [Route 53](https://aws.amazon.com/route53)
 
-## Route 53 Features
+### Route 53 Features
 - Convert human friendly domain names into IP addresses
 - IP6 (128 bits) : created to address exhaustion of IP addresses in IP4 (32 bit)
 - VPCs are now IP6 compatible
@@ -742,7 +751,7 @@ TTL - Cache the DNS record for TTL seconds. Before DNS migration, shorten the T
 Collection of resource record sets. NS, SOA, CNAME, Alias etc. types of records for a particular domain.
 e.g. [https://www.tcpiputils.com/dns-lookup/google.com/ALL](https://www.tcpiputils.com/dns-lookup/google.com/ALL)
 
-## Route 53 Routing Policies
+### Route 53 Routing Policies
 Most of the questions are scenario based.
 1. Simple - Default - when a single resource performs function for your domain - only one webserver serves content
 2. Weighted – send x% of traffic to site A and remainder (100 – x) % of it to site B. Need not be two different regions. Can be even two different ELBs.  This split is over length of day not based on number of individual subsequent requests.
@@ -755,87 +764,95 @@ How will the users get the best experience?  – evaluated dynamically by R3.
 4. Failover – When you want to create an active /passive setup. DR site. R53 monitors health of site. If active fails then R53 routes traffic to passive site.   Here you designate a primary and secondary endpoint for your hosted zone record.
 5. Geo-location – Choose where to route traffic based on geographic location of users.
 Different from Latency based as the routing is hardwired irrespective of latency.
+
 ## DNS Exam Tips
-  - ELBs cost money – ensure to delete them when not using.
-  - ELBs always have DNS name – no public IP Addresses. Trick question might induce you into believing IP4 address for ELB
-  - Remember difference between Alias and CNAME
-  - Given a choice between Alias Record vs CNAME – always choose Alias. Alias records are free and can connect to AWS resources.
-  - R53 supports zone apex records
-  - With Route 53, there is a default limit of 50 domain names. However, this limit can be increased by contacting AWS support.
+- ELBs cost money – ensure to delete them when not using.
+- ELBs always have DNS name – no public IP Addresses. Trick question might induce you into believing IP4 address for ELB
+- Remember difference between Alias and CNAME
+- Given a choice between Alias Record vs CNAME – always choose Alias. Alias records are free and can connect to AWS resources.
+- R53 supports zone apex records
+- With Route 53, there is a default limit of 50 domain names. However, this limit can be increased by contacting AWS support.
 Naked domain – which doesn’t have the www in front of the domain e.g. acloud.guru. [www.acloud.guru](http://www.acloud.guru) isn’t
 
-## SQS – Simple Queue Service
-  - SQS is a distributed web service that gives you access to a message queue that can be used to store messages while waiting for a computer to process them.
-  - SQS helps decouple the components of an application so they can run independently.  
-  - Messages can be retrieved via SQS API
-  - The producer and consumer can run at their own independent throughput.
-  - The queue acts as a buffer between consumer and producer. Ensures delivery of messages at least once. Ensure your application isn’t affected by processing the same message multiple times.
-  - Allows multiple readers and writers. Single queue can be used simultaneously by various applications – helps scale out applications
-  - SQS Message size up to 256KB of text in any format. May consist of 1-10 messages.
-  - Does not guarantee FIFO messages. If order is important, add sequencing information in each message.
-  - For SQS, you have to pull messages. It doesn’t push messages – unlike SNS. You are billed at 64KB Chunks
-Pricing
-  - First 1 million SQS Requests per month are free.
-  - $0.50 per 1 million SQS requests per month thereafter.
-  - 64KB chunk = 1 request. So a message of 256KB = 4 requests.
-  - Each messages has a visibility timeout – 12 hours by default. Visibility timeout period only starts when a worker node has picked up the message for processing. During this interval, the message is invisible to other processor workers.
-  - SQS can do auto-scaling. If queue grows beyond a threshold, instantiate new web/app servers. Use Auto scaling + SQS to achieve this.
-Exam Tip - De-couple ➔ SQS
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/sqs.png) SQS : [Simple Queue Service](https://aws.amazon.com/sqs)
 
-## SWS – Simple Workflow Service
-  - SWS is a web service that makes it easy to coordinate work across distributed application components. Co-ordinate tasks & workflows.
-  - Amazon uses SWS to process orders on its website.
-  - No EC2 components involved.
-  - It can also involve human actors.
-Trick Question – when to use SQS or SWS
-|Attribute|SQS|SWS|
-|----|----|----|
-|Retention |14 days|1 year|
-|API|Message Oriented|Task Oriented|
-|Assignment|Might be assigned multiple times|Only once|
-|State|Write code to implement tracking|Keeps Track of State & Events|
-SWS Actors
-1. WF Starters – e-commerce application
-2. WF Deciders – Control flow of activity tasks.
-3. WF Activity workers – Carry out actual task
+### SQS Features
+- SQS is a distributed web service that gives you access to a message queue that can be used to store messages while waiting for a computer to process them.
+- SQS helps decouple the components of an application so they can run independently.  
+- Messages can be retrieved via SQS API
+- The producer and consumer can run at their own independent throughput.
+- The queue acts as a buffer between consumer and producer. Ensures delivery of messages at least once. Ensure your application isn’t affected by processing the same message multiple times.
+- Allows multiple readers and writers. Single queue can be used simultaneously by various applications – helps scale out applications
+- SQS Message size up to 256KB of text in any format. May consist of 1-10 messages.
+- Does not guarantee FIFO messages. If order is important, add sequencing information in each message.
+- For SQS, you have to pull messages. It doesn’t push messages – unlike SNS. You are billed at 64KB Chunks
 
-## SNS – Simple Notification Service
-  - Makes it easy to setup, operate and send notifications from the cloud.
-  - Immediate delivery to subscribers or other applications
-  - SNS consists of Topics and you can publish messages to topics.
-  - You can send emails, text and other alerts. Apple Push, Android etc.
-  - Publish messages to SQS queues, trigger Lambda functions.  Lambda function can then manipulate information and then send to other SNS Topics
-  - SNS is Push based messaging.
-  - You can group multiple recipients using topics. Recipients can subscribe to topics to receive notifications.
-  - Flexible message delivery over multiple protocols.
-  - Is used in conjunction with CloudWatch and AutoScaling.
-EC2 instances pull SQS messages from a standard SQS queue on a FIFO (First In First out) basis.  – False
+### SQS Pricing
+- First 1 million SQS Requests per month are free.
+- $0.50 per 1 million SQS requests per month thereafter.
+- 64KB chunk = 1 request. So a message of 256KB = 4 requests.
+- Each messages has a visibility timeout – 12 hours by default. Visibility timeout period only starts when a worker node has picked up the message for processing. During this interval, the message is invisible to other processor workers.
+- SQS can do auto-scaling. If queue grows beyond a threshold, instantiate new web/app servers. Use Auto scaling + SQS to achieve this.
 
-## Elastic Transcoder
-  - Allows to convert media files from source to different media formats.
-  - You pay the minutes you transcode and the resolution
-  - S3 → Lambda Function → E. Transcoder → S3
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/sws.png) SWS : [Simple Workflow Service](https://aws.amazon.com/sws)
+
+### SWS Features
+- SWS is a web service that makes it easy to coordinate work across distributed application components. Co-ordinate tasks & workflows
+- Amazon uses SWS to process orders on its website
+- No EC2 components involved
+- It can also involve human actors
+– When to use SQS or SWS
+	|Attribute|SQS|SWS|
+	|----|----|----|
+	|Retention |14 days|1 year|
+	|API|Message Oriented|Task Oriented|
+	|Assignment|Might be assigned multiple times|Only once|
+	|State|Write code to implement tracking|Keeps Track of State & Events|
+- SWS Actors
+	1. WF Starters : e-commerce application
+	2. WF Deciders : Control flow of activity tasks
+	3. WF Activity workers : Carry out actual task
+
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/sns.png) SNS : [Simple Notification Service](https://aws.amazon.com/sns) 
+
+### SNS Features
+- Makes it easy to setup, operate and send notifications from the cloud.
+- Immediate delivery to subscribers or other applications
+- SNS consists of Topics and you can publish messages to topics.
+- You can send emails, text and other alerts. Apple Push, Android etc.
+- Publish messages to SQS queues, trigger Lambda functions.  Lambda function can then manipulate information and then send to other SNS Topics
+- SNS is Push based messaging.
+- You can group multiple recipients using topics. Recipients can subscribe to topics to receive notifications.
+- Flexible message delivery over multiple protocols.
+- Is used in conjunction with CloudWatch and AutoScaling.
+- EC2 instances pull SQS messages from a standard SQS queue on a FIFO (First In First out) basis – False Statement
+
+### Elastic Transcoder
+- Allows to convert media files from source to different media formats
+- You pay the minutes you transcode and the resolution
+- S3 → Lambda Function → E. Transcoder → S3
   
 ## API Gateway
-  - Managed web service which enables developers to publish, monitor and secure APIs at any scale.
-  - Create an API that acts as front door for applications to access data, business logic or any functionality from your backend services
-  - API Caching – Cache your endpoint’s responses. Reduces load on endpoints based on duration of TTLs
-  - Low cost & Efficient. Scales
-  - Throttle requests as required to prevent attacks.
-  - Log requests to CloudWatch.
-  - For application built on top of multiple domains, you need to enable CORS on API Gateway
+- Managed web service which enables developers to publish, monitor and secure APIs at any scale
+- Create an API that acts as front door for applications to access data, business logic or any functionality from your backend services
+- API Caching – Cache your endpoint’s responses. Reduces load on endpoints based on duration of TTLs
+- Low cost & Efficient. Scales
+- Throttle requests as required to prevent attacks
+- Log requests to CloudWatch
+- For application built on top of multiple domains, you need to enable CORS on API Gateway
   
-## Amazon Kinesis
-  - Streaming data is something which is generated by thousands of data sources – stock prices, game information, social network data, geo-spatial data, purchases from online stores, IoT sensor data.
-  - Kinesis is an AWS platform to analyze streaming data.
-  - Kinesis Streams
-        - Stores data for 24 hours to 7 days.
-        - Data stored in **shards**.
-        - Data consumers (EC2 instances) analyze the stream and then derive results/take next actions.
-        - Data capacity of stream is a function of the number of shards you specify for the stream.
-  - Kinesis Firehose 
-      - Don’t have to worry about shards, streams – completely automated.
-      - No automatic data retention window. Data is either immediately analyzed or sent to S3 and then to Redshift, elastic search cluster
-      - Data is immediately analyzed via **Lambda**.
-  - Kinesis Analytics –
-      - Run SQL type queries on top of data contained in Streams or Firehose and store the results in S3 / Redshift and Elastic Search cluster.
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/kinesis.png) [Kinesis](https://aws.amazon.com/kinesis) 
+
+### Kinesis Features
+- Streaming data is something which is generated by thousands of data sources – stock prices, game information, social network data, geo-spatial data, purchases from online stores, IoT sensor data
+- Kinesis is an AWS platform to analyze streaming data
+- Kinesis Streams
+	- Stores data for 24 hours to 7 days
+	- Data stored in **shards**
+	- Data consumers (EC2 instances) analyze the stream and then derive results/take next actions
+	- Data capacity of stream is a function of the number of shards you specify for the stream
+- Kinesis Firehose 
+  - Don’t have to worry about shards, streams – completely automated.
+  - No automatic data retention window. Data is either immediately analyzed or sent to S3 and then to Redshift, elastic search cluster
+  - Data is immediately analyzed via **Lambda**.
+  - Run SQL type queries on top of data contained in Streams or Firehose and store the results in S3 / Redshift and Elastic Search cluster
