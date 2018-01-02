@@ -316,7 +316,7 @@ The following are examples of problems that can cause instance status checks to 
 ### S3 Buckets
 - S3 Namespace is global. Region independent
 - A bucket name in any region should only contain lower case characters. It has to be DNS Compliant
-- Object versioning - Different versions of the same object in a bucket.
+- Object versioning : different versions of the same object in a bucket
 - Only Static website can be hosted. Auto scaling, Load Balancing etc. all managed automatically
 - You can tag buckets (or any AWS resoruce) to track costs. Tags consist of keys and (optional) value pairs
 - Lifecycle management of objects can be set. e.g. move to Glacier after 30 days
@@ -338,22 +338,22 @@ The following are examples of problems that can cause instance status checks to 
   
 ### S3 Encryption
 - In Transit : Secured using SSL/TLS
-- Data at rest
-	- Server Side
-		- S3 Managed Keys – SSE – S3
-		- AWS KMS Managed Keys – SSE – KMS – Envelop Key. Provides audit trail
-		- SSE using customer provided keys. Key Management is responsibility of user. SSE-C
-	- Client Side
-		- Encrypt data at client side and then upload to S3
+- In Storage 
+	- Client Side (CSE) : Encrypt data at client side and then upload to S3
+	- Server Side Encryption (SSE) : 
+		- SSE–S3 : S3 Managed Keys
+		- SSE–KMS : AWS KMS Managed Keys. Envelop Key. Provides audit trail
+		- SSE-C : SSE using customer provided keys
 
 ### S3 Versioning
-- Once versioning is turned on it cannot be removed. It can only be suspended. To remove versioning, you have to create a new bucket and transfer all files from old to new
+- Once versioning is turned on it cannot be removed. It can only be suspended
+- To remove versioning, you have to create a new bucket and transfer all files from old to new
 - For newer version of an object, you still have to set permissions to allow access. It is disabled by default even if previous version is public
 - All versions of the file add up to the storage. Hence for larger objects, ensure that there is some lifecycle versioning in place
 - Version deleted cannot be restored
 - Object deleted can be restored – Delete the Delete marker
-- Versioning is a good backup tool.
-- For versioning. MFA can be setup for Delete capability for object / bucket – Complicated setup
+- Versioning is a good backup tool
+- MFA can be setup for delete capability for object/bucket for versioning
 
 ### S3 Cross Region Replication
 - To allow for cross region replication, the both source and target buckets must have versioning enabled.
