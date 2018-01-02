@@ -298,12 +298,12 @@ The following are examples of problems that can cause instance status checks to 
 
 ## EBS backed v/s Instance store
 - You can reboot or terminate instance store backed EC2 VMs
-- You can start , stop , reboot or terminate EBS backed EC2 VMs
-- EC2 instance on instance store is lost if host hypervisor fails. Not so with EBS backed instances.
+- You can start/stop/reboot/terminate EBS backed EC2 VMs
+- EC2 instance on instance store is lost if host hypervisor fails. Not so with EBS backed instances
 - EBS volumes can be attached / detached to EC2 instances. One at a time
 - EBS backed AMI is from EBS snapshot
 - Instance store back volume is from template in S3. Hence slower to provision
-- You will not lose data is you reboot for both.
+- You will not lose data is you reboot for both
 - With EBS, you can ask AWS not to delete the volume upon instance termination
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/s3.png) S3 : [Simple Storage Service](https://aws.amazon.com/s3)
@@ -317,17 +317,17 @@ The following are examples of problems that can cause instance status checks to 
 - S3 Namespace is global. Region independent
 - A bucket name in any region should only contain lower case characters. It has to be DNS Compliant
 - Object versioning - Different versions of the same object in a bucket.
-- Only Static website can be hosted. Auto scaling, Load Balancing etc. all managed automatically.
-- You can tag buckets (or any AWS resoruce) to track costs. Tags consist of keys and (optional) value pairs.
+- Only Static website can be hosted. Auto scaling, Load Balancing etc. all managed automatically
+- You can tag buckets (or any AWS resoruce) to track costs. Tags consist of keys and (optional) value pairs
 - Lifecycle management of objects can be set. e.g. move to Glacier after 30 days
-- Every bucket created, object uploaded is private by default.
+- Every bucket created, object uploaded is private by default
 - Object Permissions – Access to Object ACLs
-- Prefix in bucket is a folder in the bucket.
-- Minimum file size that I can store on S3 bucket is 0 byte.
-- Max 100 S3 buckets per account by default.
+- Prefix in bucket is a folder in the bucket
+- Minimum file size that I can store on S3 bucket is 0 byte
+- Max 100 S3 buckets per account by default
 - S3 objects can range from **0 bytes** to **5 terabytes**
 - The largest object that can be uploaded in a single PUT is **5 gigabytes**
-- For objects larger than **100 megabytes**, use  Multipart Upload capability
+- For objects larger than **100 megabytes**, use Multipart Upload
 
 ### S3 Security
 - By default all newly created buckets are **private**
@@ -338,13 +338,13 @@ The following are examples of problems that can cause instance status checks to 
   
 ### S3 Encryption
 - In Transit : Secured using SSL/TLS
-- Data at rest : 
-- Server Side
-	- S3 Managed Keys – SSE – S3
-	- AWS KMS Managed Keys – SSE – KMS – Envelop Key. Provides audit trail
-	- SSE using customer provided keys. Key Management is responsibility of user. SSE-C
-- Client Side
-	- Encrypt data at client side and then upload to S3
+- Data at rest
+	- Server Side
+		- S3 Managed Keys – SSE – S3
+		- AWS KMS Managed Keys – SSE – KMS – Envelop Key. Provides audit trail
+		- SSE using customer provided keys. Key Management is responsibility of user. SSE-C
+	- Client Side
+		- Encrypt data at client side and then upload to S3
 
 ### S3 Versioning
 - Once versioning is turned on it cannot be removed. It can only be suspended. To remove versioning, you have to create a new bucket and transfer all files from old to new
@@ -379,7 +379,7 @@ The following are examples of problems that can cause instance status checks to 
 - You can also permanently delete objects
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/glacier.png) [Glacier](https://aws.amazon.com/glacier)
-- For archival only. Takes 3 - 5 hours to restore files. Durability of 99.999999999%
+- For archival only. Takes 3 to 5 hours to restore files. Durability of Eleven Nine (99.999999999%)
 
 ![](https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/s3-vs-glacier.png)
   
