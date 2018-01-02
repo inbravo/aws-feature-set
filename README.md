@@ -855,4 +855,5 @@ Naked domain – which doesn’t have the www in front of the domain e.g. acloud
   - Don’t have to worry about shards, streams – completely automated.
   - No automatic data retention window. Data is either immediately analyzed or sent to S3 and then to Redshift, elastic search cluster
   - Data is immediately analyzed via **Lambda**.
+- Kinesis Analytics
   - Run SQL type queries on top of data contained in Streams or Firehose and store the results in S3 / Redshift and Elastic Search cluster
