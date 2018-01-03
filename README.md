@@ -400,21 +400,41 @@ The following are examples of problems that can cause instance status checks to 
 
 ### Storage Gateway Features
 - It is a service which connects an on-premises software appliance (virtual) with cloud based storage 
+- Installed at hipervisor running in your on-premises data center
 - It provides seamless and secure connectivity either via internet or direct connect
 - It can also provide connectivity from EC2 instance in VPC to S3 via Storage Gateway in same VPC
 - The virtual appliance will asynchronously replicate information up to S3 or Glacier
 - Can be downloaded as a VM  VMware ESXi / Hyper-V
-- Types of Storage Gateway
-	- File Gateway (NFS) : Store files in S3  Word, Pictures, PDFs
-    - Files are stored as objects in S3 buckets and accessed over NFS mount point
-	- File attributes as stored as S3 object metadata
-	- Once transferred to S3, standard S3 features apply to all files
-- Volumes Gateway (iSCSI) uses block based storage – virtual hard disk, operating system.
-	- Stored Volumes – Store entire data set copy on-prem. Data async backed up to AWS S3
-	- Cached Volumes – Stored only recently accessed data on-prem. Rest on AWS S3
-  Volume gateway interface presents applications with disk volumes using iSCSI protocol. They take virtual hard disks on premise and back them up to virtual hard disks on AWS. Data written to these volumes can be asynchronously backed up as point in time snapshots of volumes and stored in cloud as EBS snapshots
-- Gateway Virtual Tape Library (VTL) – Backup and Archiving solution. Create tapes and send to S3. You can use existing backup applications like NetBackup, Backup Exec, and Veam etc
- 
+
+### Storage Gateway Type : File Gateway (NFS) 
+- Store files in S3  Word, Pictures, PDFs
+- Accessed using network file system (NFS)
+
+![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/file-gateway.png) 
+
+### Storage Gateway Type : Volume Gateway (**iSCSI**) 
+- Block based storage
+- Presents applications with disk volumes using iSCSI protocol
+- They take virtual hard disks on premise and back them up to virtual hard disks on AWS
+- Data written to these volumes can be asynchronously backed up as point in time snapshots
+- Point in time snapshots, called Elastic Block Store (**EBS**) snapshots
+- Types
+	- Stored Volumes
+		- First store localy and then move to AWS S3 in async mode
+	- Cached Volumes
+		- Only latest data stays on-prem
+		- Rest on AWS S3
+	
+![](https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway.png) 
+![](https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway-cached.png) 
+	
+### Storage Gateway Type : Volume Tape Gateway(**VTL**) 
+- Gateway Virtual Tape Library (VTL) : Backup and Archiving solution
+- Create tapes and send to S3
+- You can use existing backup applications like NetBackup, Backup Exec, and Veam etc
+
+![](https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/tape-gateway.png) 
+	
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/snowball.png) [Snowball](https://aws.amazon.com/snowball) 
 
 ### Snowball Features
@@ -603,27 +623,27 @@ Select type based on application needs
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/redshift.png) [Redshift](https://aws.amazon.com/redshift)
 Petabyte scale DW solution in cloud.  Used for OLAP – sum of various columns and joining the data.
 
-### Configurations
+### Redshift Configurations
 - Single Node – 160 GB. Used by Small and Medium Size businesses.
 - Multi-Node – Leader Node (handles all incoming connections & receives queries) & compute Node (store data and perform queries and computations – up to 128 Compute Nodes)
 
-### Performance
+### Redshift Performance
 - Redshift is 10 times faster than usual OLAP systems.
 - It uses Columnar Data Store.  Columnar data is stored sequentially on storage system. Hence low I/O required – improving performance.
 - Advanced Compression (easier to do it via Columns instead of via Rows – which have different data types). Columns have similar type of data. Doesn’t use indexes and views – hence less storage required.
 - Based on data, appropriate data compression scheme is used.
 - Allows for massive parallel processing
 
-### Pricing  
+### Redshift Pricing  
 - Based on Compute Node hours (compute node only – no leader node).
 - Backup and Data Transfer (only within VPC)
 
-### Security
+### Redshift Security
 - Transit encrypted via SSL,
 - At rest using AES-256 encryption
 - Can use your own HSM or default AWSK Key management
   
-### Availability
+### Redshift Availability
 Not Multi-AZs. Can restore snapshots
 Exam Tips – Database warehousing service, cheap, faster. Best seller AWS Service. Speed achieved due to columnar storage. And Data stored sequentially on disk – hence faster.
 
