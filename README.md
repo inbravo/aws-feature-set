@@ -443,7 +443,7 @@ The following are examples of problems that can cause instance status checks to 
 - You can use it for data center migration
 - Snowball import/export to/from S3: If using Glacier first need to import into S3 and then into Snowball
 
-## Edge Location ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/edge.png) 
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/edge.png)  Edge Location 
 
 ### Edge Location Features
 - location where content will be cached
@@ -452,7 +452,7 @@ The following are examples of problems that can cause instance status checks to 
 	
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/cloudfront.png) [CloudFront](https://aws.amazon.com/cloudfront) 
 
-### CloudFront Important Terms
+### CloudFront Features
 - CDN : Collection of distributed servers where the content is served to users based on the user’s location and the location of content origin
 - Origin of of files that CDN will distribute
 	- S3 Bucket
