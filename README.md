@@ -627,7 +627,9 @@ Petabyte scale DW solution in cloud.  Used for OLAP – sum of various columns a
 Not Multi-AZs. Can restore snapshots
 Exam Tips – Database warehousing service, cheap, faster. Best seller AWS Service. Speed achieved due to columnar storage. And Data stored sequentially on disk – hence faster.
 
-## ElastiCache
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/elasticache.png) [ElastiCache](https://aws.amazon.com/elasticache)  
+
+### ElastiCache Features 
 - Easy to deploy, operate and scale an in-memory cache in the cloud
 - Improve performance by avoiding repeated calls to DB
 - Improve latency and throughput for read-heavy applications
