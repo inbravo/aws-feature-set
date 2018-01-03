@@ -373,10 +373,12 @@ The following are examples of problems that can cause instance status checks to 
 - The farther you are from S3 bucket region the higher is the improvement you can observe using S3 Transfer Acceleration. 
 - High cost for usage than standard S3 transfer rates
   
-### Storage Object Lifecycle Management
+### S3 Lifecycle Management
 - Objects stored in Glacier incur minimum 90 day storage cost
 - Lifecycle management can be used in conjunction with versioning
-- Objects can be transitioned to S3-IA after 30 days and to Glacier class storage - 30 days IA
+- Lifecycle management can be applied to all versions of an object
+- Objects can be transitioned to S3-IA after 30 days of creation date
+- Objects can be transitioned to Glacier after 30 days of moving to S3-IA 
 - You can also permanently delete objects
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/glacier.png) [Glacier](https://aws.amazon.com/glacier)
@@ -397,10 +399,10 @@ The following are examples of problems that can cause instance status checks to 
 	- File attributes as stored as S3 object metadata
 	- Once transferred to S3, standard S3 features apply to all files
 - Volumes Gateway (iSCSI) uses block based storage – virtual hard disk, operating system.
-	- Stored Volumes – Store entire data set copy on-prem. Data async backed up to AWS S3.
+	- Stored Volumes – Store entire data set copy on-prem. Data async backed up to AWS S3
 	- Cached Volumes – Stored only recently accessed data on-prem. Rest on AWS S3
-  Volume gateway interface presents applications with disk volumes using iSCSI protocol. They take virtual hard disks on premise and back them up to virtual hard disks on AWS. Data written to these volumes can be asynchronously backed up as point in time snapshots of volumes and stored in cloud as EBS snapshots.
-- Gateway Virtual Tape Library (VTL) – Backup and Archiving solution. Create tapes and send to S3. You can use existing backup applications like NetBackup, Backup Exec, and Veam etc.
+  Volume gateway interface presents applications with disk volumes using iSCSI protocol. They take virtual hard disks on premise and back them up to virtual hard disks on AWS. Data written to these volumes can be asynchronously backed up as point in time snapshots of volumes and stored in cloud as EBS snapshots
+- Gateway Virtual Tape Library (VTL) – Backup and Archiving solution. Create tapes and send to S3. You can use existing backup applications like NetBackup, Backup Exec, and Veam etc
  
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/snowball.png) [Snowball](https://aws.amazon.com/snowball) 
 
@@ -418,35 +420,46 @@ The following are examples of problems that can cause instance status checks to 
 - Once data is transferred, AWS performs software erasure of Snowball appliance
 
 ### Snowball Edge
-- 100 TB data transfer device which has onboard storage and compute capabilities.
-- Move large amounts of data in and out of AWS, as a temporary storage tier for large local datasets.
+- 100 TB data transfer device which has onboard storage and compute capabilities
+- Move large amounts of data in and out of AWS, as a temporary storage tier for large local datasets
 - You can run Lambda functions.
 - Devices connect to existing applications and infrastructure using standard storage interfaces.
 - Snowball Edges can be clustered together to process your data on premise
 
 ### Snowmobile
 - Massive 45 foot long ruggedized shipping container, pulled by a truck.
-- Petabyte or Exabyte of data that has to be transferred to AWS. 100 PB per snowmobile.
-- You can use it for data center migration.
+- Petabyte or Exabyte of data that has to be transferred to AWS. 100 PB per snowmobile
+- You can use it for data center migration
 - Snowball import/export to/from S3: If using Glacier first need to import into S3 and then into Snowball
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/cloudfront.png) [CloudFront](https://aws.amazon.com/cloudfront) 
 
-### Important terms
-- CDN : Collection of distributed servers where the content is served to users based on the user’s location and the location of content origin.
-- Edge location : location where content will be cached. Different from AWS Region / AZ
-- Origin : Can be S3 Bucket, an EC2 Instance, an Elastic Load Balancer or Route53
+### CloudFront Important Terms
+- CDN : Collection of distributed servers where the content is served to users based on the user’s location and the location of content origin
+- Edge location ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/rds.png) 
+	- location where content will be cached
+	- Different from AWS Region/AZ
+	- Nearest Edge Location will be used to send the cached object, to reduce the 
+- Origin of of files that CDN will distribute
+	- S3 Bucket
+	- EC2 Instance
+	- Elastic Load Balancer or Route 53
 - Distribution : Name given to CDN collection which consists of Edge locations
-- Web Distribution : Typically used for websites & web content only
-- RTMP : Used for Media Streaming. Adobe Flash media server’s protocol – video streaming
-- First request is slow as it comes from source origin. Subsequent requests improve speed as they are cached in nearest edge location and routed there until TTL expires
+- Distribution Types
+	- Web Distribution : Typically used for websites & web content only
+	- RTMP : Used for Media (Video) Streaming. Adobe Flash media server’s protocol
+- Edge Location objects are cached for life of TTL
+	- TTL can be set for 0 seconds to 365 days
+	- Default TTL is 24 hours
+	- If objects change more frequently update the TTL
+- First request is slow as it comes from source origin
+- Subsequent requests improve speed as they are cached in nearest edge location and routed there until TTL expires
 - CloudFront also works with non AWS origin which can be on premise as well
 - Edge locations are for read and write as well. Objects PUT on edge location are sent to origin
-- Objects are cached for life of TTL. TTL can be set for 0 seconds to 365 days. Default TTL is 24 hours. If objects change more frequently update the TTL
 - You can clear cached objects, with charges
 - Origin domain name : either S3 bucket, ELB or on premise domain
   
-### CloudFront security
+### CloudFront Security
 - You can force them to use CDN URL instead of S3 DNS
 - To restrict bucket access you need to create origin access identity. And allow this user read permission S3 bucket content –
 - Set video protocol policy – redirect http to https, http or https
@@ -575,15 +588,18 @@ Petabyte scale DW solution in cloud.  Used for OLAP – sum of various columns a
 ### Configurations
 - Single Node – 160 GB. Used by Small and Medium Size businesses.
 - Multi-Node – Leader Node (handles all incoming connections & receives queries) & compute Node (store data and perform queries and computations – up to 128 Compute Nodes)
+
 ### Performance
 - Redshift is 10 times faster than usual OLAP systems.
 - It uses Columnar Data Store.  Columnar data is stored sequentially on storage system. Hence low I/O required – improving performance.
 - Advanced Compression (easier to do it via Columns instead of via Rows – which have different data types). Columns have similar type of data. Doesn’t use indexes and views – hence less storage required.
 - Based on data, appropriate data compression scheme is used.
 - Allows for massive parallel processing
+
 ### Pricing  
 - Based on Compute Node hours (compute node only – no leader node).
 - Backup and Data Transfer (only within VPC)
+
 ### Security
 - Transit encrypted via SSL,
 - At rest using AES-256 encryption
@@ -598,32 +614,40 @@ Exam Tips – Database warehousing service, cheap, faster. Best seller AWS Servi
 - Improve performance by avoiding repeated calls to DB
 - Improve latency and throughput for read-heavy applications
 - Can be used for compute intensive data
+
 ### Memcached
 - All Memcached tooling can be easily ported over
+
 ### Redis
 - Supports Master / Slave replication and multi-AZ deployment to get redundancy.
 Exam Tips
 - ElastiCache is used if DB is primarily read-heavy and not frequently changing
-- Use Redshift – if application is slow due to constant OLAP transactions on top of OLTP focused DB.
+- Use Redshift – if application is slow due to constant OLAP transactions on top of OLTP focused DB
+
 ## Aurora
-- Bespoke Database Engine.
-- It is MySQL compatible.
-- However you can’t download and install on your workstation.
+- Bespoke Database Engine
+- It is MySQL compatible
+- However you can’t download and install on your workstation
+
 ### Performance
-5 times better performance than MySQL. At a fraction of cost as compared to Oracle.
+5 times better performance than MySQL. At a fraction of cost as compared to Oracle
+
 ### Scaling
 - Outset 10 Gb Storage, auto increment of storage
 - No Push button scaling – unlike DynamoDB
+
 ### Fault Tolerance
 - Maintains 2 copies of your data in at least 3 availability zones. This is for the Data only not for the instances that runs the Database.
 - 2 copies lost – no impact on write availability.
 - 3 copies lost – no impact on read availability.
 - Storage is self-healing.
+
 ### Replicas
 - MySQL Read Replica can be created from the Aurora source DB.(up to 5 of them)
 - Aurora Replicas – up to 15 of them. If leader crashes, the replica with the highest tiers becomes the leader. While creating replicas, remember to assign different tier levels.
 - Cluster Endpoint vs Individual Endpoint
 No Free Tier usage available. Also available only in select regions. Takes slightly longer to provision
+
 ## Exam Tips
 - Why you can’t connect to DB Server from DMZ. Check the security group – if it is removed or added
 - Have separate groups for EC2 Instance and RDS Instance.
