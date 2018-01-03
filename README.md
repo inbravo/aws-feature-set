@@ -438,19 +438,22 @@ The following are examples of problems that can cause instance status checks to 
 - Snowball Edges can be clustered together to process your data on premise
 
 ### Snowmobile
-- Massive 45 foot long ruggedized shipping container, pulled by a truck.
+- Massive 45 foot long ruggedized shipping container, pulled by a truck
 - Petabyte or Exabyte of data that has to be transferred to AWS. 100 PB per snowmobile
 - You can use it for data center migration
 - Snowball import/export to/from S3: If using Glacier first need to import into S3 and then into Snowball
 
+## Edge Location ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/edge.png) 
+
+### Edge Location Features
+- location where content will be cached
+- Different from AWS Region/AZ
+- Nearest Edge Location will be used to send the cached object, to reduce the content delivery time
+	
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/cloudfront.png) [CloudFront](https://aws.amazon.com/cloudfront) 
 
 ### CloudFront Important Terms
 - CDN : Collection of distributed servers where the content is served to users based on the user’s location and the location of content origin
-- Edge location ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/rds.png) 
-	- location where content will be cached
-	- Different from AWS Region/AZ
-	- Nearest Edge Location will be used to send the cached object, to reduce the 
 - Origin of of files that CDN will distribute
 	- S3 Bucket
 	- EC2 Instance
