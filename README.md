@@ -309,9 +309,9 @@ The following are examples of problems that can cause instance status checks to 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/s3.png) S3 : [Simple Storage Service](https://aws.amazon.com/s3)
 
 ### S3 Storage Types
-- S3-Standard : Durability of Eleven Nine (99.999999999%) and availability of Four Nine (99.99%)
-- S3-IA (Infrequently Accessed) : Durability of Eleven Nine (99.999999999%) and availability of Three Nine (99.9%)
-- S3-RRS (Reduced Redundancy Storage) : Durability and availability of Four Nine (99.99%)
+- S3-Standard : Durability of **Eleven Nine** (99.999999999%) and availability of **Four Nine** (99.99%)
+- S3-IA (Infrequently Accessed) : Durability of **Eleven Nine** (99.999999999%) and availability of **Three Nine** (99.9%)
+- S3-RRS (Reduced Redundancy Storage) : Durability and availability of **Four Nine** (99.99%)
 
 ### S3 Buckets
 - S3 Namespace is global. Region independent
@@ -330,20 +330,30 @@ The following are examples of problems that can cause instance status checks to 
 - For objects larger than **100 megabytes**, use Multipart Upload
 
 ### S3 Security
-- By default all newly created buckets are **private**
+- By default all newly created buckets are **Private**
 - Control Access to buckets using
   - Bucket Policies : Bucket wide
-  - Access Control Lists (**ACL**) : Up to individual objects
+  - Access Control List (**ACL**) : Up to individual objects
 - S3 buckets can log all access requests to another S3 bucket even another AWS account
   
-### S3 Encryption
-- In Transit : Secured using SSL/TLS
-- In Storage 
+### S3 Encryption Types
+- In Transit 
+	- Secured using SSL/TLS encryption
+	- HTTPS is an Example of it
+- In Rest 
 	- Client Side (CSE) : Encrypt data at client side and then upload to S3
-	- Server Side Encryption (SSE) : 
-		- SSE–S3 : S3 Managed Keys
-		- SSE–KMS : AWS KMS Managed Keys. Envelop Key. Provides audit trail
-		- SSE-C : SSE using customer provided keys
+	- Server Side Encryption (SSE)
+		- SSE–S3
+			- S3 Managed Keys
+			- Employing MFA
+			- AS-256 encryption is employed
+		- SSE–KMS
+			- AWS KMS Managed Keys
+			- Similar to SSE–S3 but provises added benefits
+			- Uses Envelop Key
+			- Provides audit trail
+		- SSE-C 
+			- Uses customer provided keys
 
 ### S3 Versioning
 - Once versioning is turned on it cannot be removed. It can only be suspended
@@ -389,12 +399,13 @@ The following are examples of problems that can cause instance status checks to 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/storagegateway.png) [Storage Gateway](https://aws.amazon.com/storagegateway) 
 
 ### Storage Gateway Features
-- It is a service which connects an on-premises software appliance (virtual) with cloud based storage to provide seamless and secure connectivity between the two. Either via internet or Direct connect
+- It is a service which connects an on-premises software appliance (virtual) with cloud based storage 
+- It provides seamless and secure connectivity either via internet or direct connect
 - It can also provide connectivity from EC2 instance in VPC to S3 via Storage Gateway in same VPC
 - The virtual appliance will asynchronously replicate information up to S3 or Glacier
 - Can be downloaded as a VM  VMware ESXi / Hyper-V
 - Types of Storage Gateway
-	- [Brand New] File Gateway (NFS) : Store files in S3  Word, Pictures, PDFs
+	- File Gateway (NFS) : Store files in S3  Word, Pictures, PDFs
     - Files are stored as objects in S3 buckets and accessed over NFS mount point
 	- File attributes as stored as S3 object metadata
 	- Once transferred to S3, standard S3 features apply to all files
@@ -444,7 +455,10 @@ The following are examples of problems that can cause instance status checks to 
 	- S3 Bucket
 	- EC2 Instance
 	- Elastic Load Balancer or Route 53
-- Distribution : Name given to CDN collection which consists of Edge locations
+- Create CloudFront CDN Distribution : Consists of Edge locations
+	- Provide origin domain points to 
+		- S3 bucket
+		- ELB or on premise domain
 - Distribution Types
 	- Web Distribution : Typically used for websites & web content only
 	- RTMP : Used for Media (Video) Streaming. Adobe Flash media server’s protocol
@@ -452,12 +466,13 @@ The following are examples of problems that can cause instance status checks to 
 	- TTL can be set for 0 seconds to 365 days
 	- Default TTL is 24 hours
 	- If objects change more frequently update the TTL
+- Edge locations are for read and write as well. Objects PUT on edge location are sent to origin
 - First request is slow as it comes from source origin
 - Subsequent requests improve speed as they are cached in nearest edge location and routed there until TTL expires
 - CloudFront also works with non AWS origin which can be on premise as well
-- Edge locations are for read and write as well. Objects PUT on edge location are sent to origin
 - You can clear cached objects, with charges
-- Origin domain name : either S3 bucket, ELB or on premise domain
+- Geo-location based restriction can be applied 
+- Configure error pages in case of any uncertainty 
   
 ### CloudFront Security
 - You can force them to use CDN URL instead of S3 DNS
