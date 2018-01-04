@@ -132,12 +132,12 @@
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/ec2.png) EC2 : [Elastic Compute Cloud](https://aws.amazon.com/ec2)
 
-### EC2 Pricing
+### EC2 Features
 - On demand. Pay per hour of usage
 - Applications with short term, spiky usage patterns or unpredictable workloads that cannot be interrupted
 - New apps on AWS
 - Reserved pricing
-- Reserve capacity over significant period of time. Significant discount.
+- Reserve capacity over significant period of time. Significant discount
 - Applications with steady or predictable usage over a period of time. Reserved capacity required.
 - Further discount if upfront payment
 - Spot pricing : When bid price is higher than Spot price, then you can provision it. When it goes lower, instance is terminated
@@ -149,6 +149,7 @@
 - Useful for regulatory requirements
 - Certain licensing agreements prevent usage on virtual machine / multi-tenancy deployments
 - EC2 Key Pairs are region specific
+- EC2 instances can be accessed either through DNS name or EIP address
   
 ### EC2 Instance types
 |Sr. No| Family| Specialty| Use Case| Type|
@@ -177,16 +178,16 @@
 - **X** : Extreme Memory
 
 ### EC2 Security Groups
-- A security group is a virtual firewall.
-- First line of defense. Network ACLs are second line.
-- Single instance can have multiple security groups. As each security group only "allows" inbound traffic, there will never be a conflict on security group rules.
-- Security group changes are applied immediately.
-- Security groups are "stateful". Rules added as inbound rules – automatic outbound rules are added. Response back on the same channel. NACLs are stateless.
+- A security group is a virtual firewall
+- First line of defense. Network ACLs are second line
+- Single instance can have multiple security groups. As each security group only "allows" inbound traffic, there will never be a conflict on security group rules
+- Security group changes are applied immediately
+- Security groups are "stateful". Rules added as inbound rules – automatic outbound rules are added. Response back on the same channel. NACLs are stateless
 - All inbound traffic is blocked by default. You have to allow specific inbound rules for protocols
 - All outbound traffic is allowed by default.
 - Only allow rules, no deny rules exist. Use NACLs to deny specific IPs
-- Any number of EC2 instances in a security group.
-- EC2 instances in the default security group can communicate with each other.
+- Any number of EC2 instances in a security group
+- EC2 instances in the default security group can communicate with each other
 - Multiple security groups can be attached to an instance
 
 ### EC2 Status Checks
@@ -410,7 +411,7 @@ The following are examples of problems that can cause instance status checks to 
 - Store files in S3  Word, Pictures, PDFs
 - Accessed using network file system (NFS)
 
-![](https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/file-gateway.png) 
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/file-gateway.png" width="800" height="500">
 
 #### Volume Gateway (**iSCSI**) 
 - Block based storage
@@ -425,8 +426,8 @@ The following are examples of problems that can cause instance status checks to 
 		- Only latest data stays on-prem
 		- Rest on AWS S3
 	
-![](https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway.png) 
-![](https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway-cached.png) 
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway.png" width="800" height="500">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway-cached.png" width="800" height="500">
 	
 #### Volume Tape Gateway (**VTL**) 
 - Create tapes and send to S3
@@ -575,14 +576,16 @@ The following are examples of problems that can cause instance status checks to 
 ![](https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/rds-multi-az.png)
 
 - RDS Read Replica Databases
-	- Read-replica – async data transfer to another RDS instance. You can actually read from these instances, unlike Multi-AZ deployments. You can also have read replicas of read-replicas up to 5 copies. (Watch out as async causes latency)-
-	- Read-replicas can be used for Dev/Test environments, run certain workloads only against them and not against direct production deployment – Intensive workloads
-	- *MySQL , MariaDB, PostgreSQL only for read-replicas , no Oracle & SQL Server*
-	- You cannot have read-replicas that have multi-AZ. However, you can create read replicas of Multi AZ source databases
+	- Different from multi-AZ
+	- Async data transfer to another RDS instance. You can actually read from these instances, unlike Multi-AZ deployments
+	- Can also have read-replicas up to 5 copies (Watch out as async causes latency)
+	- Read-replicas can be used for Dev/Test environments, run certain workloads only against them and not against direct production deployment (Intensive workloads)
+	- *MySQL, MariaDB, PostgreSQL, Aurora only for read-replicas, No Oracle & SQL Server*
+	- **You cannot have read-replicas that have multi-AZ. However, you can create read replicas of Multi AZ source databases**
 	- Read replicas can be of a different size than source DB
 	- Each read-replica will have its own DNS end point
 	- Automatic backups must be turned on in order to deploy a read replica
-	- Read Replicas can be promoted to be their own databases. This breaks replication. E.g. Dev/Test can be connected to the replica by first promoting it as DB itself
+	- Read Replicas can be promoted to be their own databases. This breaks replication. e.g. Dev/Test can be connected to the replica by first promoting it as DB itself
 	- Read Replicas can be done in a second region for MySQL and MariaDB – no PostgreSQL
 	- Application re-architecture is required to make use of Read replicas
 	- Read replicas are not used for DR. they are used for performance scaling only
