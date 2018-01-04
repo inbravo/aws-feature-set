@@ -411,7 +411,7 @@ The following are examples of problems that can cause instance status checks to 
 - Store files in S3  Word, Pictures, PDFs
 - Accessed using network file system (NFS)
 
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/file-gateway.png" width="800" height="500">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/file-gateway.png" width="800">
 
 #### Volume Gateway (**iSCSI**) 
 - Block based storage
@@ -426,15 +426,15 @@ The following are examples of problems that can cause instance status checks to 
 		- Only latest data stays on-prem
 		- Rest on AWS S3
 	
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway.png" width="800" height="500">
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway-cached.png" width="800" height="500">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway.png" width="800">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway-cached.png" width="800">
 	
 #### Volume Tape Gateway (**VTL**) 
 - Create tapes and send to S3
 - Gateway Virtual Tape Library (VTL) : Backup and Archiving solution
 - You can use existing backup applications like NetBackup, Backup Exec and Veeam etc
 
-![](https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/tape-gateway.png) 
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/tape-gateway.png" width="800">
 	
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/snowball.png) [Snowball](https://aws.amazon.com/snowball) 
 
