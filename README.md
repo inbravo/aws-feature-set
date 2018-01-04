@@ -22,10 +22,10 @@
 	-	**EFS** : Elastic File Service. It can be attached to multiple EC2 instances
 	-	[**Storage Gateway**](https://github.com/inbravo/aws-feature-set#-storage-gateway) : Communicates between your data center and S3 storage
 - **Networking & Content Delivery**
-	-	**VPC** : You can have multiple VPCs per region
-	-	**Route 53** : Amazon’s DNS Service
+	-	[**VPC**](https://github.com/inbravo/aws-feature-set#-vpc) : You can have multiple VPCs per region
+	-	[**Route 53**](https://github.com/inbravo/aws-feature-set#--route-53) : Amazon’s DNS Service
 	-	[**CloudFront**](https://github.com/inbravo/aws-feature-set#-cloudfront) : Content delivery network. Edge locations cache assets
-	-	**Direct Connect** : Connect your physical DCs to AWS using dedicated telephone lines
+	-	**Direct Connect** : Connect your physical data centers to AWS using dedicated telephone lines
 - **Database Services**
 	-	[**RDS**](https://github.com/inbravo/aws-feature-set#-rds--relational-database-service) : Relational Data Services : MySQL, PostgreSQL, SQL Server, MariaDB, Aurora
 	-	[**DynamoDB**](https://github.com/inbravo/aws-feature-set#-dynamodb) : Non relational DB
@@ -543,44 +543,51 @@ The following are examples of problems that can cause instance status checks to 
 		- It used different architecture and infrastructure layer
 		- Differ in terms of queries run on top of data
 		- OLAP is more about aggregation e.g. Net profit of company from a perticular product selling
+- RDS Backups
+	- Automated Backups
+		- Allows recovery of DB to any point-in-time within a **Retention Period** (1 to 35 days)
+		- Full daily snapshot also store transaction logs
+		- Enabled by default. Stored in S3. Free backup storage in S3 upto the RDS Instance size
+		- You can define backup window. You may experience latency while backup process running (reduced IOPS)
+		- Backups are deleted when the RDS Instance is deleted
+	- RDS Snapshots
+		- Done manually. They are stored even after you delete the instance
+		- You can copy snapshots across regions
+		- You can publish the snapshot to make it publically available
+		- Restoring Backups/ Snapshots : restored version will be a new RDS instance with new end point
+		- You can check the instance size to restore
+		- You cannot restore to existing instance
+		- You can copy a snapshot to another region
+- RDS Encryption
+	- Encryption at rest is supported for MySQL, SQL Server, Oracle and PostgreSQL & MariaDB
+	- Managed by AWS KMS
+	- **Cannot encrypt an already present instance**
+	- To encrypt, create new instance with encryption enabled and then migrate data to it
+- RDS Multi-AZ Deployment for Disaster Recovery
+	- A standby copy is created in another AZ
+	- AWS handles replication and auto-failover
+	- AWS can automatically failover RDS instance to another instance
+	- In case of failover, No need to change connection string
+	- This can be used for Disaster Recovery (DR) purpose only
+	- This option has to be selected at instance creation time
+	- This option is not useful for improving performance / scaling
 
-### RDS Backups
-- Automated Backups. Full daily snapshot & will also store transaction logs
-- Enabled by default. Stored in S3. Free backup storage in S3 upto the RDS Instance size
-- You can define backup window. Choose wisely
-- Backups are deleted when the RDS Instance is deleted
+![](https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/rds-multi-az.png)
 
-### RDS Snapshots
-- Done manually. They are stored even after you delete the instance
-- You can copy snapshots across regions
-- You can publish the snapshot to make it publically available
-- Restoring Backups/ Snapshots – The restored version will be a new RDS instance with new end point
-- You can check the instance size to restore
-- You cannot restore to existing instance
-  
-### RDS Encryption
-- Encryption at rest is supported for MySQL, SQL Server, Oracle and PostgreSQL & MariaDB
-- Managed by AWS KMS.
-- Cannot encrypt an already present instance. To encrypt, create new instance with encryption enabled and then migrate your data to it
-  
-### RDS Multi-AZ Deployment
-- A standby copy is created in another AZ. AWS handles replication and auto-failover
-- AWS can automatically failover RDS instance to another instance.
-- In case of failover, No need to change connection string.
-- This can be used for DR purpose only. This option has to be selected at instance creation time. This option is not useful for improving performance / scaling.
- 
-### RDS Read Replica Databases
-- Read-replica – async data transfer to another RDS instance. You can actually read from these instances, unlike Multi-AZ deployments. You can also have read replicas of read-replicas up to 5 copies. (Watch out as async causes latency)-
-- Read-replicas can be used for Dev/Test environments, run certain workloads only against them and not against direct production deployment – Intensive workloads.
-- *MySQL , MariaDB, PostgreSQL only for read-replicas , no Oracle & SQL Server*
-- You cannot have read-replicas that have multi-AZ. However, you can create read replicas of Multi AZ source databases.
-- Read replicas can be of a different size than source DB.
-- Each read-replica will have its own DNS end point
-- Automatic backups must be turned on in order to deploy a read replica
-- Read Replicas can be promoted to be their own databases. This breaks replication. E.g. Dev/Test can be connected to the replica by first promoting it as DB itself.
-- Read Replicas can be done in a second region for MySQL and MariaDB – no PostgreSQL.
-- Application re-architecture is required to make use of Read replicas
-- Read replicas are not used for DR. they are used for performance scaling only
+- RDS Read Replica Databases
+	- Read-replica – async data transfer to another RDS instance. You can actually read from these instances, unlike Multi-AZ deployments. You can also have read replicas of read-replicas up to 5 copies. (Watch out as async causes latency)-
+	- Read-replicas can be used for Dev/Test environments, run certain workloads only against them and not against direct production deployment – Intensive workloads
+	- *MySQL , MariaDB, PostgreSQL only for read-replicas , no Oracle & SQL Server*
+	- You cannot have read-replicas that have multi-AZ. However, you can create read replicas of Multi AZ source databases
+	- Read replicas can be of a different size than source DB
+	- Each read-replica will have its own DNS end point
+	- Automatic backups must be turned on in order to deploy a read replica
+	- Read Replicas can be promoted to be their own databases. This breaks replication. E.g. Dev/Test can be connected to the replica by first promoting it as DB itself
+	- Read Replicas can be done in a second region for MySQL and MariaDB – no PostgreSQL
+	- Application re-architecture is required to make use of Read replicas
+	- Read replicas are not used for DR. they are used for performance scaling only
+
+![](https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/rds-read-replica.png)
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/dms.png) DMS : [Database Migration Service](https://aws.amazon.com/dms)
 
@@ -910,7 +917,9 @@ Naked domain – which doesn’t have the www in front of the domain e.g. acloud
 - You pay the minutes you transcode and the resolution
 - S3 → Lambda Function → E. Transcoder → S3
   
-## API Gateway
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/api.png) [API Gateway](https://aws.amazon.com/api-gateway)
+
+### API Gateway Features
 - Managed web service which enables developers to publish, monitor and secure APIs at any scale
 - Create an API that acts as front door for applications to access data, business logic or any functionality from your backend services
 - API Caching – Cache your endpoint’s responses. Reduces load on endpoints based on duration of TTLs
