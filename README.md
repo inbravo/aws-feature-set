@@ -314,7 +314,7 @@ The following are examples of problems that can cause instance status checks to 
 - S3-RRS (Reduced Redundancy Storage) : Durability and availability of **Four Nine** (99.99%)
 
 ### S3 Buckets
-- S3 Namespace is global. Region independent
+- S3 Namespace is global. Names must be unique globally
 - A bucket name in any region should only contain lower case characters. It has to be DNS Compliant
 - Object versioning : different versions of the same object in a bucket
 - Only Static website can be hosted. Auto scaling, Load Balancing etc. all managed automatically
@@ -378,9 +378,9 @@ The following are examples of problems that can cause instance status checks to 
 - If you delete source replication bucket objects, they are deleted from replica target bucket too. When you delete a Delete marker or version from source, that action is not replicated
 
 ### S3 Transfer Acceleration
-- It utilizes the CloudFront Edge Network to accelerate uploads to S3
+- It utilizes the **CloudFront Edge Network** to accelerate uploads to S3
 - Instead of uploading directly to S3, you can use a distinct URL to upload directly to an edge location which will then transfer to S3 using Amazon’s backbone network
-- The farther you are from S3 bucket region the higher is the improvement you can observe using S3 Transfer Acceleration. 
+- The farther you are from S3 bucket region the higher is the improvement you can observe using S3 Transfer Acceleration
 - High cost for usage than standard S3 transfer rates
   
 ### S3 Lifecycle Management
@@ -428,7 +428,7 @@ The following are examples of problems that can cause instance status checks to 
 ![](https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway.png) 
 ![](https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway-cached.png) 
 	
-#### Volume Tape Gateway(**VTL**) 
+#### Volume Tape Gateway (**VTL**) 
 - Create tapes and send to S3
 - Gateway Virtual Tape Library (VTL) : Backup and Archiving solution
 - You can use existing backup applications like NetBackup, Backup Exec and Veeam etc
@@ -457,7 +457,6 @@ The following are examples of problems that can cause instance status checks to 
 - You can run Lambda functions
 - Devices connect to existing applications and infrastructure using standard storage interfaces
 - Snowball Edges can be clustered together to process your data on premise
-- Looks like a briefcase
 
 ![](https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/snowball-edge.png) 
 
@@ -467,11 +466,10 @@ The following are examples of problems that can cause instance status checks to 
 - Petabyte or Exabyte of data that has to be transferred to AWS
 - You can use it for data center migration
 - Snowball import/export to/from S3 : If using Glacier first need to import into S3 and then into Snowball
-- Looks like a shipping container
 
 ![](https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/snowball-mobile.png) 
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/edge.png)  Edge Location 
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/edge.png) Edge Location 
 
 ### Edge Location Features
 - location where content will be cached
@@ -521,28 +519,30 @@ The following are examples of problems that can cause instance status checks to 
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/rds.png) RDS : [Relational Database Service](https://aws.amazon.com/rds)  
 
-### Supported SQL DB
-- MS-SQL Server
-- Oracle
-- MySQL
-- PostgreSQL
-- Aurora
-- MariaDB
-  
-### Supported NoSQL DB
-- CouchDB
-- MongoDB
-- DynamoDB
-- NoSQL storage : Collection = Table, Document = Row, Keys-Value Pairs = Fields
-
-### RDS OLTP vs OLAP
-- OLTP
-	- Pulls out specific / narrow record set
-- OLAP 
-	- Pulls in large number of records
-	- It used different architecture and infrastructure layer
-	- Differ in terms of queries run on top of data
-	- OLAP is more about aggregation
+### RDS Features
+- RDS Supported Relational DB Types
+	- MS-SQL Server
+	- Oracle
+	- MySQL
+	- PostgreSQL
+	- Aurora
+	- MariaDB
+- RDS Supported Non Relational DB Types
+	- CouchDB
+	- MongoDB
+	- DynamoDB
+	- NoSQL storage structure 
+		- Collection is Table
+		- Document is Row
+		- Keys-Value Pairs are Fields
+- RDS OLTP vs OLAP
+	- OLTP
+		- Pulls out specific / narrow record set e.g. order number 1242323
+	- OLAP 
+		- Pulls in large number of records
+		- It used different architecture and infrastructure layer
+		- Differ in terms of queries run on top of data
+		- OLAP is more about aggregation e.g. Net profit of company from a perticular product selling
 
 ### RDS Backups
 - Automated Backups. Full daily snapshot & will also store transaction logs
@@ -584,14 +584,14 @@ The following are examples of problems that can cause instance status checks to 
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/dms.png) DMS : [Database Migration Service](https://aws.amazon.com/dms)
 
-## DMS Features
+### DMS Features
 - Migrate production database to AWS
 - AWS manages all complexities of migration process
 - Source database remains fully operational
 - Can also be used for continuous data replication with high availability
 - Both homogenous (Oracle to Oracle) as well as heterogeneous migrations are supported (Oracle to Aurora or Microsoft SQL)
 	- **AWS Schema migration tool makes heterogeneous database**  
-	- Any code that cannot be automatically converted is clearly marked so that it can be manually converted
+	- Any code that **can not** be automatically converted is clearly marked so that it can be manually converted
 	- Migrations : easy by automatically converting the source database schema and a majority of the custom code
 		- Views
 		- Stored procedures
@@ -658,19 +658,17 @@ Exam Tips – Database warehousing service, cheap, faster. Best seller AWS Servi
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/elasticache.png) [ElastiCache](https://aws.amazon.com/elasticache)  
 
 ### ElastiCache Features 
-- Easy to deploy, operate and scale an in-memory cache in the cloud
+- ElastiCache is a web service that makes it easy to deploy, operate and scale an in memory cache on cloud 
+- ElastiCache is used if DB is primarily read-heavy and not frequently changing
 - Improve performance by avoiding repeated calls to DB
 - Improve latency and throughput for read-heavy applications
 - Can be used for compute intensive data
-
-### Memcached
-- All Memcached tooling can be easily ported over
-
-### Redis
-- Supports Master / Slave replication and multi-AZ deployment to get redundancy.
-Exam Tips
-- ElastiCache is used if DB is primarily read-heavy and not frequently changing
-- Use Redshift – if application is slow due to constant OLAP transactions on top of OLTP focused DB
+- ElastiCache employs two cache engines currently
+	- Memcached
+		- All Memcached tooling can be easily ported over
+	- Redis
+		- Supports Master / Slave replication and multi-AZ deployment to get redundancy
+		- Use Redshift, if application is slow due to constant OLAP transactions on top of OLTP focused DB
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/aurora.png) [Aurora](https://aws.amazon.com/aurora)
 
@@ -846,10 +844,10 @@ How will the users get the best experience?  – evaluated dynamically by R3.
 Different from Latency based as the routing is hardwired irrespective of latency.
 
 ## DNS Exam Tips
-- ELBs cost money – ensure to delete them when not using.
+- ELBs cost money – ensure to delete them when not using
 - ELBs always have DNS name – no public IP Addresses. Trick question might induce you into believing IP4 address for ELB
 - Remember difference between Alias and CNAME
-- Given a choice between Alias Record vs CNAME – always choose Alias. Alias records are free and can connect to AWS resources.
+- Given a choice between Alias Record vs CNAME – always choose Alias. Alias records are free and can connect to AWS resources
 - R53 supports zone apex records
 - With Route 53, there is a default limit of 50 domain names. However, this limit can be increased by contacting AWS support.
 Naked domain – which doesn’t have the www in front of the domain e.g. acloud.guru. [www.acloud.guru](http://www.acloud.guru) isn’t
