@@ -395,7 +395,7 @@ The following are examples of problems that can cause instance status checks to 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/glacier.png) [Glacier](https://aws.amazon.com/glacier)
 - For archival only. Takes 3 to 5 hours to restore files. Durability of Eleven Nine (99.999999999%)
 
-![](https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/s3-vs-glacier.png)
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/s3-vs-glacier.png" width="800">
   
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/storagegateway.png) [Storage Gateway](https://aws.amazon.com/storagegateway) 
 
@@ -558,7 +558,6 @@ The following are examples of problems that can cause instance status checks to 
 		- Restoring Backups/ Snapshots : restored version will be a new RDS instance with new end point
 		- You can check the instance size to restore
 		- You cannot restore to existing instance
-		- You can copy a snapshot to another region
 - RDS Encryption
 	- Encryption at rest is supported for MySQL, SQL Server, Oracle and PostgreSQL & MariaDB
 	- Managed by AWS KMS
@@ -611,26 +610,29 @@ The following are examples of problems that can cause instance status checks to 
 
 ### DynamoDB Features
 - Fast and flexible NoSQL database
-- Consistent, single digit millisecond latency.
-- Fully managed DB – supports both document based & Key-value data models.
-- Great fit for mobile, IoT, web, gaming etc. applications.
+- Consistent, single digit millisecond latency
+- Fully managed DB 
+- Supports both document based & Key-value data models
+- Great fit for mobile, IoT, web, gaming etc. applications
 - Stored on SSDs
-- Stored on 3 geographically distinct DCs (not AZs). Built in redundancy
-- Consistency
-
-1. Eventual consistent reads - Consistency reached up to 1 second (default)
-2. Strongly Consistent reads - Consistency reached after writes to all copies are completed. <1 second
-Select type based on application needs
-- Pricing – Write Capacity Units and Read Capacity Units ($/hr.). Also Storage cost per month. You provision capacity in units/second. It can scale on the fly. Provisioned capacity.
-- Dynamo DB – Expensive for Writes. Cheap for Reads. Important point v/s RDS.
-- You can dynamically add columns – without the need to update other rows with the column data. As this is no RDBMS.
+- Stored on 3 geographically distinct DCs (not AZs)
+- Built in redundancy
+- Eventual Consistent Reads
+	1. Eventual consistent reads - Consistency reached up to 1 second (default)
+	2. Strongly Consistent reads - Consistency reached after writes to all copies are completed. <1 second
+- Pricing 
+	- Write Capacity Units and Read Capacity Units ($/hr.)
+	- Also Storage cost per month. You provision capacity in units/second
+	- It can scale on the fly. Provisioned capacity
+- You can dynamically add columns without the need to update other rows with the column data. As this is no RDBMS
 - Reserved capacity is available for DynamoDB as well
 
 ### RDS v/s DynamoDB
-- Use DynamoDB for Push button scaling. With RDS – to scale horizontally a new instance has to be created.
-- DynamoDB is cheap for writes and expensive for reads.
+- Use DynamoDB for push button scaling
+- Use RDS to scale horizontally a new instance has to be created
+- DynamoDB is cheap for writes and expensive for reads
 - Observe workload characteristics and decide
-- Use RDS if data requires joins and relationships.
+- Use RDS if data requires joins and relationships
 - In RDBMS database structure cannot be dynamically altered. With DynamoDB you can
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/elasticache.png) [ElastiCache](https://aws.amazon.com/elasticache)  
@@ -639,31 +641,34 @@ Select type based on application needs
 - Redis
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/redshift.png) [Redshift](https://aws.amazon.com/redshift)
-Petabyte scale DW solution in cloud.  Used for OLAP – sum of various columns and joining the data.
 
-### Redshift Configurations
-- Single Node – 160 GB. Used by Small and Medium Size businesses.
-- Multi-Node – Leader Node (handles all incoming connections & receives queries) & compute Node (store data and perform queries and computations – up to 128 Compute Nodes)
-
-### Redshift Performance
-- Redshift is 10 times faster than usual OLAP systems.
-- It uses Columnar Data Store.  Columnar data is stored sequentially on storage system. Hence low I/O required – improving performance.
-- Advanced Compression (easier to do it via Columns instead of via Rows – which have different data types). Columns have similar type of data. Doesn’t use indexes and views – hence less storage required.
-- Based on data, appropriate data compression scheme is used.
-- Allows for massive parallel processing
-
-### Redshift Pricing  
-- Based on Compute Node hours (compute node only – no leader node).
-- Backup and Data Transfer (only within VPC)
-
-### Redshift Security
-- Transit encrypted via SSL,
-- At rest using AES-256 encryption
-- Can use your own HSM or default AWSK Key management
-  
-### Redshift Availability
-Not Multi-AZs. Can restore snapshots
-Exam Tips – Database warehousing service, cheap, faster. Best seller AWS Service. Speed achieved due to columnar storage. And Data stored sequentially on disk – hence faster.
+### Redshift Features
+- Petabyte scale DW solution in cloud.  Used for OLAP (Sum of various columns and joining the data)
+- Redshift Configurations
+	- Single Node : 160 GB Used by Small and Medium Size businesses
+	- Multi-Node 
+		- Leader Node (handles all incoming connections & receives queries) 
+		- Compute Node (store data and perform queries and computations – up to 128 Compute Nodes)
+- Redshift Performance
+	- Redshift is 10 times faster than usual OLAP systems
+	- Allows for massive parallel processing
+	- It uses Columnar Data Storage
+		- Columnar data is stored sequentially on storage system. Hence low I/O and improved performance
+		- Columns have similar type of data. **N0 Indexes & Views** hence less storage required
+		- Advanced Compression (easier to do it via Columns instead of Rows – which have different data types)
+		- Based on data, appropriate data compression scheme is used
+- Redshift Pricing  
+	- Based on Compute Node hours (No Leader Node)
+	- Backup and Data Transfer (only within VPC)
+- Redshift Security
+	- Transit encrypted via SSL
+	- At rest using AES-256 encryption
+	- Can use your own HSM or default AWSK Key management
+- Redshift Availability
+	- Not Multi-AZs. Can restore snapshots
+	- Database warehousing service, cheap, faster. Best seller AWS Service
+	- Speed achieved due to columnar storage
+	- Data stored sequentially on disk – hence faster
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/elasticache.png) [ElastiCache](https://aws.amazon.com/elasticache)  
 
