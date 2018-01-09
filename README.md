@@ -870,22 +870,43 @@ Naked domain – which doesn’t have the www in front of the domain e.g. acloud
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/sqs.png) SQS : [Simple Queue Service](https://aws.amazon.com/sqs)
 
 ### SQS Features
-- SQS is a distributed web service that gives you access to a message queue that can be used to store messages while waiting for a computer to process them.
-- SQS helps decouple the components of an application so they can run independently.  
+- SQS is fully managed message queuing service 
+- SQS provides **Access to a Message Queue** to get processed by consumers
+- SQS helps decouple the components of an application so they can run independently
+- Consumer(s) continuously polls the Message Queue, looking for messages
 - Messages can be retrieved via SQS API
-- The producer and consumer can run at their own independent throughput.
-- The queue acts as a buffer between consumer and producer. Ensures delivery of messages at least once. Ensure your application isn’t affected by processing the same message multiple times.
-- Allows multiple readers and writers. Single queue can be used simultaneously by various applications – helps scale out applications
-- SQS Message size up to 256KB of text in any format. May consist of 1-10 messages.
-- Does not guarantee FIFO messages. If order is important, add sequencing information in each message.
-- For SQS, you have to pull messages. It doesn’t push messages – unlike SNS. You are billed at 64KB Chunks
-
-### SQS Pricing
-- First 1 million SQS Requests per month are free.
-- $0.50 per 1 million SQS requests per month thereafter.
-- 64KB chunk = 1 request. So a message of 256KB = 4 requests.
-- Each messages has a visibility timeout – 12 hours by default. Visibility timeout period only starts when a worker node has picked up the message for processing. During this interval, the message is invisible to other processor workers.
-- SQS can do auto-scaling. If queue grows beyond a threshold, instantiate new web/app servers. Use Auto scaling + SQS to achieve this.
+- Message polling is used to retrieve SQS messages
+	- SQS long poll will always return with a message, and wait untill the message is available on queue
+	- SQS short poll can return with or without a message, and won't wait untill the message is available on queue
+- Messages can be kept in queue from 1 minute to 14 days (default is 4 days)
+- Visibility timeout 
+	- Amount of time that the message is invisible in the queue, after getting picked up by a reader
+	- Provided the job is processed before visibility timeout
+	- Message than get deleted from queue
+	- Maximum timeout period is 12 hours
+- The producer and consumer can run at their own independent throughput
+- The queue acts as a buffer between consumer and producer
+- Ensures delivery of messages at least once
+- Ensure your application isn’t affected by processing the same message multiple times
+- Allows multiple readers and writers. Single queue can be used simultaneously by various applications (Scale out applications)
+- Queue types
+	- Standard Queues (default)
+		- Guanrantees that message is delivered at least once
+		- No guarantee of message ordering
+	- FIFO Queues
+		- Does not guarantee FIFO messages
+		- Guarantee of message ordering (the order of arriving)
+- SQS message size up to 256KB of text in any format. May consist of 1-10 messages
+- If order is important, add sequencing information in each message
+- SQS is pull based and not push based (Unlike SNS)
+- You are billed at 64KB chunks
+- SQS Pricing
+	- First 1 million SQS Requests per month are free
+	- $0.50 per 1 million SQS requests per month thereafter
+	- 64KB chunk = 1 request. So a message of 256KB = 4 requests
+- Each messages has a visibility timeout (12 hours by default)
+- Visibility timeout period only starts when a worker node has picked up the message for processing. During this interval, the message is invisible to other processor workers
+- SQS can do auto-scaling. If queue grows beyond a threshold, instantiate new web/app servers. Use Auto scaling + SQS to achieve this
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/sws.png) SWS : [Simple Workflow Service](https://aws.amazon.com/sws)
 
