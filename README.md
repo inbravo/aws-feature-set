@@ -891,10 +891,12 @@ Naked domain – which doesn’t have the www in front of the domain e.g. acloud
 - Allows multiple readers and writers. Single queue can be used simultaneously by various applications (Scale out applications)
 - Queue types
 	- Standard Queues (default)
-		- Guanrantees that message is delivered at least once
+		- Provide at-least-once delivery, which means that each message is delivered at least once
 		- No guarantee of message ordering
+		- Support a nearly unlimited number of transactions per second (TPS) per API action
 	- FIFO Queues
-		- Does not guarantee FIFO messages
+		- Provide exactly-once processing, which means that each message is delivered once and remains available until a consumer processes it and deletes it
+		- Duplicates are not introduced into the queue
 		- Guarantee of message ordering (the order of arriving)
 - SQS message size up to 256KB of text in any format. May consist of 1-10 messages
 - If order is important, add sequencing information in each message
