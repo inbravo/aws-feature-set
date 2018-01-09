@@ -880,8 +880,7 @@ Naked domain – which doesn’t have the www in front of the domain e.g. acloud
 	- SQS short poll can return with or without a message, and won't wait untill the message is available on queue
 - Messages can be kept in queue from 1 minute to 14 days (default is 4 days)
 - Visibility timeout 
-	- Amount of time that the message is invisible in the queue, after getting picked up by a reader
-	- Provided the job is processed before visibility timeout
+	- Visibility timeout period only starts when a worker node has picked up the message for processing. During this interval, the message is invisible to other processor workers
 	- Message than get deleted from queue
 	- Maximum timeout period is 12 hours
 - The producer and consumer can run at their own independent throughput
@@ -901,13 +900,12 @@ Naked domain – which doesn’t have the www in front of the domain e.g. acloud
 - SQS message size up to 256KB of text in any format. May consist of 1-10 messages
 - If order is important, add sequencing information in each message
 - SQS is pull based and not push based (Unlike SNS)
-- You are billed at 64KB chunks
+- You are billed at 64KB chunks (1 request)
 - SQS Pricing
-	- First 1 million SQS Requests per month are free
+	- First 1 million SQS requests per month are free
 	- $0.50 per 1 million SQS requests per month thereafter
 	- 64KB chunk = 1 request. So a message of 256KB = 4 requests
 - Each messages has a visibility timeout (12 hours by default)
-- Visibility timeout period only starts when a worker node has picked up the message for processing. During this interval, the message is invisible to other processor workers
 - SQS can do auto-scaling. If queue grows beyond a threshold, instantiate new web/app servers. Use Auto scaling + SQS to achieve this
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/sws.png) SWS : [Simple Workflow Service](https://aws.amazon.com/sws)
