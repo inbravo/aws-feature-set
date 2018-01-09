@@ -124,11 +124,11 @@
 - New users have no permissions when first created. Everything has to be explicitly added
 - Power User Access allows Access to all AWS services except the management of groups and users within IAM
   
-### Manage AWS resources via
-- AWS Management console : Using username and password
-- Rest API : Using Access Key ID and Secret Access Key
-- AWS Command Line Interface (**CLI**) : Using Access Key ID and Secret Access Key
-- AWS Software Development Kit (**SDK**) : Using Access Key ID and Secret Access Key
+### Manage AWS resources via (Mr. CS : Mister SeaAs)
+- **M**anagement console : Using username and password
+- **R**EST API : Using Access Key ID and Secret Access Key
+- **C**ommand Line Interface (**CLI**) : Using Access Key ID and Secret Access Key
+- **S**oftware Development Kit (**SDK**) : Using Access Key ID and Secret Access Key
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/ec2.png) EC2 : [Elastic Compute Cloud](https://aws.amazon.com/ec2)
 
@@ -217,7 +217,7 @@ The following are examples of problems that can cause instance status checks to 
 - Avoid using user credentials on servers
 - IAM roles can be assigned/replaced to existing EC2 instances using AWS CLI. Not through the console
 - A trick is to assign policies to the existing role. This will avoid the need to create new instances
-- Role assigned to instance is stuck to the lifetime of the instance – until you delete the role. Easier to modify existing role by adding / removing policies
+- Role assigned to instance is stuck to the lifetime of the instance, until you delete the role. Easier to modify existing role by adding / removing policies
 - Roles are universal. Applicable to all regions
   
 ### Bootstrap Scripts
@@ -654,7 +654,7 @@ The following are examples of problems that can cause instance status checks to 
 	- Allows for massive parallel processing
 	- It uses Columnar Data Storage
 		- Columnar data is stored sequentially on storage system. Hence low I/O and improved performance
-		- Columns have similar type of data. **N0 Indexes & Views** hence less storage required
+		- Columns have similar type of data. **No Indexes & Views** hence less storage required
 		- Advanced Compression (easier to do it via Columns instead of Rows – which have different data types)
 		- Based on data, appropriate data compression scheme is used
 - Redshift Pricing  
