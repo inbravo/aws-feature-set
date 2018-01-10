@@ -822,32 +822,48 @@ To use AWS Stencils download them at the [AWS Simple Icons for Architecture Diag
 - Create IAM role to allow all logs to flow into CloudWatch
 - Create log group in CloudWatch and inside that create stream where you can then see all the traffic flow.
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/53.png)  [Route 53](https://aws.amazon.com/route53)
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/53.png) [Route 53](https://aws.amazon.com/route53)
 
 ### Route 53 Features
 - Convert human friendly domain names into IP addresses
-- IP6 (128 bits) : created to address exhaustion of IP addresses in IP4 (32 bit)
+- IP6 (128 bits) : created to address IP address exhaustion in IP4 (32 bit)
 - VPCs are now IP6 compatible
-- Top level domains vs second level domains
-- Domain Registrars - assign domain names under one or more top level domain names
-
-### DNS Records types
-- SOA
-- NS : AWS is now a Domain Registrar as well
-- A : Fundamental 
-- CNAME : Canonical : Resolve one domain name to another. Can’t use CNAME for Naked domains
-- ALIAS : Only on AWS : Used to map resource record sets in your hosted zone to ELBs, Cloud Front Distribution, or S3 buckets that are configured as websites. e.g. you can have DNS names which point to ELB domain names -w/o the need for changing IP when ELB Ip changes.  Route 53 automatically recognizes changes in the record sets. Most common usage- map naked domain name (zone apex) to ELB names. Always use Alias v/s CNAME as Alias has no charges. Answering CNAME queries has a cost on Route53
-- AAAA : Ipv6
-TTL - Cache the DNS record for TTL seconds. Before DNS migration, shorten the TTLs - so no more responses are cached. 
-
-### Hosted Zone
-Collection of resource record sets. NS, SOA, CNAME, Alias etc. types of records for a particular domain.
-e.g. [https://www.tcpiputils.com/dns-lookup/google.com/ALL](https://www.tcpiputils.com/dns-lookup/google.com/ALL)
-
-### Route 53 Routing Policies
-Most of the questions are scenario based.
-1. Simple - Default - when a single resource performs function for your domain - only one webserver serves content
-2. Weighted – send x% of traffic to site A and remainder (100 – x) % of it to site B. Need not be two different regions. Can be even two different ELBs.  This split is over length of day not based on number of individual subsequent requests.
+- Top level domains e.g. .com or .edu etc
+- Second level domains e.g. yahoo out of yahoo.com etc
+- Domain Registrars assign domain names under one or more top level domain names e.g. godaddy.com is a registrar
+- Costs around 125$ per month
+- DNS Record Types
+	- SOA (Source of Authority)
+		- Provides server information which provides data for the zone
+		- The administrator of zone
+	- NS (Name Server)
+		- Used by top level domain servers to direct traffic to content DNS server
+		- Content DNS server contains the authoritative DNS records
+		- AWS is now a domain registrar as well
+	- A (Address)
+		- Fundamental DNS record which is used to translate name of a domain to the IP address 
+	- TTL 
+		- Cache the DNS record for TTL seconds
+		- Length that a DNS record is cached on either resolving server or users own local computer
+	- CNAME 
+		- Canonical name
+		- Resolve one domain name to another. Can’t use CNAME for naked domains
+	- ALIAS 
+		- Only on AWS 
+		- Works like CNAME
+		- Used to map resource record sets in your hosted zone to ELBs, Cloud Front Distribution, or S3 buckets that are configured as websites
+		- You can have DNS names which point to ELB domain names w/o the need for changing IP when ELB Ip changes
+		- Route 53 automatically recognizes changes in the record sets
+		- Most common usage : map naked domain name (zone apex) to ELB names
+		- Always use Alias (v/s CNAME) as Alias has no charges
+		- Answering CNAME queries has a cost on Route53
+	- AAAA 
+		- Ipv6
+- Hosted Zone
+	- Collection of resource record sets. NS, SOA, CNAME, Alias etc. types of records for a particular domain e.g. [https://www.tcpiputils.com/dns-lookup/google.com/ALL](https://www.tcpiputils.com/dns-lookup/google.com/ALL)
+- Route 53 Routing Policies
+	1. Simple (default) : When a single resource performs function for your domain, only one webserver serves content
+	2. Weighted : Send x% of traffic to site A and remainder (100 – x) % of it to site B. Need not be two different regions. Can be even two different ELBs.  This split is over length of day not based on number of individual subsequent requests
 Weights – a number between 0 and 255. Route53 calculates auto %age
 AWS Takes Global view of DNS – not local / ISP view.
 A/B testing is perfect use case for Weighted Routing policy
@@ -918,36 +934,42 @@ Naked domain – which doesn’t have the www in front of the domain e.g. acloud
 - It can also involve human actors
 – When to use SQS or SWS
 
-	|Attribute|SQS|SWS|
-	|----|----|----|
-	|Retention |14 days|1 year|
-	|API|Message Oriented|Task Oriented|
-	|Assignment|Might be assigned multiple times|Only once|
-	|State|Write code to implement tracking|Keeps Track of State & Events|
+|Attribute|SQS|SWS|
+|----|----|----|
+|Retention |14 days|1 year|
+|API|Message Oriented|Task Oriented|
+|Assignment|Might be assigned multiple times|Only once|
+|State|Write code to implement tracking|Keeps Track of State & Events|
 	
-- SWS Actors
-	- WF Starters : e-commerce application
-	- WF Deciders : Control flow of activity tasks
-	- WF Activity workers : Carry out actual task
+- SWS actors (SDW)
+	- WF Starters (**S**) : e-commerce application
+	- WF Deciders (**D**) : Control flow of activity tasks
+	- WF Activity Workers (**W**) : Carry out actual task
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/sns.png) SNS : [Simple Notification Service](https://aws.amazon.com/sns) 
 
 ### SNS Features
-- Makes it easy to setup, operate and send notifications from the cloud.
-- Immediate delivery to subscribers or other applications
-- SNS consists of Topics and you can publish messages to topics.
-- You can send emails, text and other alerts. Apple Push, Android etc.
-- Publish messages to SQS queues, trigger Lambda functions.  Lambda function can then manipulate information and then send to other SNS Topics
-- SNS is Push based messaging.
-- You can group multiple recipients using topics. Recipients can subscribe to topics to receive notifications.
-- Flexible message delivery over multiple protocols.
-- Is used in conjunction with CloudWatch and AutoScaling.
+- Makes it easy to setup, operate and send notifications from the cloud
+- Instant push based delivery. No Polling Required
+- SNS consists of Topics and you can publish messages to topics
+- You can send emails, text and other alerts. Apple Push, Android etc
+- Publish messages to SQS queues, trigger Lambda functions. Lambda function can then manipulate information and then send to other SNS Topics
+- SNS is push based messaging
+- You can group multiple recipients using topics. Recipients can subscribe to topics to receive notifications
+- Flexible message delivery over multiple protocols
+- SNS is used in conjunction with CloudWatch and AutoScaling
 - EC2 instances pull SQS messages from a standard SQS queue on a FIFO (First In First out) basis – False Statement
+- **SNS Push & SQS Pulls**
+- SNS pricing
+	- Pay 0.5$ per 1 million SNS requests
+	- Pay 0.6$ per 100000 notification deliveries over HTTP
+	- Pay 0.75$ per 100 notification deliveries over SMS
+	- Pay 2$ per 100000 notification deliveries over Email
 
-### Elastic Transcoder
+###  ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/transcoder.png) [Elastic Transcoder](https://aws.amazon.com/elastictranscoder) 
 - Allows to convert media files from source to different media formats
 - You pay the minutes you transcode and the resolution
-- S3 → Lambda Function → E. Transcoder → S3
+- S3 → Lambda Function → Elastic Transcoder → S3
   
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/api.png) [API Gateway](https://aws.amazon.com/api-gateway)
 
