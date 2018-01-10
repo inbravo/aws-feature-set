@@ -892,12 +892,13 @@ Naked domain – which doesn’t have the www in front of the domain e.g. acloud
 - Consumer(s) continuously polls the Message Queue, looking for messages
 - Messages can be retrieved via SQS API
 - Message polling is used to retrieve SQS messages
-	- SQS long poll will always return with a message, and wait untill the message is available on queue
+	- SQS long poll will always return with a message, and wait untill the message is available on queue. Maximum timeout 20 secs
 	- SQS short poll can return with or without a message, and won't wait untill the message is available on queue
 - Messages can be kept in queue from 1 minute to 14 days (default is 4 days)
 - Visibility timeout 
 	- Visibility timeout period only starts when a worker node has picked up the message for processing. During this interval, the message is invisible to other processor workers
 	- Message than get deleted from queue
+	- Default visibility timeout setting of 30 seconds
 	- Maximum timeout period is 12 hours
 - The producer and consumer can run at their own independent throughput
 - The queue acts as a buffer between consumer and producer
@@ -966,7 +967,9 @@ Naked domain – which doesn’t have the www in front of the domain e.g. acloud
 	- Pay 0.75$ per 100 notification deliveries over SMS
 	- Pay 2$ per 100000 notification deliveries over Email
 
-###  ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/transcoder.png) [Elastic Transcoder](https://aws.amazon.com/elastictranscoder) 
+##  ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/transcoder.png) [Elastic Transcoder](https://aws.amazon.com/elastictranscoder) 
+
+### Elastic Transcoder Features
 - Allows to convert media files from source to different media formats
 - You pay the minutes you transcode and the resolution
 - S3 → Lambda Function → Elastic Transcoder → S3
