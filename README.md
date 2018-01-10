@@ -911,21 +911,24 @@ Naked domain – which doesn’t have the www in front of the domain e.g. acloud
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/sws.png) SWS : [Simple Workflow Service](https://aws.amazon.com/sws)
 
 ### SWS Features
-- SWS is a web service that makes it easy to coordinate work across distributed application components. Co-ordinate tasks & workflows
+- SWS is a web service that makes it easy to coordinate work across distributed application components
+- Co-ordinate tasks & workflows
 - Amazon uses SWS to process orders on its website
 - No EC2 components involved
 - It can also involve human actors
 – When to use SQS or SWS
+
 	|Attribute|SQS|SWS|
 	|----|----|----|
 	|Retention |14 days|1 year|
 	|API|Message Oriented|Task Oriented|
 	|Assignment|Might be assigned multiple times|Only once|
 	|State|Write code to implement tracking|Keeps Track of State & Events|
+	
 - SWS Actors
-	1. WF Starters : e-commerce application
-	2. WF Deciders : Control flow of activity tasks
-	3. WF Activity workers : Carry out actual task
+	- WF Starters : e-commerce application
+	- WF Deciders : Control flow of activity tasks
+	- WF Activity workers : Carry out actual task
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/sns.png) SNS : [Simple Notification Service](https://aws.amazon.com/sns) 
 
