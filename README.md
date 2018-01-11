@@ -625,14 +625,13 @@ The following are examples of problems that can cause instance status checks to 
 	- It can scale on the fly. Provisioned capacity
 - You can dynamically add columns without the need to update other rows with the column data. As this is no RDBMS
 - Reserved capacity is available for DynamoDB as well
-
-### RDS v/s DynamoDB
-- Use DynamoDB for push button scaling
-- Use RDS to scale horizontally a new instance has to be created
-- DynamoDB is cheap for writes and expensive for reads
-- Observe workload characteristics and decide
-- Use RDS if data requires joins and relationships
-- In RDBMS database structure cannot be dynamically altered. With DynamoDB you can
+- RDS v/s DynamoDB
+	- Use DynamoDB for push button scaling
+	- Use RDS to scale horizontally a new instance has to be created
+	- DynamoDB is cheap for writes and expensive for reads
+	- Observe workload characteristics and decide
+	- Use RDS if data requires joins and relationships
+	- In RDBMS database structure cannot be dynamically altered. With DynamoDB you can
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/redshift.png) [Redshift](https://aws.amazon.com/redshift)
 
@@ -712,7 +711,7 @@ The following are examples of problems that can cause instance status checks to 
 		- If you want push button scaling, without any downtown, use DynamoDB
 		- Scaling is not so easy with RDS, you have to use a bigger instance or add read replicas (manual process)
 	- If you are using Amazon RDS Provisioned IOPS storage with a MySQL or Oracle database engine, what is the maximum size RDS volume you can have by default? – **6TB**
-	- What data transfer charge is incurred when replicating data from your primary RDS instance to your secondary RDS instance? - **There is no charge associated with this action**.
+	- What data transfer charge is incurred when replicating data from your primary RDS instance to your secondary RDS instance? - **There is no charge associated with this action**
 	- When you have deployed an RDS database into multiple availability zones, can you use the secondary database as an independent read node? – **No**
 	- RDS automatically creates RDS Security Group w/ TCP port # 3306 enabled
 	- In VPC Security Group, the answer would be YES because you will have manually specify access to port & protocol
@@ -735,8 +734,8 @@ The following are examples of problems that can cause instance status checks to 
 
 ### VPC Features
 - VPC is a logical data center within an AWS Region
-- Control over network environment, select IP address range, subnets and configure route tables and gateways.
-- Do not span regions, but can span AZs.
+- Control over network environment, select IP address range, subnets and configure route tables and gateways
+- Do not span regions, but can span AZs
 - Can create public facing subnet (Web) having internet access and private facing subnet (DB) with no internet access
 - Public Subnet – Web Servers/ Jump Boxes
 - Private Subnet – Applications Servers / Database servers
@@ -752,28 +751,29 @@ The following are examples of problems that can cause instance status checks to 
 - IPsec is the security protocol supported by Amazon VPC
 - An Amazon VPC endpoint enables you to create a private connection between your Amazon VPC and another AWS service without requiring access over the Internet or through a NAT device, VPN connection, or AWS Direct Connect
 - Attaching an ENI associated with a different subnet to an instance can make the instance dual-homed
+- Typical Private IP address ranges (not publically routable)
+  - 10.0.0.0 to 10.255.255.255 (10/8 prefix)
+  - 172.16.0.0 to 172.31.255.255 (172.16/12 prefix)
+  - 192.168.0.0 to 192.168.255.255 (192.168/16 prefix)
+- Types 
+	- Default VPC
+		- When you create an account a default VPC is created for you in each Region
+		- All subnets in default VPC have a route out to the internet
+		- Each EC2 instance in default VPC will have a public and private IP address
+		- If you delete default VPC, only way to restore it is by contacting Amazon
+	- Custom VPC
+		- Default Security group, network ACL & route table are created for each custom VPC you create
+		- Doesn’t create subnets or internet gateways out of the box.
+		- In each VPC you create, 5 IP addresses are reserved by AWS for itself. First 4 and last IP in the CIDR block
+		- You can't change the size of a VPC after you create it
+		- If your VPC is too small to meet your needs, create a new, larger VPC, and then migrate your instances to the new VPC 
+		- To exactly replicate the old VPC, create AMIs from your running instances, and then launch replacement instances in your new, larger VPC. You can then terminate your old instances, and delete your smaller VPC
+		- You can’t attached multiple Internet Gateways to the VPC to boost performance
+		- When creating VPCs do not modify default route table to add your custom rules. If you modify the default route, it will affect all instances
+		- Create a new route table for customization
 
-Typical Private IP address ranges – not publically routable.
-  - 10.0.0.0 - 10.255.255.255 (10/8 prefix)
-  - 172.16.0.0 - 172.31.255.255 (172.16/12 prefix)
-  - 192.168.0.0 - 192.168.255.255 (192.168/16 prefix)
-VPC Diagram - Public and Private subnets ![VPC with Public and Private subnets](VPC-Diagram.jpg)
-To use AWS Stencils download them at the [AWS Simple Icons for Architecture Diagrams](https://aws.amazon.com/architecture/icons/) site
-
-### Default v/s Custom VPC
-- When you create an account a default VPC is created for you in each Region.
-- All subnets in default VPC have a route out to the internet
-- Each EC2 instance in default VPC will have a public and private IP address
-- If you delete default VPC, only way to restore it is by contacting Amazon
-  
-### Custom VPC Info
-- Default Security group, network ACL & route table are created for each custom VPC you create.
-- Doesn’t create subnets or internet gateways out of the box.
-- In each VPC you create, 5 IP addresses are reserved by AWS for itself. First 4 and last IP in the CIDR block.
-- You can't change the size of a VPC after you create it. If your VPC is too small to meet your needs, create a new, larger VPC, and then migrate your instances to the new VPC. To do this, create AMIs from your running instances, and then launch replacement instances in your new, larger VPC. You can then terminate your old instances, and delete your smaller VPC. 
-- You can’t attached multiple Internet Gateways to the VPC to boost performance.
-- When creating VPCs do not modify default route table to add your custom rules. If you modify the default route, it will affect all instances. Create a new route table for customization
-  
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/vpc.png" width="800" align="middle">
+		
 ### NAT Instance & NAT Gateway
 - NAT Instance is one EC2 instance. You are responsible for performance management, scale out and security groups. NAT Gateway is a managed service.
 - On NAT instance, *remember to disable source/destination IP check*. This is required to allow private subnet internet connectivity. This is not required on NAT Gateway.
