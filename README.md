@@ -831,8 +831,18 @@ To use AWS Stencils download them at the [AWS Simple Icons for Architecture Diag
 - Second level domains e.g. yahoo out of yahoo.com etc
 - Domain Registrars assign domain names under one or more top level domain names e.g. godaddy.com is a registrar
 - Costs around 125$ per month
+- TTL 
+	- Cache the DNS record for TTL seconds
+	- Length that a DNS record is cached on either resolving server or users own local computer
+- Hosted Zone
+	- Collection of resource record sets hosted by Route 53
+	- A hosted zone represents resource record sets that are managed together under a single domain name.
+	- NS, SOA, CNAME, Alias etc. types of records for a particular domain e.g. [https://www.tcpiputils.com/dns-lookup/google.com/ALL](https://www.tcpiputils.com/dns-lookup/google.com/ALL)
+	- Types	
+		- Private : how you want to route traffic within VPC
+		- Public : how you want to route traffic on internet
 - DNS Record Types
-	- SOA (Source of Authority)
+	- SOA (Start of Authority)
 		- Provides server information which provides data for the zone
 		- The administrator of zone
 	- NS (Name Server)
@@ -841,12 +851,12 @@ To use AWS Stencils download them at the [AWS Simple Icons for Architecture Diag
 		- AWS is now a domain registrar as well
 	- A (Address)
 		- Fundamental DNS record which is used to translate name of a domain to the IP address 
-	- TTL 
-		- Cache the DNS record for TTL seconds
-		- Length that a DNS record is cached on either resolving server or users own local computer
+	- AAAA (A represents 32 bit; 4A = 4*32 = 128)
+		- Ipv6
 	- CNAME 
 		- Canonical name
-		- Resolve one domain name to another. Can’t use CNAME for naked domains
+		- Resolve one domain name to another
+		- Can’t use CNAME for naked domains
 	- ALIAS 
 		- Only on AWS 
 		- Works like CNAME
@@ -856,31 +866,33 @@ To use AWS Stencils download them at the [AWS Simple Icons for Architecture Diag
 		- Most common usage : map naked domain name (zone apex) to ELB names
 		- Always use Alias (v/s CNAME) as Alias has no charges
 		- Answering CNAME queries has a cost on Route53
-	- AAAA 
-		- Ipv6
-- Hosted Zone
-	- Collection of resource record sets. NS, SOA, CNAME, Alias etc. types of records for a particular domain e.g. [https://www.tcpiputils.com/dns-lookup/google.com/ALL](https://www.tcpiputils.com/dns-lookup/google.com/ALL)
 - Route 53 Routing Policies
 	1. Simple (default) : When a single resource performs function for your domain, only one webserver serves content
-	2. Weighted : Send x% of traffic to site A and remainder (100 – x) % of it to site B. Need not be two different regions. Can be even two different ELBs.  This split is over length of day not based on number of individual subsequent requests
-Weights – a number between 0 and 255. Route53 calculates auto %age
-AWS Takes Global view of DNS – not local / ISP view.
-A/B testing is perfect use case for Weighted Routing policy
-3. Latency – allows you to route traffic based on lowest network latency for your end user. To the region which gives fastest response time
-Create record set for EC2 or ELB resource in each region that hosts website. When R53 receives a query it will then determine response based on lowest latency
-How will the users get the best experience?  – evaluated dynamically by R3.
-4. Failover – When you want to create an active /passive setup. DR site. R53 monitors health of site. If active fails then R53 routes traffic to passive site.   Here you designate a primary and secondary endpoint for your hosted zone record.
-5. Geo-location – Choose where to route traffic based on geographic location of users.
-Different from Latency based as the routing is hardwired irrespective of latency.
-
-## DNS Exam Tips
+	2. Weighted 
+		- Send x% of traffic to site A and remainder (100 – x) % of it to site B. Need not be two different regions. Can be even two different ELBs. 
+		- This traffic split is over length of day not based on number of individual subsequent requests
+		- Weights – a number between 0 and 255. Route53 calculates auto %age
+		- AWS Takes Global view of DNS. Not local / ISP view
+		- A/B testing is perfect use case for Weighted Routing policy
+	3. Latency 
+		- Allows you to route traffic based on lowest network latency for your end user. To the region which gives fastest response time
+		- Create record set for EC2 or ELB resource in each region that hosts website. When R53 receives a query it will then determine response based on lowest latency
+		- How will the users get the best experience? it is evaluated dynamically by R3
+	4. Failover 
+		- When you want to create an active /passive setup
+		- Disaster Recovery 
+			- R53 monitors health of site. 
+			- If active fails then R53 routes traffic to passive site
+			- Designate a primary and secondary endpoint for your hosted zone record
+	5. Geo-location 
+		- Choose where to route traffic based on geographic location of users
+		- Different from Latency based as the routing is hardwired irrespective of latency
 - ELBs cost money – ensure to delete them when not using
 - ELBs always have DNS name – no public IP Addresses. Trick question might induce you into believing IP4 address for ELB
-- Remember difference between Alias and CNAME
 - Given a choice between Alias Record vs CNAME – always choose Alias. Alias records are free and can connect to AWS resources
 - R53 supports zone apex records
-- With Route 53, there is a default limit of 50 domain names. However, this limit can be increased by contacting AWS support.
-Naked domain – which doesn’t have the www in front of the domain e.g. acloud.guru. [www.acloud.guru](http://www.acloud.guru) isn’t
+- With Route 53, there is a default limit of 50 domain names. However, this limit can be increased by contacting AWS support
+- Naked domain – which doesn’t have the www in front of the domain e.g. acloud.guru. [www.acloud.guru](http://www.acloud.guru)
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/sqs.png) SQS : [Simple Queue Service](https://aws.amazon.com/sqs)
 
@@ -933,6 +945,7 @@ Naked domain – which doesn’t have the www in front of the domain e.g. acloud
 - No EC2 components involved
 - It can also involve human actors
 – When to use SQS or SWS
+
 
 |Attribute|SQS|SWS|
 |----|----|----|
