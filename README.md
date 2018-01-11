@@ -686,32 +686,35 @@ The following are examples of problems that can cause instance status checks to 
 - 5 times better performance than MySQL. At a fraction of cost as compared to Oracle
 - Bespoke Database Engine
 - However you can’t download and install on your workstation
-- Scaling
-	- Starts with 10 Gb Storage, and scales in 10 Gb increments to 64 Tb. auto increment of storage
-	- No Push button scaling (unlike DynamoDB)
-- Fault Tolerance
-	- Maintains 2 copies of your data in at least 3 availability zones (6 copies). This is for the Data only not for the instances that runs the database
-	- 2 copies lost : no impact on write availability
-	- 3 copies lost : no impact on read availability
-	- Storage is self-healing
-- Aurora Replicas
-	- MySQL Read Replica can be created from the Aurora source DB.(up to 5 of them)
-	- Aurora Replicas 
-		- Up to 15 of them
-		- If leader crashes, the replica with the highest tiers becomes the leader
-		- While creating replicas, remember to assign different tier levels
+- Maintains 2 copies of your data in at least 3 availability zones (6 copies). This is for the Data only not for the instances that runs the database
+- 2 copies lost : no impact on write availability
+- 3 copies lost : no impact on read availability
+- Storage is self-healing. Continous scanning of errors and repaired automatically
 - No Free Tier usage available. Also available only in select regions. Takes slightly longer to provision
+- Aurora auto scaling
+	- Starts with 10 Gb Storage, and scales in 10 Gb increments to 64 Tb. Auto increment of storage
+	- No Push button scaling (unlike DynamoDB)
+	- Requires maintenance window
+- Fault Tolerance
+	- Types
+		- Aurora replicas 
+			- Up to 15 of them
+			- If leader crashes, the replica with the highest tiers becomes the leader
+			- While creating replicas, remember to assign different tier levels
+		- MySQL read replicas
+			- Up to 55 of them
+			- MySQL read replica can be created from the Aurora source DB
 - Points to remember
 	- Why you can’t connect to DB Server from DMZ. Check the security group, if it is removed or added
 	- Have separate groups for EC2 Instance and RDS Instance
 	- Multi-AZ for Disaster Recovery only. Not for performance improvement. For performance improvement use, multiple read-replicas
 	- Dynamo DB v/s RDS
-		- If you want push button scaling, without any downtown, you will always want to use DynamoDB
-		- With RDS scaling is not so easy, you have to use a bigger instance or add read replicas (manual process)
+		- If you want push button scaling, without any downtown, use DynamoDB
+		- Scaling is not so easy with RDS, you have to use a bigger instance or add read replicas (manual process)
 	- If you are using Amazon RDS Provisioned IOPS storage with a MySQL or Oracle database engine, what is the maximum size RDS volume you can have by default? – **6TB**
 	- What data transfer charge is incurred when replicating data from your primary RDS instance to your secondary RDS instance? - **There is no charge associated with this action**.
 	- When you have deployed an RDS database into multiple availability zones, can you use the secondary database as an independent read node? – **No**
-	- RDS automatically creates RDS Security Group w/ TCP port # 3306 enabled. 
+	- RDS automatically creates RDS Security Group w/ TCP port # 3306 enabled
 	- In VPC Security Group, the answer would be YES because you will have manually specify access to port & protocol
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/cloudwatch.png) [CloudWatch](https://aws.amazon.com/cloudwatch)
