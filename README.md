@@ -737,20 +737,25 @@ The following are examples of problems that can cause instance status checks to 
 - Control over network environment, select IP address range, subnets and configure route tables and gateways
 - Do not span regions, but can span AZs
 - Can create public facing subnet (Web) having internet access and private facing subnet (DB) with no internet access
-- Public Subnet – Web Servers/ Jump Boxes
-- Private Subnet – Applications Servers / Database servers
+- Public Subnet : Web Servers/ Jump Boxes
+- Private Subnet : Applications Servers / Database servers
+- 1 subnet = 1 AZ
 - Leverage multiple layers of security – Security groups and Network ACLs to control access to EC2 instances
-- Create hardware VPN connection between your local DC and AWS.
-- AWS gives a maximum of /16 network.
+- Create hardware VPN connection between your local DC and AWS
+- AWS gives a maximum of /16 network
+- AWS gives a minimum of /28 network
 - Bastion host/ Jump Box in Public subnet
-- Security groups, Network ACLs, Route Tables can span subnets/AZs.
+- Security groups, Network ACLs, Route Tables can span subnets/AZs
 - Each subnet is always mapped to an availability zone. 1 subnet = 1 AZ
-- Only one internet gateway per VPC. [Trick question – improve performance by adding Gateway – just not possible]
-- Security groups are stateful. Network ACLs are stateless.
+- Only one internet gateway per VPC
+- You can’t attached multiple Internet Gateways to the VPC to boost performance
+- **Security groups are STATEFUL** (SF)
+- **Network ACLs are STATELESS** (AL)
 - The default limit for the number of Amazon VPCs that a customer may have in a region is 5
-- IPsec is the security protocol supported by Amazon VPC
+- **IPsec** is the security protocol supported by Amazon VPC
 - An Amazon VPC endpoint enables you to create a private connection between your Amazon VPC and another AWS service without requiring access over the Internet or through a NAT device, VPN connection, or AWS Direct Connect
 - Attaching an ENI associated with a different subnet to an instance can make the instance dual-homed
+- Classless Inter-Domain Routing (CIDR) is used to configure available IP in a subnet example 10.0.0.0/32, 32 is CIDR
 - Typical Private IP address ranges (not publically routable)
   - 10.0.0.0 to 10.255.255.255 (10/8 prefix)
   - 172.16.0.0 to 172.31.255.255 (172.16/12 prefix)
@@ -767,9 +772,9 @@ The following are examples of problems that can cause instance status checks to 
 		- In each VPC you create, 5 IP addresses are reserved by AWS for itself. First 4 and last IP in the CIDR block
 		- You can't change the size of a VPC after you create it
 		- If your VPC is too small to meet your needs, create a new, larger VPC, and then migrate your instances to the new VPC 
-		- To exactly replicate the old VPC, create AMIs from your running instances, and then launch replacement instances in your new, larger VPC. You can then terminate your old instances, and delete your smaller VPC
-		- You can’t attached multiple Internet Gateways to the VPC to boost performance
-		- When creating VPCs do not modify default route table to add your custom rules. If you modify the default route, it will affect all instances
+			- To exactly replicate the old VPC, create AMIs from your running instances, and then launch replacement instances in your new, larger VPC
+			- You can then terminate your old instances, and delete your smaller VPC
+			- When creating VPCs do not modify default route table to add your custom rules. If you modify the default route, it will affect all instances
 		- Create a new route table for customization
 
 <img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/vpc.png" width="800" align="middle">
