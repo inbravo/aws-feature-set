@@ -51,14 +51,13 @@
 	-	**Config Manager** : Monitors environments and **provides alerts for events**. e.g. someone creates a security group which is against policy
 	-	**Trusted Advisor** : Automated tips for cost & performance optimization, security tips, architecture and design
 - **Application Services**
-	-	**API Gateway** : Create secure api service
-	-	**Elastic Transcoder** : Media transcoding in cloud
-	-	**SNS** : Simple notification service
+	-	[**API Gateway**](https://github.com/inbravo/aws-feature-set#-api-gateway) : Create secure api service
+	-	[**Elastic Transcoder**](https://github.com/inbravo/aws-feature-set#-elastic-transcoder) : Media transcoding in cloud
+	-	[**SWF**](https://github.com/inbravo/aws-feature-set#-sws--simple-workflow-service) : Simple workflow service
+	-	[**SQS**](https://github.com/inbravo/aws-feature-set#-sqs--simple-queue-service) : Simple queue service
+	-	[**SNS**](https://github.com/inbravo/aws-feature-set#-sns--simple-notification-service) : Simple notification service
 	-	**SES** : Simple email service
-	-	**SWF** : Simple workflow service
-	-	**SQS** : Simple message service
 	-	**Step functions** : Visualize Application internals : Which micro services is your application using
-	-	**SWF** : Simple Workflow Service. Used in Amazon fulfillment center
 	-	**AppStream** : Stream desktop services via browser
 - **Mobile Service & IoT**
 	-	**Mobile Hub** : For mobile Applications
