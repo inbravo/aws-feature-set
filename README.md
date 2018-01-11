@@ -23,7 +23,7 @@
 	-	[**Storage Gateway**](https://github.com/inbravo/aws-feature-set#-storage-gateway) : Communicates between your data center and S3 storage
 - **Networking & Content Delivery**
 	-	[**VPC**](https://github.com/inbravo/aws-feature-set#-vpc) : You can have multiple VPCs per region
-	-	[**Route 53**](https://github.com/inbravo/aws-feature-set#--route-53) : Amazon’s DNS Service
+	-	[**Route 53**](https://github.com/inbravo/aws-feature-set#-route-53) : Amazon’s DNS Service
 	-	[**CloudFront**](https://github.com/inbravo/aws-feature-set#-cloudfront) : Content delivery network. Edge locations cache assets
 	-	**Direct Connect** : Connect your physical data centers to AWS using dedicated telephone lines
 - **Database Services**
@@ -634,11 +634,6 @@ The following are examples of problems that can cause instance status checks to 
 - Use RDS if data requires joins and relationships
 - In RDBMS database structure cannot be dynamically altered. With DynamoDB you can
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/elasticache.png) [ElastiCache](https://aws.amazon.com/elasticache)  
-- In memory cache in cloud
-- Memcached
-- Redis
-
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/redshift.png) [Redshift](https://aws.amazon.com/redshift)
 
 ### Redshift Features
@@ -647,7 +642,7 @@ The following are examples of problems that can cause instance status checks to 
 	- Single Node : 160 GB Used by Small and Medium Size businesses
 	- Multi-Node 
 		- Leader Node (handles all incoming connections & receives queries) 
-		- Compute Node (store data and perform queries and computations – up to 128 Compute Nodes)
+		- Compute Node (store data and perform queries and computations – upto 128 Compute Nodes)
 - Redshift Performance
 	- Redshift is 10 times faster than usual OLAP systems
 	- Allows for massive parallel processing
@@ -664,7 +659,7 @@ The following are examples of problems that can cause instance status checks to 
 	- At rest using AES-256 encryption
 	- Can use your own HSM or default AWSK Key management
 - Redshift Availability
-	- Not Multi-AZs. Can restore snapshots
+	- Currently available in 1 AZ only. Not Multi-AZs. Can restore snapshots to new AZs in the event of an outage
 	- Database warehousing service, cheap, faster. Best seller AWS Service
 	- Speed achieved due to columnar storage
 	- Data stored sequentially on disk – hence faster
@@ -687,41 +682,37 @@ The following are examples of problems that can cause instance status checks to 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/aurora.png) [Aurora](https://aws.amazon.com/aurora)
 
 ### Aurora Features 
+- MySQL compatible relational data base engine
+- 5 times better performance than MySQL. At a fraction of cost as compared to Oracle
 - Bespoke Database Engine
-- It is MySQL compatible
 - However you can’t download and install on your workstation
-
-### Performance
-5 times better performance than MySQL. At a fraction of cost as compared to Oracle
-
-### Scaling
-- Outset 10 Gb Storage, auto increment of storage
-- No Push button scaling – unlike DynamoDB
-
-### Fault Tolerance
-- Maintains 2 copies of your data in at least 3 availability zones. This is for the Data only not for the instances that runs the Database.
-- 2 copies lost – no impact on write availability.
-- 3 copies lost – no impact on read availability.
-- Storage is self-healing.
-
-### Replicas
-- MySQL Read Replica can be created from the Aurora source DB.(up to 5 of them)
-- Aurora Replicas – up to 15 of them. If leader crashes, the replica with the highest tiers becomes the leader. While creating replicas, remember to assign different tier levels.
-- Cluster Endpoint vs Individual Endpoint
-No Free Tier usage available. Also available only in select regions. Takes slightly longer to provision
-
-## Exam Tips
-- Why you can’t connect to DB Server from DMZ. Check the security group – if it is removed or added
-- Have separate groups for EC2 Instance and RDS Instance.
-- Multi-AZ for Disaster Recovery only. Not for performance improvement. For performance improvement use, multiple read-replicas
-- Dynamo DB v/s RDS
-If you want push button scaling, without any downtown, you will always want to use DynamoDB.
-With RDS scaling is not so easy, you have to use a bigger instance or add read replicas (manual process).
-- If you are using Amazon RDS Provisioned IOPS storage with a MySQL or Oracle database engine, what is the maximum size RDS volume you can have by default? – **6TB**
-- What data transfer charge is incurred when replicating data from your primary RDS instance to your secondary RDS instance? - **There is no charge associated with this action**.
-- When you have deployed an RDS database into multiple availability zones, can you use the secondary database as an independent read node? – **No**
-- RDS automatically creates RDS Security Group w/ TCP port # 3306 enabled. 
-- In VPC Security Group, the answer would be YES because you will have manually specify access to port & protocol.
+- Scaling
+	- Starts with 10 Gb Storage, and scales in 10 Gb increments to 64 Tb. auto increment of storage
+	- No Push button scaling (unlike DynamoDB)
+- Fault Tolerance
+	- Maintains 2 copies of your data in at least 3 availability zones (6 copies). This is for the Data only not for the instances that runs the database
+	- 2 copies lost : no impact on write availability
+	- 3 copies lost : no impact on read availability
+	- Storage is self-healing
+- Aurora Replicas
+	- MySQL Read Replica can be created from the Aurora source DB.(up to 5 of them)
+	- Aurora Replicas 
+		- Up to 15 of them
+		- If leader crashes, the replica with the highest tiers becomes the leader
+		- While creating replicas, remember to assign different tier levels
+- No Free Tier usage available. Also available only in select regions. Takes slightly longer to provision
+- Points to remember
+	- Why you can’t connect to DB Server from DMZ. Check the security group, if it is removed or added
+	- Have separate groups for EC2 Instance and RDS Instance
+	- Multi-AZ for Disaster Recovery only. Not for performance improvement. For performance improvement use, multiple read-replicas
+	- Dynamo DB v/s RDS
+		- If you want push button scaling, without any downtown, you will always want to use DynamoDB
+		- With RDS scaling is not so easy, you have to use a bigger instance or add read replicas (manual process)
+	- If you are using Amazon RDS Provisioned IOPS storage with a MySQL or Oracle database engine, what is the maximum size RDS volume you can have by default? – **6TB**
+	- What data transfer charge is incurred when replicating data from your primary RDS instance to your secondary RDS instance? - **There is no charge associated with this action**.
+	- When you have deployed an RDS database into multiple availability zones, can you use the secondary database as an independent read node? – **No**
+	- RDS automatically creates RDS Security Group w/ TCP port # 3306 enabled. 
+	- In VPC Security Group, the answer would be YES because you will have manually specify access to port & protocol
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/cloudwatch.png) [CloudWatch](https://aws.amazon.com/cloudwatch)
 
@@ -737,10 +728,10 @@ With RDS scaling is not so easy, you have to use a bigger instance or add read r
 - CloudWatch keep 2 weeks of metric data
 - CloudWatch metrics provide hypervisor visible metrics
 
-# ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/vpc.png) [VPC](https://aws.amazon.com/vpc)
+## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/vpc.png) [VPC](https://aws.amazon.com/vpc)
 
 ### VPC Features
-- VPC is a logical data center within an AWS Region.
+- VPC is a logical data center within an AWS Region
 - Control over network environment, select IP address range, subnets and configure route tables and gateways.
 - Do not span regions, but can span AZs.
 - Can create public facing subnet (Web) having internet access and private facing subnet (DB) with no internet access
@@ -831,13 +822,13 @@ To use AWS Stencils download them at the [AWS Simple Icons for Architecture Diag
 - Second level domains e.g. yahoo out of yahoo.com etc
 - Domain Registrars assign domain names under one or more top level domain names e.g. godaddy.com is a registrar
 - Costs around 125$ per month
-- TTL 
+- TTL (time to live)
 	- Cache the DNS record for TTL seconds
 	- Length that a DNS record is cached on either resolving server or users own local computer
 - Hosted Zone
 	- Collection of resource record sets hosted by Route 53
 	- A hosted zone represents resource record sets that are managed together under a single domain name.
-	- NS, SOA, CNAME, Alias etc. types of records for a particular domain e.g. [https://www.tcpiputils.com/dns-lookup/google.com/ALL](https://www.tcpiputils.com/dns-lookup/google.com/ALL)
+	- NS, SOA, CNAME, Alias etc. types of records for a particular domain e.g. [DNS Lookup](https://www.tcpiputils.com/dns-lookup/google.com/ALL)
 	- Types	
 		- Private : how you want to route traffic within VPC
 		- Public : how you want to route traffic on internet
@@ -869,7 +860,7 @@ To use AWS Stencils download them at the [AWS Simple Icons for Architecture Diag
 - Route 53 Routing Policies
 	1. Simple (default) : When a single resource performs function for your domain, only one webserver serves content
 	2. Weighted 
-		- Send x% of traffic to site A and remainder (100 – x) % of it to site B. Need not be two different regions. Can be even two different ELBs. 
+		- Send x% of traffic to site A and remainder (100 – x) % of it to site B. Need not be two different regions. Can be even two different ELBs
 		- This traffic split is over length of day not based on number of individual subsequent requests
 		- Weights – a number between 0 and 255. Route53 calculates auto %age
 		- AWS Takes Global view of DNS. Not local / ISP view
@@ -877,9 +868,9 @@ To use AWS Stencils download them at the [AWS Simple Icons for Architecture Diag
 	3. Latency 
 		- Allows you to route traffic based on lowest network latency for your end user. To the region which gives fastest response time
 		- Create record set for EC2 or ELB resource in each region that hosts website. When R53 receives a query it will then determine response based on lowest latency
-		- How will the users get the best experience? it is evaluated dynamically by R3
+		- How will the users get the best experience? it is evaluated dynamically by R53
 	4. Failover 
-		- When you want to create an active /passive setup
+		- When you want to create an active/passive setup
 		- Disaster Recovery 
 			- R53 monitors health of site. 
 			- If active fails then R53 routes traffic to passive site
@@ -888,7 +879,7 @@ To use AWS Stencils download them at the [AWS Simple Icons for Architecture Diag
 		- Choose where to route traffic based on geographic location of users
 		- Different from Latency based as the routing is hardwired irrespective of latency
 - ELBs cost money – ensure to delete them when not using
-- ELBs always have DNS name – no public IP Addresses. Trick question might induce you into believing IP4 address for ELB
+- ELBs always have DNS name. No public IP Addresses. Trick question might induce you into believing IP4 address for ELB
 - Given a choice between Alias Record vs CNAME – always choose Alias. Alias records are free and can connect to AWS resources
 - R53 supports zone apex records
 - With Route 53, there is a default limit of 50 domain names. However, this limit can be increased by contacting AWS support
