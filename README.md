@@ -795,10 +795,10 @@ The following are examples of problems that can cause instance status checks to 
 - NAT Instance is one EC2 instance. Search NAT in AMI market place and select Nat ready EC2 instances
 - NAT Gateway is a managed service, which is just came in to replace NAT instances
 - You are responsible for performance management, scale out and security groups
-- On NAT instance, *Remember to disable source/destination IP check*. This is required to allow private subnet internet connectivity. This is not required on NAT Gateway
+- On NAT instance, **Remember to disable source/destination IP check**. This is required to allow private subnet internet connectivity. This is not required on NAT Gateway
 - Allow both HTTP and HTTPS access on security groups associated with NAT instances
 - Security groups are always associated with NAT Instances
-- Both *NAT Instance and NAT Gateways are deployed to public subnet*
+- Both **NAT Instance and NAT Gateways are deployed to public subnet**
 - Elastic IP has to be added to NAT Instance
 - NAT Gateway is automatically assigned a public IP
 - In VPC, update default route table to allow connectivity from Private subnet to NAT Instance and Gateway
@@ -806,6 +806,8 @@ The following are examples of problems that can cause instance status checks to 
 - To improve performance increase the size of the NAT instance to allow for higher throughput
 - You can use Network ACLs to control traffic for both NAT Instance and Gateway
 - NAT Gateways scale up to 10GBps. No need to disable source/ destination checks on Gateways
+
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/nat.png" width="800">
 
 ### Network ACLs & Security Groups
 
@@ -821,9 +823,9 @@ The following are examples of problems that can cause instance status checks to 
 - 1 subnet <=> 1 AZ <=> 1 ACL.  ACLs can be associated to only 1 subnet at a time. You can reassign to another subnet. If subnet is not associated with an ACL, the default ACL is applied
 - AWS Recommends adding ACL rules in increments of 100s
 - Ephemeral ports – Allow inbound /outbound traffic from 1024 – 65535. As clients can initiate outbound connection from any random port. Ports < 1024 reserved for super user access
-- If you have to block a specific IP address / range, use ACLs instead of security groups. SGs can’t deny traffic – they only allow
+- If you have to block a specific IP address / range, use ACLs instead of security groups. SGs can’t deny traffic (they only allow)
 
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/security-group.png" width="800" align="middle">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/security-group.png" width="800">
 
 ### Custom VPC & ELB
 - To have HA in general or for ELB, ensure that you have at-least 2 public and or private subnets in different availability zones
