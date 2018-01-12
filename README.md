@@ -223,7 +223,7 @@ The following are examples of problems that can cause instance status checks to 
 - Scripts can be passed on to the EC2 instance at first boot time as part of user-data
   
 ### EC2 Instance Meta-Data
-- curl [http://169.254.169.254/latest/meta-data/](http://169.254.169.254/latest/meta-data/)
+- curl [http://169.254.169.254/latest/meta-data/](http://169.254.169.254/latest/meta-data)
 - Instance information is available in Meta-Data. Not in User-Data
   
 ### EC2 Auto Scaling
@@ -239,6 +239,8 @@ The following are examples of problems that can cause instance status checks to 
 ### EC2 Placement Groups
 - Logical grouping of instances within a single AZ
 - Instances can participate in low latency, 10 GBPs network
+
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/ec2.png" width="800">
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/ebs.png) EBS : [Elastic Block Storage](https://aws.amazon.com/ebs)
 
@@ -740,13 +742,11 @@ The following are examples of problems that can cause instance status checks to 
 - Public Subnet : Web Servers/ Jump Boxes
 - Private Subnet : Applications Servers / Database servers
 - 1 subnet = 1 AZ
-- Leverage multiple layers of security – Security groups and Network ACLs to control access to EC2 instances
+- Leverage multiple layers of security. Security groups and Network ACLs to control access to EC2 instances
 - Create hardware VPN connection between your local DC and AWS
-- AWS gives a maximum of /16 network
-- AWS gives a minimum of /28 network
 - Bastion host/ Jump Box in Public subnet
 - Security groups, Network ACLs, Route Tables can span subnets/AZs
-- Each subnet is always mapped to an availability zone. 1 subnet = 1 AZ
+- Each subnet is always mapped to an availability zone
 - Only one internet gateway per VPC
 - You can’t attached multiple Internet Gateways to the VPC to boost performance
 - **Security groups are STATEFUL** (SF)
@@ -760,7 +760,19 @@ The following are examples of problems that can cause instance status checks to 
   - 10.0.0.0 to 10.255.255.255 (10/8 prefix)
   - 172.16.0.0 to 172.31.255.255 (172.16/12 prefix)
   - 192.168.0.0 to 192.168.255.255 (192.168/16 prefix)
-- Types 
+- AWS gives a maximum of /16 (32-16 = 16 available IP) IPs in a subnet
+- AWS gives a minimum of /28 (32-28 = 4 available IP) IPs in a subnet
+- First four IP addresses and the last IP address in each subnet CIDR block are not available for you to use
+- For example, in a subnet with CIDR block 10.0.0.0/24, the following five IP addresses are reserved:
+	- 10.0.0.0	: Network address
+	- 10.0.0.1	: Reserved by AWS for the VPC router
+	- 10.0.0.2	: Reserved by AWS. The IP address of the DNS server is always the base of the VPC network range plus two
+	- 10.0.0.3	: Reserved by AWS for future use
+	- 10.0.0.255: Network broadcast address
+- Route table specifies how packets are forwarded between the subnets within VPC, internet and VPN 
+- Route table contains a route from IP : 0.0.0.0/0 to default IGW for allowing accesss of subnet to internet
+- Security groups is a set of firewall rules to control the traffic to your instance
+- VPC types 
 	- Default VPC
 		- When you create an account a default VPC is created for you in each Region
 		- All subnets in default VPC have a route out to the internet
@@ -768,7 +780,7 @@ The following are examples of problems that can cause instance status checks to 
 		- If you delete default VPC, only way to restore it is by contacting Amazon
 	- Custom VPC
 		- Default Security group, network ACL & route table are created for each custom VPC you create
-		- Doesn’t create subnets or internet gateways out of the box.
+		- Doesn’t create Subnets or Internet Gateways (IGW) out of the box
 		- In each VPC you create, 5 IP addresses are reserved by AWS for itself. First 4 and last IP in the CIDR block
 		- You can't change the size of a VPC after you create it
 		- If your VPC is too small to meet your needs, create a new, larger VPC, and then migrate your instances to the new VPC 
@@ -780,16 +792,23 @@ The following are examples of problems that can cause instance status checks to 
 <img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/vpc.png" width="800" align="middle">
 		
 ### NAT Instance & NAT Gateway
-- NAT Instance is one EC2 instance. You are responsible for performance management, scale out and security groups. NAT Gateway is a managed service.
-- On NAT instance, *remember to disable source/destination IP check*. This is required to allow private subnet internet connectivity. This is not required on NAT Gateway.
-- Allow both HTTP and HTTPS access on security groups associated with NAT instances. Security groups are always associated with NAT Instances.
-- Both *NAT Instance and NAT Gateways are deployed to public subnet*. Elastic IP has to be added to NAT Instance. NAT Gateway is automatically assigned a public IP.
+- NAT Instance is one EC2 instance. Search NAT in AMI market place and select Nat ready EC2 instances
+- NAT Gateway is a managed service, which is just came in to replace NAT instances
+- You are responsible for performance management, scale out and security groups
+- On NAT instance, *Remember to disable source/destination IP check*. This is required to allow private subnet internet connectivity. This is not required on NAT Gateway
+- Allow both HTTP and HTTPS access on security groups associated with NAT instances
+- Security groups are always associated with NAT Instances
+- Both *NAT Instance and NAT Gateways are deployed to public subnet*
+- Elastic IP has to be added to NAT Instance
+- NAT Gateway is automatically assigned a public IP
 - In VPC, update default route table to allow connectivity from Private subnet to NAT Instance and Gateway
-- NAT instance is single point of failure. You can place NAT instance behind Auto Scaling group, multiple subnets in different AZs and scripted failover. To improve performance increase the size of the NAT instance to allow for higher throughput.
-- You can use Network ACLs to control traffic for both NAT Instance and Gateway.
-- NAT Gateways scale up to 10GBps. No need to disable source/ destination checks on Gateways.
+- NAT instance is single point of failure. You can place NAT instance behind Auto Scaling group, multiple subnets in different AZs and scripted failover
+- To improve performance increase the size of the NAT instance to allow for higher throughput
+- You can use Network ACLs to control traffic for both NAT Instance and Gateway
+- NAT Gateways scale up to 10GBps. No need to disable source/ destination checks on Gateways
 
 ### Network ACLs & Security Groups
+
 |Security Group| Network ACL|
 |-------------|-------------| 
 |Operates at the instance level (first layer of defense)| Operates at the subnet level (second layer of defense)|
@@ -804,6 +823,8 @@ The following are examples of problems that can cause instance status checks to 
 - Ephemeral ports – Allow inbound /outbound traffic from 1024 – 65535. As clients can initiate outbound connection from any random port. Ports < 1024 reserved for super user access
 - If you have to block a specific IP address / range, use ACLs instead of security groups. SGs can’t deny traffic – they only allow
 
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/security-group.png" width="800" align="middle">
+
 ### Custom VPC & ELB
 - To have HA in general or for ELB, ensure that you have at-least 2 public and or private subnets in different availability zones
 - Elastic Load Balancing supports Internet-facing, internal, and HTTPS load balancers
@@ -815,10 +836,10 @@ The following are examples of problems that can cause instance status checks to 
 - NAT instance is used to provide internet connectivity to private subnets
   
 ### VPC Flow Logs
-- Enable Flow Logs for Custom VPC to see all traffic.
+- Enable Flow Logs for Custom VPC to see all traffic
 - Enable to capture IP traffic flow information for the NICs of your resources. All information is reported to CloudWatch
 - Create IAM role to allow all logs to flow into CloudWatch
-- Create log group in CloudWatch and inside that create stream where you can then see all the traffic flow.
+- Create log group in CloudWatch and inside that create stream where you can then see all the traffic flow
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/53.png) [Route 53](https://aws.amazon.com/route53)
 
