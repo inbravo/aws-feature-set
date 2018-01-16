@@ -749,7 +749,7 @@ The following are examples of problems that can cause instance status checks to 
 - Each subnet is always mapped to an availability zone (AZ)
 - Public Subnet : Web Servers/ Jump Boxes
 - Private Subnet : Applications Servers / Database servers
-- Classless Inter-Domain Routing (CIDR) is used to configure available IP in a subnet example 10.0.0.0/32, 32 is CIDR
+- Classless Inter-Domain Routing (CIDR) is used to configure available IP in a subnet(Example 10.0.0.0/32, 32 is CIDR)
 - Typical Private IP address ranges (not publically routable)
   - 10.0.0.0 to 10.255.255.255 (10/8 prefix)
   - 172.16.0.0 to 172.31.255.255 (172.16/12 prefix)
@@ -764,12 +764,30 @@ The following are examples of problems that can cause instance status checks to 
 	- 10.0.0.3	: Reserved by AWS for future use
 	- 10.0.0.255: Network broadcast address
 	
-#### VPC Security
+#### Security groups, Network ACLs
+- Security groups, Network ACLs, Route Tables can span subnets/AZs
+- Each subnet must be assocaited with a ACL, if subnet is not associated with a ACL, this subnet will be automatically asssociated with default network ACL
 - Leverage multiple layers of security to control access to EC2 instances
 	- Security groups **STATEFUL** (SF)
-	- Network ACLs **STATELESS** (AL)
-- Security groups, Network ACLs, Route Tables can span subnets/AZs
-- Security groups is a set of firewall rules to control the traffic to your instance
+	- Network ACLs **STATELESS** (AL) : separate inbound and outbound rules 
+- Security group
+	- Set of firewall rules to control the traffic to your instance
+- Network ACLs
+	- VPC comes with a default ACL (default ACL allows all inbound/outbound traffic)
+	- User created custom ACL defaultly deines all inbound/outbound traffic
+- AWS Recommends adding ACL rules in increments of 100s
+- Ephemeral ports : allow inbound /outbound traffic from 1024–65535. As clients can initiate outbound connection from any random port. Ports < 1024 reserved for super user access
+- If you have to block a specific IP address / range, use ACLs instead of security groups. SGs can’t deny traffic (they only allow)
+
+|Security Group| Network ACL|
+|-------------|-------------| 
+|Operates at the instance level (first layer of defense)| Operates at the subnet level (second layer of defense)|
+|Supports allow rules only| Supports allow rules and deny rules|
+|Is stateful: Return traffic is automatically allowed, regardless of any rules| Is stateless: Return traffic must be explicitly allowed by rules|
+|We evaluate all rules before deciding whether to allow traffic| We process rules in number order when deciding whether to allow traffic. Lower order rules take effect in case of conflict with higher order rules.|
+|Applies to an instance only if someone specifies the security group when launching the instance, or associates the security group with the instance later on| Automatically applies to all instances in the subnets it's associated with (backup layer of defense, so you don't have to rely on someone specifying the security group)|
+
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/security-group.png" width="800">
 
 #### Virtual Private Network (VPN), Interget Gateway (IGW), Route Table
 - Create hardware VPN connection between your local DC and AWS
@@ -781,6 +799,7 @@ The following are examples of problems that can cause instance status checks to 
 #### VPC Configuration
 - VPC types 
 	- Default VPC
+		- VPC comes with a default Network ACL
 		- When you create an account a default VPC is created for you in each Region
 		- All subnets in default VPC have a route out to the internet
 		- Each EC2 instance in default VPC will have a public and private IP address
@@ -797,9 +816,18 @@ The following are examples of problems that can cause instance status checks to 
 		- Create a new route table for customization
 
 <img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/vpc.png" width="800" align="middle">
-		
-### NAT Instance & NAT Gateway
-- NAT Instance is one EC2 instance. Search NAT in AMI market place and select Nat ready EC2 instances
+
+### ELB
+- ELB types
+	- Application Load Balancer : HTTP/HTTPS
+	- Network Load Balancer : TCP
+	- Classic Load Balancer : HTTP/HTTPS/TCP
+- ELB supports Internet-facing or Internal load balancing
+- To have HA in general or for ELB, ensure that you have at-least 2 public and or private subnets in different availability zones
+- Create ELB also requires to configure security settings
+
+### NAT Instance/Gateway
+- NAT Instance is one EC2 instance. Search NAT in AMI market place and select NAT ready EC2 instances
 - NAT Gateway is a managed service, which is just came in to replace NAT instances
 - You are responsible for performance management, scale out and security groups
 - On NAT instance, **Remember to disable source/destination IP check**. This is required to allow private subnet internet connectivity. This is not required on NAT Gateway
@@ -816,35 +844,16 @@ The following are examples of problems that can cause instance status checks to 
 
 <img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/nat.png" width="800">
 
-### Network ACLs & Security Groups
-
-|Security Group| Network ACL|
-|-------------|-------------| 
-|Operates at the instance level (first layer of defense)| Operates at the subnet level (second layer of defense)|
-|Supports allow rules only| Supports allow rules and deny rules|
-|Is stateful: Return traffic is automatically allowed, regardless of any rules| Is stateless: Return traffic must be explicitly allowed by rules|
-|We evaluate all rules before deciding whether to allow traffic| We process rules in number order when deciding whether to allow traffic. Lower order rules take effect in case of conflict with higher order rules.|
-|Applies to an instance only if someone specifies the security group when launching the instance, or associates the security group with the instance later on| Automatically applies to all instances in the subnets it's associated with (backup layer of defense, so you don't have to rely on someone specifying the security group)|
-- With default ACL, all inbound and outbound traffic is allowed automatically
-- When custom ACL, all inbound and outbound traffic is denied by default
-- 1 subnet <=> 1 AZ <=> 1 ACL.  ACLs can be associated to only 1 subnet at a time. You can reassign to another subnet. If subnet is not associated with an ACL, the default ACL is applied
-- AWS Recommends adding ACL rules in increments of 100s
-- Ephemeral ports – Allow inbound /outbound traffic from 1024 – 65535. As clients can initiate outbound connection from any random port. Ports < 1024 reserved for super user access
-- If you have to block a specific IP address / range, use ACLs instead of security groups. SGs can’t deny traffic (they only allow)
-
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/security-group.png" width="800">
-
-### Custom VPC & ELB
-- To have HA in general or for ELB, ensure that you have at-least 2 public and or private subnets in different availability zones
-- Elastic Load Balancing supports Internet-facing, internal, and HTTPS load balancers
-
-### NAT & Bastion
-- You cannot use NAT instance to SSH / RDP into private subnet. For that Bastion (Jump Box) is required
-- Bastions are used for secure administrative tasks only. Bastions are placed in Public subnets and connect to private subnets via private IP
-- For Bastion HA, have multiple Bastions in different AZs – at least 2 public subnets. Auto scaling in multiple AZ, route 53 doing health checks
+#### Bastion
+- You cannot use NAT instance to SSH / RDP into private subnet. For that **Bastion** (Jump Box) is required
+- Bastions are used for secure administrative tasks only
+- Bastions are placed in Public subnets and connect to private subnets via private IP
+- For Bastion HA, have multiple Bastions in different AZs (At least 2 public subnets). Auto scaling in multiple AZ, route 53 doing health checks
 - NAT instance is used to provide internet connectivity to private subnets
+
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/bastion.png" width="800" align="middle">
   
-### VPC Flow Logs
+#### VPC Flow Logs
 - Enable Flow Logs for Custom VPC to see all traffic
 - Enable to capture IP traffic flow information for the NICs of your resources. All information is reported to CloudWatch
 - Create IAM role to allow all logs to flow into CloudWatch
