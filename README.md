@@ -736,25 +736,19 @@ The following are examples of problems that can cause instance status checks to 
 
 ### VPC Features
 - VPC is a logical data center within an AWS Region
+- VPC can not span regions
+- VPC can span AZs
+- Can’t attached multiple Internet Gateways to the VPC to boost performance
 - Control over network environment, select IP address range, subnets and configure route tables and gateways
-- Do not span regions, but can span AZs
-- Can create public facing subnet (Web) having internet access and private facing subnet (DB) with no internet access
-- Public Subnet : Web Servers/ Jump Boxes
-- Private Subnet : Applications Servers / Database servers
-- 1 subnet = 1 AZ
-- Leverage multiple layers of security. Security groups and Network ACLs to control access to EC2 instances
-- Create hardware VPN connection between your local DC and AWS
-- Bastion host/ Jump Box in Public subnet
-- Security groups, Network ACLs, Route Tables can span subnets/AZs
-- Each subnet is always mapped to an availability zone
-- Only one internet gateway per VPC
-- You can’t attached multiple Internet Gateways to the VPC to boost performance
-- **Security groups are STATEFUL** (SF)
-- **Network ACLs are STATELESS** (AL)
 - The default limit for the number of Amazon VPCs that a customer may have in a region is 5
 - **IPsec** is the security protocol supported by Amazon VPC
-- An Amazon VPC endpoint enables you to create a private connection between your Amazon VPC and another AWS service without requiring access over the Internet or through a NAT device, VPN connection, or AWS Direct Connect
+- Can create public facing subnet (Web) having internet access and private facing subnet (DB) with no internet access
 - Attaching an ENI associated with a different subnet to an instance can make the instance dual-homed
+
+#### Subnet Features
+- Each subnet is always mapped to an availability zone (AZ)
+- Public Subnet : Web Servers/ Jump Boxes
+- Private Subnet : Applications Servers / Database servers
 - Classless Inter-Domain Routing (CIDR) is used to configure available IP in a subnet example 10.0.0.0/32, 32 is CIDR
 - Typical Private IP address ranges (not publically routable)
   - 10.0.0.0 to 10.255.255.255 (10/8 prefix)
@@ -769,9 +763,22 @@ The following are examples of problems that can cause instance status checks to 
 	- 10.0.0.2	: Reserved by AWS. The IP address of the DNS server is always the base of the VPC network range plus two
 	- 10.0.0.3	: Reserved by AWS for future use
 	- 10.0.0.255: Network broadcast address
+	
+#### VPC Security
+- Leverage multiple layers of security to control access to EC2 instances
+	- Security groups **STATEFUL** (SF)
+	- Network ACLs **STATELESS** (AL)
+- Security groups, Network ACLs, Route Tables can span subnets/AZs
+- Security groups is a set of firewall rules to control the traffic to your instance
+
+#### Virtual Private Network (VPN), Interget Gateway (IGW), Route Table
+- Create hardware VPN connection between your local DC and AWS
+- AWS VPC endpoint enables you to create a private connection between your Amazon VPC and another AWS service without requiring access over the Internet or through a NAT device, VPN connection, or AWS Direct Connect
 - Route table specifies how packets are forwarded between the subnets within VPC, internet and VPN 
 - Route table contains a route from IP : 0.0.0.0/0 to default IGW for allowing accesss of subnet to internet
-- Security groups is a set of firewall rules to control the traffic to your instance
+- Only one internet gateway per VPC
+
+#### VPC Configuration
 - VPC types 
 	- Default VPC
 		- When you create an account a default VPC is created for you in each Region
