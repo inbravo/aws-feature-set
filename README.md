@@ -40,11 +40,11 @@
 	-	**EMR** : Elastic Map Reduce : Process large amounts of data. Based on Hadoop, Apache Spark etc
 	-	**Cloud Search** : Managed services provided by AWS
 	-	**Elastic Search** : Search service which uses the Elastic product
-	-	**Kinesis** : Streaming and analysis real time data. Used for collating large amounts of data streamed from multiple sources
+	-	[**Kinesis**](https://github.com/inbravo/aws-feature-set#-kinesis) : Streaming and analysis real time data. Used for collating large amounts of data streamed from multiple sources
 	-	**Data Pipeline** : Move data from one place to another. e.g. S3 into DynamoDB and vice versa
 	-	**Quick Sight** : BA tools for rich visualizations and dashboards
 - **Management Tools**
-	-	**Cloud Watch** : Monitor performance of AWS environment 
+	-	[**Cloud Watch**](https://github.com/inbravo/aws-feature-set#-cloudwatch) : Monitor performance of AWS environment 
 	-	**Cloud Formation** : Infrastructure into Code
 	-	**Cloud Trail** : Audit usage of AWS Resources
 	-	**OpsWorks** : Automate deployments using Chef
@@ -789,7 +789,7 @@ The following are examples of problems that can cause instance status checks to 
 
 <img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/security-group.png" width="800">
 
-#### Virtual Private Network (VPN), Interget Gateway (IGW), Route Table
+#### Virtual Private Network (VPN), Interet Gateway (IGW), Route Table
 - Create hardware VPN connection between your local DC and AWS
 - AWS VPC endpoint enables you to create a private connection between your Amazon VPC and another AWS service without requiring access over the Internet or through a NAT device, VPN connection, or AWS Direct Connect
 - Route table specifies how packets are forwarded between the subnets within VPC, internet and VPN 
