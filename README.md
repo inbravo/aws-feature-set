@@ -736,24 +736,24 @@ The following are examples of problems that can cause instance status checks to 
 
 ### VPC Features
 - VPC is a logical data center within an AWS Region
+- Control over network environment, select IP address range, subnets and configure route tables and gateways
 - VPC can not span regions
 - VPC can span AZs
 - Can’t attached multiple Internet Gateways to the VPC to boost performance
-- Control over network environment, select IP address range, subnets and configure route tables and gateways
 - The default limit for the number of Amazon VPCs that a customer may have in a region is 5
 - **IPsec** is the security protocol supported by Amazon VPC
 - Can create public facing subnet (Web) having internet access and private facing subnet (DB) with no internet access
 - Attaching an ENI associated with a different subnet to an instance can make the instance dual-homed
-
-#### Subnet Features
-- Each subnet is always mapped to an availability zone (AZ)
-- Public Subnet : Web Servers/ Jump Boxes
-- Private Subnet : Applications Servers / Database servers
 - Classless Inter-Domain Routing (CIDR) is used to configure available IP in a subnet(Example 10.0.0.0/32, 32 is CIDR)
 - Typical Private IP address ranges (not publically routable)
   - 10.0.0.0 to 10.255.255.255 (10/8 prefix)
   - 172.16.0.0 to 172.31.255.255 (172.16/12 prefix)
   - 192.168.0.0 to 192.168.255.255 (192.168/16 prefix)
+
+#### Subnet Features
+- Each subnet is always mapped to an availability zone (AZ)
+- Public Subnet : Web Servers/ Jump Boxes
+- Private Subnet : Applications Servers / Database servers
 - AWS gives a maximum of /16 (32-16 = 16 available IP) IPs in a subnet
 - AWS gives a minimum of /28 (32-28 = 4 available IP) IPs in a subnet
 - First four IP addresses and the last IP address in each subnet CIDR block are not available for you to use
