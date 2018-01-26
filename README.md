@@ -121,6 +121,9 @@
 - Secret access key can be retrieved only once during user creation. In case you lose it then you can re-generate it
 - IAM Password policy can be set to access the admin console
 - New users have no permissions when first created. Everything has to be explicitly added
+- Create new users
+	- Access key id and secret access key for programmatic access 
+	- User id and password for console access 
 - Power User Access allows Access to all AWS services except the management of groups and users within IAM
   
 ### Manage AWS resources via (Mr. CS : Mister SeaAs)
@@ -325,7 +328,7 @@ The following are examples of problems that can cause instance status checks to 
 - Every bucket created, object uploaded is private by default
 - Object Permissions – Access to Object ACLs
 - Prefix in bucket is a folder in the bucket
-- Minimum file size that I can store on S3 bucket is 0 byte
+- Minimum file size requirement on S3 bucket is 0 byte
 - Max 100 S3 buckets per account by default
 - S3 objects can range from **0 bytes** to **5 terabytes**
 - The largest object that can be uploaded in a single PUT is **5 gigabytes**
@@ -963,6 +966,7 @@ The following are examples of problems that can cause instance status checks to 
 		- Provide exactly-once processing, which means that each message is delivered once and remains available until a consumer processes it and deletes it
 		- Duplicates are not introduced into the queue
 		- Guarantee of message ordering (the order of arriving)
+		- Limited to 300 transactions per second (TPS)
 - SQS message size up to 256KB of text in any format. May consist of 1-10 messages
 - If order is important, add sequencing information in each message
 - SQS is pull based and not push based (Unlike SNS)
@@ -1033,7 +1037,8 @@ The following are examples of problems that can cause instance status checks to 
 - Low cost & Efficient. Scales
 - Throttle requests as required to prevent attacks
 - Log requests to CloudWatch
-- For application built on top of multiple domains, you need to enable CORS on API Gateway
+- Same origin policy : under this policy, a web browser only allows, scripts on one page to access something from other we page, but from same domain
+- CORS : Cross Origin Resource Sharing. For application built on top of multiple domains, you need to enable CORS on API Gateway
   
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/kinesis.png) [Kinesis](https://aws.amazon.com/kinesis) 
 
@@ -1043,6 +1048,8 @@ The following are examples of problems that can cause instance status checks to 
 - Kinesis Streams
 	- Stores data for 24 hours to 7 days
 	- Data stored in **shards**
+	- Maximum read rate of 2 MB per second
+	- Maximum write rate of 1 MB per second
 	- Data consumers (EC2 instances) analyze the stream and then derive results/take next actions
 	- Data capacity of stream is a function of the number of shards you specify for the stream
 - Kinesis Firehose 
@@ -1051,3 +1058,7 @@ The following are examples of problems that can cause instance status checks to 
   - Data is immediately analyzed via **Lambda**.
 - Kinesis Analytics
   - Run SQL type queries on top of data contained in Streams or Firehose and store the results in S3 / Redshift and Elastic Search cluster
+
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis.png" width="800">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis-firehose.png" width="800">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis-analytics.png" width="800">
