@@ -1052,13 +1052,17 @@ The following are examples of problems that can cause instance status checks to 
 	- Maximum write rate of 1 MB per second
 	- Data consumers (EC2 instances) analyze the stream and then derive results/take next actions
 	- Data capacity of stream is a function of the number of shards you specify for the stream
+	
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis.png" width="800">
+
 - Kinesis Firehose 
-  - Don’t have to worry about shards, streams – completely automated.
+  - Don’t have to worry about shards, streams, its completely automated
   - No automatic data retention window. Data is either immediately analyzed or sent to S3 and then to Redshift, elastic search cluster
-  - Data is immediately analyzed via **Lambda**.
+  - Data is immediately analyzed via **Lambda**
+
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis-firehose.png" width="800">
+  
 - Kinesis Analytics
   - Run SQL type queries on top of data contained in Streams or Firehose and store the results in S3 / Redshift and Elastic Search cluster
-
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis.png" width="800">
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis-firehose.png" width="800">
+  
 <img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis-analytics.png" width="800">
