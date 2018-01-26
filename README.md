@@ -507,7 +507,9 @@ The following are examples of problems that can cause instance status checks to 
 - You can clear cached objects, with charges
 - Geo-location based restriction can be applied 
 - Configure error pages in case of any uncertainty 
-  
+
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/cdn.png" width="800">
+
 ### CloudFront Security
 - You can force them to use CDN URL instead of S3 DNS
 - To restrict bucket access you need to create origin access identity. And allow this user read permission S3 bucket content –
@@ -576,7 +578,8 @@ The following are examples of problems that can cause instance status checks to 
 	- This option has to be selected at instance creation time
 	- This option is not useful for improving performance / scaling
 
-![](https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/rds-multi-az.png)
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/rds-multi-az.png" width="800">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/rds.png" width="800">
 
 - RDS Read Replica Databases
 	- Different from multi-AZ
@@ -818,7 +821,7 @@ The following are examples of problems that can cause instance status checks to 
 			- When creating VPCs do not modify default route table to add your custom rules. If you modify the default route, it will affect all instances
 		- Create a new route table for customization
 
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/vpc.png" width="800" align="middle">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/vpc.png" width="800">
 
 ### ELB
 - ELB types
@@ -827,7 +830,9 @@ The following are examples of problems that can cause instance status checks to 
 	- Classic Load Balancer : HTTP/HTTPS/TCP
 - ELB supports Internet-facing or Internal load balancing
 - To have HA in general or for ELB, ensure that you have at-least 2 public and or private subnets in different availability zones
-- Create ELB also requires to configure security settings
+- Create ELB also requires to configure security 
+
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/elb.png" width="800">
 
 ### NAT Instance/Gateway
 - NAT Instance is one EC2 instance. Search NAT in AMI market place and select NAT ready EC2 instances
