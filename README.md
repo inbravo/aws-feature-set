@@ -89,6 +89,8 @@
 - Availability zone is logical data center
 - Edge Locations are CDN End Points for CloudFront. Many more edge locations exist than regions
 
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/regions.png" width="600">
+
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/iam.png) IAM : [Identity & Access Management](https://aws.amazon.com/iam)
 
 ### IAM Resources
@@ -399,7 +401,7 @@ The following are examples of problems that can cause instance status checks to 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/glacier.png) [Glacier](https://aws.amazon.com/glacier)
 - For archival only. Takes 3 to 5 hours to restore files. Durability of Eleven Nine (99.999999999%)
 
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/s3-vs-glacier.png" width="800">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/s3-vs-glacier.png" width="600">
   
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/storagegateway.png) [Storage Gateway](https://aws.amazon.com/storagegateway) 
 
@@ -415,7 +417,7 @@ The following are examples of problems that can cause instance status checks to 
 - Store files in S3  Word, Pictures, PDFs
 - Accessed using network file system (NFS)
 
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/file-gateway.png" width="800" align="middle">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/file-gateway.png" width="600" align="middle">
 
 #### Volume Gateway (**iSCSI**) 
 - Block based storage
@@ -430,15 +432,15 @@ The following are examples of problems that can cause instance status checks to 
 		- Only latest data stays on-prem
 		- Rest on AWS S3
 	
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway.png" width="800" align="middle">
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway-cached.png" width="800" align="middle">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway.png" width="600" align="middle">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway-cached.png" width="600" align="middle">
 	
 #### Volume Tape Gateway (**VTL**) 
 - Create tapes and send to S3
 - Gateway Virtual Tape Library (VTL) : Backup and Archiving solution
 - You can use existing backup applications like NetBackup, Backup Exec and Veeam etc
 
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/tape-gateway.png" width="800" align="middle">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/tape-gateway.png" width="600" align="middle">
 	
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/snowball.png) [Snowball](https://aws.amazon.com/snowball) 
 
@@ -508,7 +510,7 @@ The following are examples of problems that can cause instance status checks to 
 - Geo-location based restriction can be applied 
 - Configure error pages in case of any uncertainty 
 
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/cdn.png" width="800">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/cdn.png" width="600">
 
 ### CloudFront Security
 - You can force them to use CDN URL instead of S3 DNS
@@ -578,8 +580,8 @@ The following are examples of problems that can cause instance status checks to 
 	- This option has to be selected at instance creation time
 	- This option is not useful for improving performance / scaling
 
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/rds-multi-az.png" width="800">
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/rds.png" width="800">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/rds-multi-az.png" width="600">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/rds.png" width="600">
 
 - RDS Read Replica Databases
 	- Different from multi-AZ
@@ -793,7 +795,7 @@ The following are examples of problems that can cause instance status checks to 
 |We evaluate all rules before deciding whether to allow traffic| We process rules in number order when deciding whether to allow traffic. Lower order rules take effect in case of conflict with higher order rules.|
 |Applies to an instance only if someone specifies the security group when launching the instance, or associates the security group with the instance later on| Automatically applies to all instances in the subnets it's associated with (backup layer of defense, so you don't have to rely on someone specifying the security group)|
 
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/security-group.png" width="800">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/security-group.png" width="600">
 
 #### Virtual Private Network (VPN), Interet Gateway (IGW), Route Table
 - Create hardware VPN connection between your local DC and AWS
@@ -821,7 +823,7 @@ The following are examples of problems that can cause instance status checks to 
 			- When creating VPCs do not modify default route table to add your custom rules. If you modify the default route, it will affect all instances
 		- Create a new route table for customization
 
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/vpc.png" width="800">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/vpc.png" width="600">
 
 ### ELB
 - ELB types
@@ -832,7 +834,7 @@ The following are examples of problems that can cause instance status checks to 
 - To have HA in general or for ELB, ensure that you have at-least 2 public and or private subnets in different availability zones
 - Create ELB also requires to configure security 
 
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/elb.png" width="800">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/elb.png" width="600">
 
 ### NAT Instance/Gateway
 - NAT Instance is one EC2 instance. Search NAT in AMI market place and select NAT ready EC2 instances
@@ -850,7 +852,7 @@ The following are examples of problems that can cause instance status checks to 
 - You can use Network ACLs to control traffic for both NAT Instance and Gateway
 - NAT Gateways scale up to 10GBps. No need to disable source/ destination checks on Gateways
 
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/nat.png" width="800">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/nat.png" width="600">
 
 #### Bastion
 - You cannot use NAT instance to SSH / RDP into private subnet. For that **Bastion** (Jump Box) is required
@@ -859,7 +861,7 @@ The following are examples of problems that can cause instance status checks to 
 - For Bastion HA, have multiple Bastions in different AZs (At least 2 public subnets). Auto scaling in multiple AZ, route 53 doing health checks
 - NAT instance is used to provide internet connectivity to private subnets
 
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/bastion.png" width="800" align="middle">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/bastion.png" width="600" align="middle">
   
 #### VPC Flow Logs
 - Enable Flow Logs for Custom VPC to see all traffic
@@ -1058,16 +1060,16 @@ The following are examples of problems that can cause instance status checks to 
 	- Data consumers (EC2 instances) analyze the stream and then derive results/take next actions
 	- Data capacity of stream is a function of the number of shards you specify for the stream
 	
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis.png" width="800">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis.png" width="600">
 
 - Kinesis Firehose 
   - Don’t have to worry about shards, streams, its completely automated
   - No automatic data retention window. Data is either immediately analyzed or sent to S3 and then to Redshift, elastic search cluster
   - Data is immediately analyzed via **Lambda**
 
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis-firehose.png" width="800">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis-firehose.png" width="600">
   
 - Kinesis Analytics
   - Run SQL type queries on top of data contained in Streams or Firehose and store the results in S3 / Redshift and Elastic Search cluster
   
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis-analytics.png" width="800">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis-analytics.png" width="600">
