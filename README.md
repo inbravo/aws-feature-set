@@ -245,7 +245,7 @@ The following are examples of problems that can cause instance status checks to 
 - Logical grouping of instances within a single AZ
 - Instances can participate in low latency, 10 GBPs network
 
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/ec2.png" width="800">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/ec2.png" width="600">
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/ebs.png) EBS : [Elastic Block Storage](https://aws.amazon.com/ebs)
 
@@ -432,8 +432,8 @@ The following are examples of problems that can cause instance status checks to 
 		- Only latest data stays on-prem
 		- Rest on AWS S3
 	
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway.png" width="600" align="middle">
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway-cached.png" width="600" align="middle">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway.png" width="600">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway-cached.png" width="600">
 	
 #### Volume Tape Gateway (**VTL**) 
 - Create tapes and send to S3
@@ -598,7 +598,7 @@ The following are examples of problems that can cause instance status checks to 
 	- Application re-architecture is required to make use of Read replicas
 	- Read replicas are not used for DR. they are used for performance scaling only
 
-![](https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/rds-read-replica.png)
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/rds-read-replica.png" width="600">
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/dms.png) DMS : [Database Migration Service](https://aws.amazon.com/dms)
 
@@ -861,7 +861,7 @@ The following are examples of problems that can cause instance status checks to 
 - For Bastion HA, have multiple Bastions in different AZs (At least 2 public subnets). Auto scaling in multiple AZ, route 53 doing health checks
 - NAT instance is used to provide internet connectivity to private subnets
 
-<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/bastion.png" width="600" align="middle">
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/bastion.png" width="600">
   
 #### VPC Flow Logs
 - Enable Flow Logs for Custom VPC to see all traffic
