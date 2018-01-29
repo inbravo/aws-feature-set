@@ -1,4 +1,4 @@
-![](https://github.com/inbravo/aws-feature-set/blob/master/mind-maps/aws-all-services/aws-core-dimensions.jpg)
+![](/mind-maps/aws-all-services/aws-core-dimensions.jpg)
 
 # AWS Reference
 
