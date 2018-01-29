@@ -89,7 +89,7 @@
 - Availability zone is logical data center
 - Edge Locations are CDN End Points for CloudFront. Many more edge locations exist than regions
 
-<p align="center"><img src=https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/regions.png" width="700"></p>
+<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/regions.png" width="700"></p>
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/iam.png) IAM : [Identity & Access Management](https://aws.amazon.com/iam)
 
@@ -255,7 +255,7 @@
 - Logical grouping of instances within a single AZ
 - Instances can participate in low latency, 10 GBPs network
 
-<p align="center"><img src=https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/ec2.png" width="700"></p>
+<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/ec2.png" width="700"></p>
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/ebs.png) EBS : [Elastic Block Storage](https://aws.amazon.com/ebs)
 
@@ -286,7 +286,7 @@
 	- HDD Throughput Optimized : ST1 – Required for data written in sequence. Big Data, DWH, Log processing. Cannot be used as boot volumes
 	- HDD : Cold : SC1 – Data that isn’t frequently accessed. e.g. File Server. Cannot be used as boot volume
 
-<p align="center"><img src=https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/ebs-types.png" width="700"></p>
+<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/ebs-types.png" width="700"></p>
 	
 ### Volumes & Snapshots
 - Volumes are virtual hard disks
@@ -413,7 +413,7 @@
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/glacier.png) [Glacier](https://aws.amazon.com/glacier)
 - For archival only. Takes 3 to 5 hours to restore files. Durability of Eleven Nine (99.999999999%)
 
-<p align="center"><img src=https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/s3-vs-glacier.png" width="700"></p>
+<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/s3-vs-glacier.png" width="700"></p>
   
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/storagegateway.png) [Storage Gateway](https://aws.amazon.com/storagegateway) 
 
@@ -429,7 +429,7 @@
 - Store files in S3  Word, Pictures, PDFs
 - Accessed using network file system (NFS)
 
-<p align="center"><img src=https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/file-gateway.png" width="700"></p>
+<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/file-gateway.png" width="700"></p>
 
 #### Volume Gateway (**iSCSI**) 
 - Block based storage
@@ -444,15 +444,15 @@
 		- Only latest data stays on-prem
 		- Rest on AWS S3
 	
-<p align="center"><img src=https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway.png" width="700"></p>
-<p align="center"><img src=https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway-cached.png" width="700"></p>
+<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway.png" width="700"></p>
+<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway-cached.png" width="700"></p>
 	
 #### Volume Tape Gateway (**VTL**) 
 - Create tapes and send to S3
 - Gateway Virtual Tape Library (VTL) : Backup and Archiving solution
 - You can use existing backup applications like NetBackup, Backup Exec and Veeam etc
 
-<p align="center"><img src=https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/tape-gateway.png" width="700"></p>
+<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/tape-gateway.png" width="700"></p>
 	
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/snowball.png) [Snowball](https://aws.amazon.com/snowball) 
 
@@ -522,7 +522,7 @@
 - Geo-location based restriction can be applied 
 - Configure error pages in case of any uncertainty 
 
-<p align="center"><img src=https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/cdn.png" width="700"></p>
+<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/cdn.png" width="700"></p>
 
 ### CloudFront Security
 - You can force them to use CDN URL instead of S3 DNS
@@ -592,8 +592,8 @@
 	- This option has to be selected at instance creation time
 	- This option is not useful for improving performance / scaling
 
-<p align="center"><img src=https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/rds-multi-az.png" width="700"></p>
-<p align="center"><img src=https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/rds.png" width="700"></p>
+<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/rds-multi-az.png" width="700"></p>
+<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/rds.png" width="700"></p>
 
 - RDS Read Replica Databases
 	- Different from multi-AZ
@@ -610,7 +610,7 @@
 	- Application re-architecture is required to make use of Read replicas
 	- Read replicas are not used for DR. they are used for performance scaling only
 
-<p align="center"><img src=https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/rds-read-replica.png" width="700"></p>
+<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/rds-read-replica.png" width="700"></p>
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/dms.png) DMS : [Database Migration Service](https://aws.amazon.com/dms)
 
@@ -807,7 +807,7 @@
 |We evaluate all rules before deciding whether to allow traffic| We process rules in number order when deciding whether to allow traffic. Lower order rules take effect in case of conflict with higher order rules.|
 |Applies to an instance only if someone specifies the security group when launching the instance, or associates the security group with the instance later on| Automatically applies to all instances in the subnets it's associated with (backup layer of defense, so you don't have to rely on someone specifying the security group)|
 
-<p align="center"><img src=https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/security-group.png" width="700"></p>
+<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/security-group.png" width="700"></p>
 
 #### Virtual Private Network (VPN), Interet Gateway (IGW), Route Table
 - Create hardware VPN connection between your local DC and AWS
@@ -835,7 +835,7 @@
 			- When creating VPCs do not modify default route table to add your custom rules. If you modify the default route, it will affect all instances
 		- Create a new route table for customization
 
-<p align="center"><img src=https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/vpc.png" width="700"></p>
+<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/vpc.png" width="700"></p>
 
 ### ELB
 - ELB types
@@ -846,7 +846,7 @@
 - To have HA in general or for ELB, ensure that you have at-least 2 public and or private subnets in different availability zones
 - Create ELB also requires to configure security 
 
-<p align="center"><img src=https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/elb.png" width="700"></p>
+<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/elb.png" width="700"></p>
 
 ### NAT Instance/Gateway
 - NAT Instance is one EC2 instance. Search NAT in AMI market place and select NAT ready EC2 instances
@@ -864,7 +864,7 @@
 - You can use Network ACLs to control traffic for both NAT Instance and Gateway
 - NAT Gateways scale up to 10GBps. No need to disable source/ destination checks on Gateways
 
-<p align="center"><img src=https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/nat.png" width="700"></p>
+<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/nat.png" width="700"></p>
 
 #### Bastion
 - You cannot use NAT instance to SSH / RDP into private subnet. For that **Bastion** (Jump Box) is required
@@ -873,7 +873,7 @@
 - For Bastion HA, have multiple Bastions in different AZs (At least 2 public subnets). Auto scaling in multiple AZ, route 53 doing health checks
 - NAT instance is used to provide internet connectivity to private subnets
 
-<p align="center"><img src=https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/bastion.png" width="700"></p>
+<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/bastion.png" width="700"></p>
   
 #### VPC Flow Logs
 - Enable Flow Logs for Custom VPC to see all traffic
@@ -1072,16 +1072,16 @@
 	- Data consumers (EC2 instances) analyze the stream and then derive results/take next actions
 	- Data capacity of stream is a function of the number of shards you specify for the stream
 	
-<p align="center"><img src=https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis.png" width="700"></p>
+<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis.png" width="700"></p>
 
 - Kinesis Firehose 
   - Don’t have to worry about shards, streams, its completely automated
   - No automatic data retention window. Data is either immediately analyzed or sent to S3 and then to Redshift, elastic search cluster
   - Data is immediately analyzed via **Lambda**
 
-<p align="center"><img src=https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis-firehose.png" width="700"></p>
+<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis-firehose.png" width="700"></p>
   
 - Kinesis Analytics
   - Run SQL type queries on top of data contained in Streams or Firehose and store the results in S3 / Redshift and Elastic Search cluster
   
-<p align="center"><img src=https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis-analytics.png" width="700"></p>
+<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis-analytics.png" width="700"></p>
