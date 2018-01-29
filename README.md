@@ -247,7 +247,7 @@
 - No actual instances are created just with launch configuration
 - Auto scaling group – Set minimum size, spread it over subnets (AZs)- select all available AZs
 - Run health checks from ELB
-- Configure Auto scaling policy, based on Alarm take action – trigger a new instance creation when CPU Utilization is greater than 90% for 5 minutes. 
+- Configure Auto scaling policy, based on Alarm take action – trigger a new instance creation when CPU Utilization is greater than 90% for 5 minutes
 - You can also delete instance based on alarms
 - When Auto scaling group is launched it creates the instances based on definition.
   
@@ -286,6 +286,8 @@
 	- HDD Throughput Optimized : ST1 – Required for data written in sequence. Big Data, DWH, Log processing. Cannot be used as boot volumes
 	- HDD : Cold : SC1 – Data that isn’t frequently accessed. e.g. File Server. Cannot be used as boot volume
 
+<img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/ebs-types.png" width="600">
+	
 ### Volumes & Snapshots
 - Volumes are virtual hard disks
 - You can attach volume to EC2 instance belonging to same AZ
