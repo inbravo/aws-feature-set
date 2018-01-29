@@ -138,22 +138,24 @@
 
 ### EC2 Features
 - On demand. Pay per hour of usage
-- Applications with short term, spiky usage patterns or unpredictable workloads that cannot be interrupted
-- New apps on AWS
-- Reserved pricing
-- Reserve capacity over significant period of time. Significant discount
-- Applications with steady or predictable usage over a period of time. Reserved capacity required.
-- Further discount if upfront payment
-- Spot pricing : When bid price is higher than Spot price, then you can provision it. When it goes lower, instance is terminated
-- **If AWS terminates instance, you are not charged for partial hour. If you terminate, you will be charged for the hour**
-- Applications that are feasible only at very low compute prices. e.g. pharma simulations
-- Applications with urgent computing capacity
-- Dedicated physical machines. Pay by hour
-- Massive discount for reserved instances over a long period of time – upto 70% for 3 years
-- Useful for regulatory requirements
-- Certain licensing agreements prevent usage on virtual machine / multi-tenancy deployments
 - EC2 Key Pairs are region specific
 - EC2 instances can be accessed either through DNS name or EIP address
+- Applications with short term, spiky usage patterns or unpredictable workloads that cannot be interrupted
+- New apps on AWS
+- Reserved instances
+	- Reserve capacity over significant period of time. Significant discount
+	- Applications with steady or predictable usage over a period of time. Reserved capacity required
+	- Further discount if upfront payment
+- Spot instances
+	- When bid price is higher than Spot price, then you can provision it. When it goes lower, instance is terminated
+	- **If AWS terminates instance, you are not charged for partial hour. If you terminate, you will be charged for the hour**
+	- Applications that are feasible only at very low compute prices. e.g. pharma simulations
+	- Applications with urgent computing capacity
+- Dedicated instances
+	- Pay by hour
+	- Massive discount for reserved instances over a long period of time – upto 70% for 3 years
+	- Useful for regulatory requirements
+	- Certain licensing agreements prevent usage on virtual machine / multi-tenancy deployments
   
 ### EC2 Instance types
 |Sr. No| Family| Specialty| Use Case| Type|
@@ -340,7 +342,7 @@
 - You can tag buckets (or any AWS resoruce) to track costs. Tags consist of keys and (optional) value pairs
 - Lifecycle management of objects can be set. e.g. move to Glacier after 30 days
 - Every bucket created, object uploaded is private by default
-- Object Permissions – Access to Object ACLs
+- Object Permissions : Access to Object ACLs
 - Prefix in bucket is a folder in the bucket
 - Minimum file size requirement on S3 bucket is 0 byte
 - Max 100 S3 buckets per account by default
