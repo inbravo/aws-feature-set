@@ -477,7 +477,7 @@
 - Devices connect to existing applications and infrastructure using standard storage interfaces
 - Snowball Edges can be clustered together to process your data on premise
 
-<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/snowball-edge.png"></p>
+<p align="center"><img src="/images/cloudguru/snowball-edge.png"></p>
 
 ### Snowmobile
 - Massive 45 foot long ruggedized shipping container, pulled by a truck
@@ -486,16 +486,16 @@
 - You can use it for data center migration
 - Snowball import/export to/from S3 : If using Glacier first need to import into S3 and then into Snowball
 
-<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/snowball-mobile.png"></p>
+<p align="center"><img src="/images/cloudguru/snowball-mobile.png"></p>
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/edge.png) Edge Location 
+## ![](/images/aws/edge.png) Edge Location 
 
 ### Edge Location Features
 - location where content will be cached
 - Different from AWS Region/AZ
 - Nearest Edge Location will be used to send the cached object, to reduce the content delivery time
 	
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/cloudfront.png) [CloudFront](https://aws.amazon.com/cloudfront) 
+## ![](/images/aws/cloudfront.png) [CloudFront](https://aws.amazon.com/cloudfront) 
 
 ### CloudFront Features
 - CDN : Collection of distributed servers where the content is served to users based on the user’s location and the location of content origin
@@ -522,7 +522,7 @@
 - Geo-location based restriction can be applied 
 - Configure error pages in case of any uncertainty 
 
-<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/cdn.png" width="700"></p>
+<p align="center"><img src="/images/cloudguru/cdn.png" width="700"></p>
 
 ### CloudFront Security
 - You can force them to use CDN URL instead of S3 DNS
@@ -538,7 +538,7 @@
 - You can force users to get content via CloudFront after removing read access to S3 bucket
 - You can also upload content to CloudFront
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/rds.png) RDS : [Relational Database Service](https://aws.amazon.com/rds)  
+## ![](/images/aws/rds.png) RDS : [Relational Database Service](https://aws.amazon.com/rds)  
 
 ### RDS Features
 - RDS Supported Relational DB Types
@@ -592,8 +592,8 @@
 	- This option has to be selected at instance creation time
 	- This option is not useful for improving performance / scaling
 
-<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/rds-multi-az.png" width="700"></p>
-<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/rds.png" width="700"></p>
+<p align="center"><img src="/images/cloudguru/rds-multi-az.png" width="700"></p>
+<p align="center"><img src="/images/cloudguru/rds.png" width="700"></p>
 
 - RDS Read Replica Databases
 	- Different from multi-AZ
@@ -610,9 +610,9 @@
 	- Application re-architecture is required to make use of Read replicas
 	- Read replicas are not used for DR. they are used for performance scaling only
 
-<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/rds-read-replica.png" width="700"></p>
+<p align="center"><img src="/images/cloudguru/rds-read-replica.png" width="700"></p>
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/dms.png) DMS : [Database Migration Service](https://aws.amazon.com/dms)
+## ![](/images/aws/dms.png) DMS : [Database Migration Service](https://aws.amazon.com/dms)
 
 ### DMS Features
 - Migrate production database to AWS
@@ -627,7 +627,7 @@
 		- Stored procedures
 		- Functions
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/dynamodb.png) [DynamoDB](https://aws.amazon.com/dynamodb)
+## ![](/images/aws/dynamodb.png) [DynamoDB](https://aws.amazon.com/dynamodb)
 
 ### DynamoDB Features
 - Fast and flexible NoSQL database
@@ -655,7 +655,7 @@
 	- Use RDS if data requires joins and relationships
 	- In RDBMS database structure cannot be dynamically altered. With DynamoDB you can
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/redshift.png) [Redshift](https://aws.amazon.com/redshift)
+## ![](/images/aws/redshift.png) [Redshift](https://aws.amazon.com/redshift)
 
 ### Redshift Features
 - Petabyte scale DW solution in cloud.  Used for OLAP (Sum of various columns and joining the data)
@@ -685,7 +685,7 @@
 	- Speed achieved due to columnar storage
 	- Data stored sequentially on disk – hence faster
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/elasticache.png) [ElastiCache](https://aws.amazon.com/elasticache)  
+## ![](/images/aws/elasticache.png) [ElastiCache](https://aws.amazon.com/elasticache)  
 
 ### ElastiCache Features 
 - ElastiCache is a web service that makes it easy to deploy, operate and scale an in memory cache on cloud 
@@ -700,7 +700,7 @@
 		- Supports Master / Slave replication and multi-AZ deployment to get redundancy
 		- Use Redshift, if application is slow due to constant OLAP transactions on top of OLTP focused DB
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/aurora.png) [Aurora](https://aws.amazon.com/aurora)
+## ![](/images/aws/aurora.png) [Aurora](https://aws.amazon.com/aurora)
 
 ### Aurora Features 
 - MySQL compatible relational data base engine
@@ -738,7 +738,7 @@
 	- RDS automatically creates RDS Security Group w/ TCP port # 3306 enabled
 	- In VPC Security Group, the answer would be YES because you will have manually specify access to port & protocol
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/cloudwatch.png) [CloudWatch](https://aws.amazon.com/cloudwatch)
+## ![](/images/aws/cloudwatch.png) [CloudWatch](https://aws.amazon.com/cloudwatch)
 
 ### CloudWatch Features
 - Default Metrics : Network, Disk, CPU and Status check (Instance and System)
@@ -752,7 +752,7 @@
 - CloudWatch keep 2 weeks of metric data
 - CloudWatch metrics provide hypervisor visible metrics
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/vpc.png) [VPC](https://aws.amazon.com/vpc)
+## ![](/images/aws/vpc.png) [VPC](https://aws.amazon.com/vpc)
 
 ### VPC Features
 - VPC is a logical data center within an AWS Region
@@ -807,7 +807,7 @@
 |We evaluate all rules before deciding whether to allow traffic| We process rules in number order when deciding whether to allow traffic. Lower order rules take effect in case of conflict with higher order rules.|
 |Applies to an instance only if someone specifies the security group when launching the instance, or associates the security group with the instance later on| Automatically applies to all instances in the subnets it's associated with (backup layer of defense, so you don't have to rely on someone specifying the security group)|
 
-<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/security-group.png" width="700"></p>
+<p align="center"><img src="/images/cloudguru/security-group.png" width="700"></p>
 
 #### Virtual Private Network (VPN), Interet Gateway (IGW), Route Table
 - Create hardware VPN connection between your local DC and AWS
@@ -835,7 +835,7 @@
 			- When creating VPCs do not modify default route table to add your custom rules. If you modify the default route, it will affect all instances
 		- Create a new route table for customization
 
-<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/vpc.png" width="700"></p>
+<p align="center"><img src="/images/cloudguru/vpc.png" width="700"></p>
 
 ### ELB
 - ELB types
@@ -846,7 +846,7 @@
 - To have HA in general or for ELB, ensure that you have at-least 2 public and or private subnets in different availability zones
 - Create ELB also requires to configure security 
 
-<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/elb.png" width="700"></p>
+<p align="center"><img src="/images/cloudguru/elb.png" width="700"></p>
 
 ### NAT Instance/Gateway
 - NAT Instance is one EC2 instance. Search NAT in AMI market place and select NAT ready EC2 instances
@@ -864,7 +864,7 @@
 - You can use Network ACLs to control traffic for both NAT Instance and Gateway
 - NAT Gateways scale up to 10GBps. No need to disable source/ destination checks on Gateways
 
-<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/nat.png" width="700"></p>
+<p align="center"><img src="/images/cloudguru/nat.png" width="700"></p>
 
 #### Bastion
 - You cannot use NAT instance to SSH / RDP into private subnet. For that **Bastion** (Jump Box) is required
@@ -873,7 +873,7 @@
 - For Bastion HA, have multiple Bastions in different AZs (At least 2 public subnets). Auto scaling in multiple AZ, route 53 doing health checks
 - NAT instance is used to provide internet connectivity to private subnets
 
-<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/bastion.png" width="700"></p>
+<p align="center"><img src="/images/cloudguru/bastion.png" width="700"></p>
   
 #### VPC Flow Logs
 - Enable Flow Logs for Custom VPC to see all traffic
@@ -881,7 +881,7 @@
 - Create IAM role to allow all logs to flow into CloudWatch
 - Create log group in CloudWatch and inside that create stream where you can then see all the traffic flow
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/53.png) [Route 53](https://aws.amazon.com/route53)
+## ![](/images/aws/53.png) [Route 53](https://aws.amazon.com/route53)
 
 ### Route 53 Features
 - Convert human friendly domain names into IP addresses
@@ -954,7 +954,7 @@
 - With Route 53, there is a default limit of 50 domain names. However, this limit can be increased by contacting AWS support
 - Naked domain – which doesn’t have the www in front of the domain e.g. acloud.guru. [www.acloud.guru](http://www.acloud.guru)
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/sqs.png) SQS : [Simple Queue Service](https://aws.amazon.com/sqs)
+## ![](/images/aws/sqs.png) SQS : [Simple Queue Service](https://aws.amazon.com/sqs)
 
 ### SQS Features
 - SQS is fully managed message queuing service 
@@ -997,7 +997,7 @@
 - Each messages has a visibility timeout (12 hours by default)
 - SQS can do auto-scaling. If queue grows beyond a threshold, instantiate new web/app servers. Use Auto scaling + SQS to achieve this
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/sws.png) SWS : [Simple Workflow Service](https://aws.amazon.com/sws)
+## ![](/images/aws/sws.png) SWS : [Simple Workflow Service](https://aws.amazon.com/sws)
 
 ### SWS Features
 - SWS is a web service that makes it easy to coordinate work across distributed application components
@@ -1020,7 +1020,7 @@
 	- WF Deciders (**D**) : Control flow of activity tasks
 	- WF Activity Workers (**W**) : Carry out actual task
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/sns.png) SNS : [Simple Notification Service](https://aws.amazon.com/sns) 
+## ![](/images/aws/sns.png) SNS : [Simple Notification Service](https://aws.amazon.com/sns) 
 
 ### SNS Features
 - Makes it easy to setup, operate and send notifications from the cloud
@@ -1040,14 +1040,14 @@
 	- Pay 0.75$ per 100 notification deliveries over SMS
 	- Pay 2$ per 100000 notification deliveries over Email
 
-##  ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/transcoder.png) [Elastic Transcoder](https://aws.amazon.com/elastictranscoder) 
+##  ![](/images/aws/transcoder.png) [Elastic Transcoder](https://aws.amazon.com/elastictranscoder) 
 
 ### Elastic Transcoder Features
 - Allows to convert media files from source to different media formats
 - You pay the minutes you transcode and the resolution
 - S3 → Lambda Function → Elastic Transcoder → S3
   
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/api.png) [API Gateway](https://aws.amazon.com/api-gateway)
+## ![](/images/aws/api.png) [API Gateway](https://aws.amazon.com/api-gateway)
 
 ### API Gateway Features
 - Managed web service which enables developers to publish, monitor and secure APIs at any scale
@@ -1059,7 +1059,7 @@
 - Same origin policy : under this policy, a web browser only allows, scripts on one page to access something from other we page, but from same domain
 - CORS : Cross Origin Resource Sharing. For application built on top of multiple domains, you need to enable CORS on API Gateway
   
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/kinesis.png) [Kinesis](https://aws.amazon.com/kinesis) 
+## ![](/images/aws/kinesis.png) [Kinesis](https://aws.amazon.com/kinesis) 
 
 ### Kinesis Features
 - Streaming data is something which is generated by thousands of data sources – stock prices, game information, social network data, geo-spatial data, purchases from online stores, IoT sensor data
@@ -1072,16 +1072,16 @@
 	- Data consumers (EC2 instances) analyze the stream and then derive results/take next actions
 	- Data capacity of stream is a function of the number of shards you specify for the stream
 	
-<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis.png" width="700"></p>
+<p align="center"><img src="/images/cloudguru/kinesis.png" width="700"></p>
 
 - Kinesis Firehose 
   - Don’t have to worry about shards, streams, its completely automated
   - No automatic data retention window. Data is either immediately analyzed or sent to S3 and then to Redshift, elastic search cluster
   - Data is immediately analyzed via **Lambda**
 
-<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis-firehose.png" width="700"></p>
+<p align="center"><img src="/images/cloudguru/kinesis-firehose.png" width="700"></p>
   
 - Kinesis Analytics
   - Run SQL type queries on top of data contained in Streams or Firehose and store the results in S3 / Redshift and Elastic Search cluster
   
-<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/kinesis-analytics.png" width="700"></p>
+<p align="center"><img src="/images/cloudguru/kinesis-analytics.png" width="700"></p>
