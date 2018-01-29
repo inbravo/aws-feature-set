@@ -477,7 +477,7 @@
 - Devices connect to existing applications and infrastructure using standard storage interfaces
 - Snowball Edges can be clustered together to process your data on premise
 
-![](https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/snowball-edge.png) 
+<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/snowball-edge.png"></p>
 
 ### Snowmobile
 - Massive 45 foot long ruggedized shipping container, pulled by a truck
@@ -486,7 +486,7 @@
 - You can use it for data center migration
 - Snowball import/export to/from S3 : If using Glacier first need to import into S3 and then into Snowball
 
-![](https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/snowball-mobile.png) 
+<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/snowball-mobile.png"></p>
 
 ## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/edge.png) Edge Location 
 
