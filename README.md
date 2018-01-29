@@ -141,7 +141,6 @@
 - EC2 Key Pairs are region specific
 - EC2 instances can be accessed either through DNS name or EIP address
 - Applications with short term, spiky usage patterns or unpredictable workloads that cannot be interrupted
-- New apps on AWS
 - Reserved instances
 	- Reserve capacity over significant period of time. Significant discount
 	- Applications with steady or predictable usage over a period of time. Reserved capacity required
@@ -472,6 +471,8 @@
 - Multiple layers of security to protect data. Tamper resistant enclosure, 256-bit encryption
 - Once data is transferred, AWS performs software erasure of Snowball appliance
 
+<p align="center"><img src="/images/cloudguru/snowball-std.png"></p>
+
 ### Snowball Edge
 - 100 TB data transfer device which has onboard storage and compute capabilities
 - Move large amounts of data in and out of AWS, as a temporary storage tier for large local datasets
@@ -480,6 +481,18 @@
 - Snowball Edges can be clustered together to process your data on premise
 
 <p align="center"><img src="/images/cloudguru/snowball-edge.png"></p>
+
+### Snowball Device difference
+
+|Use case |Snowball Standard|Snowball Edge|
+|----|----|----|
+|Import data into Amazon S3|✓|✓
+|Copy data directly from HDFS|✓|	
+|Export from Amazon S3|✓|✓
+|Durable local storage||✓
+|Use in a cluster of devices||✓
+|Use with AWS Greengrass (IoT)||✓
+|Transfer files through NFS with a GUI||✓
 
 ### Snowmobile
 - Massive 45 foot long ruggedized shipping container, pulled by a truck
