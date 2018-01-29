@@ -169,27 +169,31 @@
 |9|P2|Graphics / General Purpose GPU[Parallel Processing]|Machine Learning / Bit Coin Mining.| |
 |10|X1|Memory Optimized|SAP HANA / Apache Spark| - |
 
-### EC2 Instance type Acronym (**DIRT MCG FPX**)  	
+### EC2 Instance type Acronym (**DR MC GF PX IT**)  	
 - **D** : Density
-- **I** : IOPS
 - **R** : RAM 
-- **T** : Cheap T2
 - **M** : Main Choice for Apps
 - **C** : Compute
 - **G** : Graphics
 - **F** : FPGA
 - **P** : Graphics, Pics, Parallel Processing
 - **X** : Extreme Memory
+- **I** : IOPS
+- **T** : Cheap T2
 
 ### EC2 Security Groups
-- A security group is a virtual firewall
-- First line of defense. Network ACLs are second line
-- Single instance can have multiple security groups. As each security group only "allows" inbound traffic, there will never be a conflict on security group rules
+- A security group is a virtual firewall. First line of defense
+- Network ACLs are second line of defense after security groups
+- Single instance can have multiple security groups
+- Each security group only "allows" inbound traffic,  hence there will never be a conflict on security group rules
 - Security group changes are applied immediately
-- Security groups are "stateful". Rules added as inbound rules – automatic outbound rules are added. Response back on the same channel. NACLs are stateless
-- All inbound traffic is blocked by default. You have to allow specific inbound rules for protocols
-- All outbound traffic is allowed by default.
-- Only allow rules, no deny rules exist. Use NACLs to deny specific IPs
+- Security groups are **Stateful**
+- Network ACLs are **Stateless**
+- All inbound traffic is **Blocked** by default
+- All outbound traffic is **Allowed** by default
+– Rules added as inbound rules. Automatic outbound rules are added
+- Only allow rules, no deny rules exist
+- Use network ACLs to deny specific IPs
 - Any number of EC2 instances in a security group
 - EC2 instances in the default security group can communicate with each other
 - Multiple security groups can be attached to an instance
@@ -197,21 +201,27 @@
 ### EC2 Status Checks
 
 #### System Status Checks
-Monitor the AWS systems required to use your instance to ensure they are working properly. These checks detect problems with your instance that require AWS involvement to repair. When a system status check fails, you can choose to wait for AWS to fix the issue, or you can resolve it yourself (for example, by stopping and starting an instance, or by terminating and replacing an instance).
-The following are examples of problems that can cause system status checks to fail:
-- Loss of network connectivity
-- Loss of system power
-- Software issues on the physical host
-- Hardware issues on the physical host that impact network reachability
+- Monitor the AWS systems required to use your instance to ensure they are working properly
+- These checks detect problems with your instance that require AWS involvement to repair
+- When a system status check fails, you can choose to wait for AWS to fix the issue, or you can resolve it yourself
+- Example, by stopping and starting an instance, or by terminating and replacing an instance
+- The following are examples of problems that can cause system status checks to fail:
+	- Loss of network connectivity
+	- Loss of system power
+	- Software issues on the physical host
+	- Hardware issues on the physical host that impact network reachability
   
 #### Instance Status Checks
-Monitor the software and network configuration of your individual instance. These checks detect problems that require your involvement to repair. When an instance status check fails, typically you will need to address the problem yourself (for example, by rebooting the instance or by making instance configuration changes).
-The following are examples of problems that can cause instance status checks to fail:
-- Failed system status checks
-- Incorrect networking or startup configuration
-- Exhausted memory
-- Corrupted file system
-- Incompatible kernel
+- Monitor the software and network configuration of your individual instance
+- These checks detect problems that require your involvement to repair
+- When an instance status check fails, typically you will need to address the problem yourself
+- Example, by rebooting the instance or by making instance configuration changes
+- The following are examples of problems that can cause instance status checks to fail:
+	- Failed system status checks
+	- Incorrect networking or startup configuration
+	- Exhausted memory
+	- Corrupted file system
+	- Incompatible kernel
 
 ### AWS CLI Usage
 - Users can login with Access Key ID and Secret Access Key. If anything is compromised, you can regenerate the secret access key
