@@ -89,9 +89,9 @@
 - Availability zone is logical data center
 - Edge Locations are CDN End Points for CloudFront. Many more edge locations exist than regions
 
-<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/regions.png" width="700"></p>
+<p align="center"><img src="/images/cloudguru/regions.png" width="700"></p>
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/iam.png) IAM : [Identity & Access Management](https://aws.amazon.com/iam)
+## ![](/images/aws/iam.png) IAM : [Identity & Access Management](https://aws.amazon.com/iam)
 
 ### IAM Resources
 - Users 
@@ -134,7 +134,7 @@
 - **C**ommand Line Interface (**CLI**) : Using Access Key ID and Secret Access Key
 - **S**oftware Development Kit (**SDK**) : Using Access Key ID and Secret Access Key
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/ec2.png) EC2 : [Elastic Compute Cloud](https://aws.amazon.com/ec2)
+## ![](/images/aws/ec2.png) EC2 : [Elastic Compute Cloud](https://aws.amazon.com/ec2)
 
 ### EC2 Features
 - On demand. Pay per hour of usage
@@ -255,9 +255,9 @@
 - Logical grouping of instances within a single AZ
 - Instances can participate in low latency, 10 GBPs network
 
-<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/ec2.png" width="700"></p>
+<p align="center"><img src="/images/cloudguru/ec2.png" width="700"></p>
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/ebs.png) EBS : [Elastic Block Storage](https://aws.amazon.com/ebs)
+## ![](/images/aws/ebs.png) EBS : [Elastic Block Storage](https://aws.amazon.com/ebs)
 
 ### EBS Features
 - Block based storage
@@ -286,7 +286,7 @@
 	- HDD Throughput Optimized : ST1 – Required for data written in sequence. Big Data, DWH, Log processing. Cannot be used as boot volumes
 	- HDD : Cold : SC1 – Data that isn’t frequently accessed. e.g. File Server. Cannot be used as boot volume
 
-<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/ebs-types.png" width="700"></p>
+<p align="center"><img src="/images/cloudguru/ebs-types.png" width="700"></p>
 	
 ### Volumes & Snapshots
 - Volumes are virtual hard disks
@@ -325,7 +325,7 @@
 - You will not lose data is you reboot for both
 - With EBS, you can ask AWS not to delete the volume upon instance termination
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/s3.png) S3 : [Simple Storage Service](https://aws.amazon.com/s3)
+## ![](/images/aws/s3.png) S3 : [Simple Storage Service](https://aws.amazon.com/s3)
 
 ### S3 Storage Types
 - S3-Standard : Durability of **Eleven Nine** (99.999999999%) and availability of **Four Nine** (99.99%)
@@ -410,12 +410,12 @@
 - Objects can be transitioned to Glacier after 30 days of moving to S3-IA 
 - You can also permanently delete objects
 
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/glacier.png) [Glacier](https://aws.amazon.com/glacier)
+## ![](/images/aws/glacier.png) [Glacier](https://aws.amazon.com/glacier)
 - For archival only. Takes 3 to 5 hours to restore files. Durability of Eleven Nine (99.999999999%)
 
-<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/s3-vs-glacier.png" width="700"></p>
+<p align="center"><img src="/images/cloudguru/s3-vs-glacier.png" width="700"></p>
   
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/storagegateway.png) [Storage Gateway](https://aws.amazon.com/storagegateway) 
+## ![](/images/aws/storagegateway.png) [Storage Gateway](https://aws.amazon.com/storagegateway) 
 
 ### Storage Gateway Features
 - It is a service which connects an on-premises software appliance (virtual) with cloud based storage 
@@ -429,7 +429,7 @@
 - Store files in S3  Word, Pictures, PDFs
 - Accessed using network file system (NFS)
 
-<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/file-gateway.png" width="700"></p>
+<p align="center"><img src="/images/cloudguru/file-gateway.png" width="700"></p>
 
 #### Volume Gateway (**iSCSI**) 
 - Block based storage
@@ -444,17 +444,17 @@
 		- Only latest data stays on-prem
 		- Rest on AWS S3
 	
-<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway.png" width="700"></p>
-<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/volume-gateway-cached.png" width="700"></p>
+<p align="center"><img src="/images/cloudguru/volume-gateway.png" width="700"></p>
+<p align="center"><img src="/images/cloudguru/volume-gateway-cached.png" width="700"></p>
 	
 #### Volume Tape Gateway (**VTL**) 
 - Create tapes and send to S3
 - Gateway Virtual Tape Library (VTL) : Backup and Archiving solution
 - You can use existing backup applications like NetBackup, Backup Exec and Veeam etc
 
-<p align="center"><img src="https://github.com/inbravo/aws-feature-set/blob/master/images/cloudguru/tape-gateway.png" width="700"></p>
+<p align="center"><img src="/images/cloudguru/tape-gateway.png" width="700"></p>
 	
-## ![](https://github.com/inbravo/aws-feature-set/blob/master/images/aws/snowball.png) [Snowball](https://aws.amazon.com/snowball) 
+## ![](/images/aws/snowball.png) [Snowball](https://aws.amazon.com/snowball) 
 
 ### Snowball Features
 - Physical data transfer solution
