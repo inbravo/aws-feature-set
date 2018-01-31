@@ -771,19 +771,46 @@
 
 ### VPC Features
 - VPC is a logical data center within an AWS Region
+- EC2-Classic was used before arrival of **VPC**
+- Earlier AWS accounts still support EC2-Classic, and can launch instances into either EC2-Classic or a VPC
+- Control the outbound traffic from your instances (egress filtering) in addition to controlling the inbound traffic to them (ingress filtering) 
+- If your account supports the EC2-VPC platform only, it comes with a default VPC that has a default subnet in each Availability Zone
+- Each instance that you launch into a default subnet has a **private** IPv4 address and a **public** IPv4 address
 - Control over network environment, select IP address range, subnets and configure route tables and gateways
-- VPC can not span regions
-- VPC can span AZs
-- Can’t attached multiple Internet Gateways to the VPC to boost performance
+- VPC can not span regions but VPC can span AZs
 - The default limit for the number of Amazon VPCs that a customer may have in a region is 5
 - **IPsec** is the security protocol supported by Amazon VPC
 - Can create public facing subnet (Web) having internet access and private facing subnet (DB) with no internet access
 - Attaching an ENI associated with a different subnet to an instance can make the instance dual-homed
-- Classless Inter-Domain Routing (CIDR) is used to configure available IP in a subnet(Example 10.0.0.0/32, 32 is CIDR)
-- Typical Private IP address ranges (not publically routable)
-  - 10.0.0.0 to 10.255.255.255 (10/8 prefix)
-  - 172.16.0.0 to 172.31.255.255 (172.16/12 prefix)
-  - 192.168.0.0 to 192.168.255.255 (192.168/16 prefix)
+- Classless Inter-Domain Routing (**CIDR**) is used to configure available IP in a subnet(Example 10.0.0.0/32, 32 is CIDR)
+
+#### Accessing the Internet
+- Default VPC
+	- Your default VPC includes an internet gateway
+	- Each instance that you launch into a default subnet has a private IPv4 address and a public IPv4 address
+	- These instances can communicate with the internet through the internet gateway (**IGW**)
+	- An internet gateway enables your instances to connect to the internet through the Amazon EC2 network edge
+
+<p align="center"><img src="/images/aws/default-vpc-diagram.png" width="700"></p>
+
+- Custom VPC
+	- By default, each instance that you launch into a nondefault subnet has a private IPv4 address, but no public IPv4 address
+	- Unless you specifically assign one at launch, or you modify the subnet's public IP address attribute
+	- These instances can communicate with each other, but can't access the internet
+	- These instances can communicate with the internet through the internet gateway (**IGW**)
+	- You can enable internet access for an instance launched into a nondefault subnet by attaching an internet gateway to its VPC and associating an Elastic IP address with the instance
+	- Alternatively, to allow an instance in your VPC to initiate outbound connections to the internet but prevent unsolicited inbound connections from the internet, you can use a network address translation (**NAT**) device for IPv4 traffic
+	- Can’t attached multiple internet gateways to the VPC to boost performance
+	
+<p align="center"><img src="/images/aws/nondefault-vpc-diagram.png" width="700"></p>
+
+- Network Address Translation (NAT) and Port Address Translation (PAT)
+	- Use a NAT device to enable instances in a private subnet to connect to the Internet. For example, for software updates
+	- NAT devices help to prevent the Internet from initiating connections with the instances
+	- A NAT device forwards traffic from the instances in the private subnet to the Internet or other AWS services, and then sends the response back to the instances
+	- When traffic goes to the Internet, the source IPv4 address is replaced with the NAT device’s address and similarly, when the response traffic goes to those instances, the NAT device translates the address back to those instances’ private IPv4 addresses
+	- NAT devices are not supported for IPv6 traffic. Use an egress-only Internet gateway instead
+	- Actual role of a NAT device is both address translation and port address translation (PAT)
 
 #### Subnet Features
 - Each subnet is always mapped to an availability zone (AZ)
