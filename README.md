@@ -811,6 +811,23 @@
 	- When traffic goes to the Internet, the source IPv4 address is replaced with the NAT device’s address and similarly, when the response traffic goes to those instances, the NAT device translates the address back to those instances’ private IPv4 addresses
 	- NAT devices are not supported for IPv6 traffic. Use an egress-only Internet gateway instead
 	- Actual role of a NAT device is both address translation and port address translation (PAT)
+	- AWS offers two kinds of NAT devices. a NAT gateway or a NAT instance
+		- NAT Instance is one EC2 instance. Search NAT in AMI market place and select NAT ready EC2 instances
+		- NAT Gateway is a managed service, which is just came in to replace NAT instances
+		- You are responsible for performance management, scale out and security groups
+		- On NAT instance, **Remember to disable source/destination IP check**. This is required to allow private subnet internet connectivity. This is not required on NAT Gateway
+		- Allow both HTTP and HTTPS access on security groups associated with NAT instances
+		- Security groups are always associated with NAT Instances
+		- Both **NAT Instance and NAT Gateways are deployed to public subnet**
+		- Elastic IP has to be added to NAT Instance
+		- NAT Gateway is automatically assigned a public IP
+		- In VPC, update default route table to allow connectivity from Private subnet to NAT Instance and Gateway
+		- NAT instance is single point of failure. You can place NAT instance behind Auto Scaling group, multiple subnets in different AZs and scripted failover
+		- To improve performance increase the size of the NAT instance to allow for higher throughput
+		- You can use Network ACLs to control traffic for both NAT Instance and Gateway
+		- NAT Gateways scale up to 10GBps. No need to disable source/ destination checks on Gateways
+
+<p align="center"><img src="/images/cloudguru/nat.png" width="700"></p>
 
 #### Subnet Features
 - Each subnet is always mapped to an availability zone (AZ)
@@ -889,24 +906,6 @@
 - Create ELB also requires to configure security 
 
 <p align="center"><img src="/images/cloudguru/elb.png" width="700"></p>
-
-### NAT Instance/Gateway
-- NAT Instance is one EC2 instance. Search NAT in AMI market place and select NAT ready EC2 instances
-- NAT Gateway is a managed service, which is just came in to replace NAT instances
-- You are responsible for performance management, scale out and security groups
-- On NAT instance, **Remember to disable source/destination IP check**. This is required to allow private subnet internet connectivity. This is not required on NAT Gateway
-- Allow both HTTP and HTTPS access on security groups associated with NAT instances
-- Security groups are always associated with NAT Instances
-- Both **NAT Instance and NAT Gateways are deployed to public subnet**
-- Elastic IP has to be added to NAT Instance
-- NAT Gateway is automatically assigned a public IP
-- In VPC, update default route table to allow connectivity from Private subnet to NAT Instance and Gateway
-- NAT instance is single point of failure. You can place NAT instance behind Auto Scaling group, multiple subnets in different AZs and scripted failover
-- To improve performance increase the size of the NAT instance to allow for higher throughput
-- You can use Network ACLs to control traffic for both NAT Instance and Gateway
-- NAT Gateways scale up to 10GBps. No need to disable source/ destination checks on Gateways
-
-<p align="center"><img src="/images/cloudguru/nat.png" width="700"></p>
 
 #### Bastion
 - You cannot use NAT instance to SSH / RDP into private subnet. For that **Bastion** (Jump Box) is required
