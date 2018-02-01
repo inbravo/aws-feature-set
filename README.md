@@ -936,12 +936,14 @@
 	- Cache the DNS record for TTL seconds
 	- Length that a DNS record is cached on either resolving server or users own local computer
 - Hosted Zone
-	- Collection of resource record sets hosted by Route 53
+	- Collection of resource that holds the information that how you wants to route traffic for a domain (example.com)
 	- A hosted zone represents resource record sets that are managed together under a single domain name
 	- NS, SOA, CNAME, Alias etc. types of records for a particular domain e.g. [DNS Lookup](https://www.tcpiputils.com/dns-lookup/google.com/ALL)
 	- Types	
 		- Private : how you want to route traffic within VPC
 		- Public : how you want to route traffic on internet
+	- When a hosted zone for your domain will be created, you will be given four DNS endpoints called **delegation set**
+	- These endpoints should to be updated in your domain names nameserver section 
 - DNS Record Types
 	- SOA (Start of Authority)
 		- Provides server information which provides data for the zone
@@ -967,7 +969,7 @@
 		- Most common usage : map naked domain name (zone apex) to ELB names
 		- Always use Alias (v/s CNAME) as Alias has no charges
 		- Answering CNAME queries has a cost on Route53
-- Route 53 Routing Policies
+- Route 53 Routing Policies (DLF GW : DLF Gurgaon)
 	1. Simple (default) : When a single resource performs function for your domain, only one webserver serves content
 	2. Weighted 
 		- Send x% of traffic to site A and remainder (100 – x) % of it to site B. Need not be two different regions. Can be even two different ELBs
@@ -982,7 +984,7 @@
 	4. Failover 
 		- When you want to create an active/passive setup
 		- Disaster Recovery 
-			- R53 monitors health of site. 
+			- R53 monitors health of site
 			- If active fails then R53 routes traffic to passive site
 			- Designate a primary and secondary endpoint for your hosted zone record
 	5. Geo-location 
@@ -994,6 +996,46 @@
 - R53 supports zone apex records
 - With Route 53, there is a default limit of 50 domain names. However, this limit can be increased by contacting AWS support
 - Naked domain – which doesn’t have the www in front of the domain e.g. acloud.guru. [www.acloud.guru](http://www.acloud.guru)
+
+### VPC Samples
+
+#### Scenario 1: VPC with a Single Public Subnet
+- A VPC with a size /16 IPv4 CIDR block (example: 10.0.0.0/16). This provides 65,536 private IPv4 addresses
+- A subnet with a size /24 IPv4 CIDR block (example: 10.0.0.0/24). This provides 256 private IPv4 addresses
+- An Internet gateway. This connects the VPC to the Internet and to other AWS services
+- An instance with a private IPv4 address in the subnet range (example: 10.0.0.6), which enables the instance to communicate with other instances in the VPC
+- An elastic IPv4 address (example: 198.51.100.2), which is a public IPv4 address that enables the instance to be reached from the Internet
+- A custom route table associated with the subnet. The route table entries enable instances in the subnet to use IPv4 to communicate with other instances in the VPC, and to communicate directly over the Internet
+- A subnet that's associated with a route table that has a route to an internet gateway is known as a public subnet
+
+<p align="center"><img src="/images/aws/vpc-1.png" width="700"></p>
+
+#### Scenario 2: VPC with Public and Private Subnets (NAT)
+- A VPC with a size /16 IPv4 CIDR block (example: 10.0.0.0/16). This provides 65,536 private IPv4 addresses
+- A public subnet with a size /24 IPv4 CIDR block (example: 10.0.0.0/24). This provides 256 private IPv4 addresses
+- A public subnet is a subnet that's associated with a route table that has a route to an Internet gateway
+- A private subnet with a size /24 IPv4 CIDR block (example: 10.0.1.0/24). This provides 256 private IPv4 addresses
+- An Internet gateway. This connects the VPC to the Internet and to other AWS services
+- Instances with private IPv4 addresses in the subnet range (examples: 10.0.0.5, 10.0.1.5). This enables them to communicate with each other and other instances in the VPC
+- Instances in the public subnet with Elastic IPv4 addresses (example: 198.51.100.1), which are public IPv4 addresses that enable them to be reached from the Internet. The instances can have public IP addresses assigned at launch instead of Elastic IP addresses. Instances in the private subnet are back-end servers that don't need to accept incoming traffic from the Internet and therefore do not have public IP addresses; however, they can send requests to the Internet using the NAT gateway
+- A NAT gateway with its own Elastic IPv4 address. Instances in the private subnet can send requests to the Internet through the NAT gateway over IPv4 (for example, for software updates)
+- A custom route table associated with the public subnet. This route table contains an entry that enables instances in the subnet to communicate with other instances in the VPC over IPv4, and an entry that enables instances in the subnet to communicate directly with the Internet over IPv4
+- The main route table associated with the private subnet. The route table contains an entry that enables instances in the subnet to communicate with other instances in the VPC over IPv4, and an entry that enables instances in the subnet to communicate with the Internet through the NAT gateway over IPv4
+
+<p align="center"><img src="/images/aws/vpc-2.png" width="700"></p>
+
+#### Scenario 3: VPC with Public and Private Subnets and AWS Managed VPN Access
+- A virtual private cloud (VPC) with a size /16 IPv4 CIDR (example: 10.0.0.0/16). This provides 65,536 private IPv4 addresses
+- A public subnet with a size /24 IPv4 CIDR (example: 10.0.0.0/24). This provides 256 private IPv4 addresses. A public subnet is a subnet that's associated with a route table that has a route to an Internet gateway
+- A VPN-only subnet with a size /24 IPv4 CIDR (example: 10.0.1.0/24). This provides 256 private IPv4 addresses
+- An Internet gateway. This connects the VPC to the Internet and to other AWS products
+- A VPN connection between your VPC and your network. The VPN connection consists of a virtual private gateway located on the Amazon side of the VPN connection and a customer gateway located on your side of the VPN connection
+- Instances with private IPv4 addresses in the subnet range (examples: 10.0.0.5 and 10.0.1.5), which enables the instances to communicate with each other and other instances in the VPC
+- Instances in the public subnet with Elastic IP addresses (example: 198.51.100.1), which are public IPv4 addresses that enable them to be reached from the Internet. The instances can have public IPv4 addresses assigned at launch instead of Elastic IP addresses. Instances in the VPN-only subnet are back-end servers that don't need to accept incoming traffic from the Internet, but can send and receive traffic from your network
+- A custom route table associated with the public subnet. This route table contains an entry that enables instances in the subnet to communicate with other instances in the VPC, and an entry that enables instances in the subnet to communicate directly with the Internet
+- The main route table associated with the VPN-only subnet. The route table contains an entry that enables instances in the subnet to communicate with other instances in the VPC, and an entry that enables instances in the subnet to communicate directly with your network
+
+<p align="center"><img src="/images/aws/vpc-3.png" width="700"></p>
 
 ## ![](/images/aws/sqs.png) SQS : [Simple Queue Service](https://aws.amazon.com/sqs)
 
