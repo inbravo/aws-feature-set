@@ -903,12 +903,11 @@
 
 |DHCP Option Name |Description|
 |----|----|
-|domain-name-servers |The IP addresses of up to four domain name servers, or AmazonProvidedDNS. The default DHCP option set specifies AmazonProvidedDNS. If specifying more than one domain name server, separate them with commas. Although you can specify up to four domain name servers, note that some operating systems may impose lower limits. If you want your instance to receive a custom DNS hostname as specified in domain-name, you must set domain-name-servers to a custom DNS server.|
-|domain-name|If you're using AmazonProvidedDNS in us-east-1, specify ec2.internal. If you're using AmazonProvidedDNS in another region, specify region.compute.internal (for example, ap-northeast-1.compute.internal). Otherwise, specify a domain name (for example, example.com). This value is used to complete unqualified DNS hostnames. For more information about DNS hostnames and DNS support in your VPC, see Using DNS with Your VPC.|
-|Important|Some Linux operating systems accept multiple domain names separated by spaces. However, other Linux operating systems and Windows treat the value as a single domain, which results in unexpected behavior. If your DHCP options set is associated with a VPC that has instances with multiple operating systems, specify only one domain name|
-|ntp-servers|The IP addresses of up to four Network Time Protocol (NTP) servers. For more information, see section 8.3 of RFC 2132.|
-|netbios-name-servers|The IP addresses of up to four NetBIOS name servers.|
-|netbios-node-type|The NetBIOS node type (1, 2, 4, or 8). We recommend that you specify 2 (point-to-point, or P-node). Broadcast and multicast are not currently supported. For more information about these node types, see section 8.7 of RFC 2132 and section 10 of RFC1001.|
+|domain-name-servers |The IP addresses of up to four domain name servers, or AmazonProvidedDNS. The default DHCP option set specifies AmazonProvidedDNS. If specifying more than one domain name server, separate them with commas. Although you can specify up to four domain name servers, note that some operating systems may impose lower limits. If you want your instance to receive a custom DNS hostname as specified in domain-name, you must set domain-name-servers to a custom DNS server|
+|domain-name|If you're using AmazonProvidedDNS in us-east-1, specify ec2.internal. If you're using AmazonProvidedDNS in another region, specify region.compute.internal (for example, ap-northeast-1.compute.internal). Otherwise, specify a domain name (for example, example.com). This value is used to complete unqualified DNS hostnames|
+|ntp-servers|The IP addresses of up to four Network Time Protocol (NTP) servers : Clock synchronization|
+|netbios-name-servers|The IP addresses of up to four NetBIOS name servers|
+|netbios-node-type|The NetBIOS node type (1, 2, 4, or 8). We recommend that you specify 2 (point-to-point, or P-node)|
 
 #### VPC Samples
 
