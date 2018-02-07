@@ -183,8 +183,12 @@
 - **T** : Cheap T2
 
 ### EC2 Security Groups
-- A security group is a virtual firewall. First line of defense
-- Network ACLs are second line of defense after security groups
+- By default EC2 is in **DENY ALL** mode. You need to open ports using security groups
+- Security groups can never **DENY**
+- Security groups allways **ALLOWS**
+- A security group is a virtual firewall
+- Security Group 	: First line of defense
+- Network ACLs 		: Second line of defense
 - Single instance can have multiple security groups
 - Each security group only "allows" inbound traffic,  hence there will never be a conflict on security group rules
 - Security group changes are applied immediately
@@ -244,13 +248,24 @@
   
 ### EC2 Auto Scaling
 - Before you can create Auto scaling group you need to create a launch configuration
+- Launch config
+	- Name
+	- AMI
+	- AMI type
+	- Bootstrap script
 - Launch Configuration : Select AMI, Instance Type, Bootstrap script
 - No actual instances are created just with launch configuration
-- Auto scaling group – Set minimum size, spread it over subnets (AZs)- select all available AZs
+- Auto scaling group : set minimum size, spread it over subnets (AZs) : select all available AZs
+- Minimum size and Launch config is must for Auto scaling
 - Run health checks from ELB
-- Configure Auto scaling policy, based on Alarm take action – trigger a new instance creation when CPU Utilization is greater than 90% for 5 minutes
+- Configure Auto scaling policy, based on alarm take action. Trigger a new instance creation when CPU Utilization is greater than 90% for 5 minutes
 - You can also delete instance based on alarms
-- When Auto scaling group is launched it creates the instances based on definition.
+- When Auto scaling group is launched it creates the instances based on definition
+- Auto Scaling Types (**MMSD**)
+	- Maintain current levels
+	- Manual
+	- Scheduled
+	- Dynamic 
   
 ### EC2 Placement Groups
 - Logical grouping of instances within a single AZ
@@ -277,6 +292,8 @@
 - When instance is terminated, root volume is deleted. You can turn if off
 - System Status Check – Overall health of hosting infrastructure. If they arise, Terminate instance and recreate
 - Instance Status Check – Health of instance. If they arise, reboot the instance
+- Zonal replication only
+- **AWS does not performs backup of data on virtual disks**
 
 ### EBS Volume Types
 - SSD Drives
@@ -331,7 +348,12 @@
 ### S3 Storage Types
 - S3-Standard : Durability of **Eleven Nine** (99.999999999%) and availability of **Four Nine** (99.99%)
 - S3-IA (Infrequently Accessed) : Durability of **Eleven Nine** (99.999999999%) and availability of **Three Nine** (99.9%)
-- S3-RRS (Reduced Redundancy Storage) : Durability and availability of **Four Nine** (99.99%)
+- S3-RRS (Reduced Redundancy Storage) : Durability and availability of **Four Nine** (99.99%) (**Not suitable for critical data**)
+|Type |D|A|
+|----|----|----|
+|S3|11|4|
+|IA|11|3|
+|RRS|4|4|
 
 ### S3 Buckets
 - S3 Namespace is global. Names must be unique globally
@@ -606,6 +628,8 @@
 	- This can be used for Disaster Recovery (DR) purpose only
 	- This option has to be selected at instance creation time
 	- This option is not useful for improving performance / scaling
+- Maximum 30000 IOPS allowed on a MySQL and Oracle RDS instance
+- Maximum 6 TB size allowed on a MySQL and Oracle RDS instance
 
 <p align="center"><img src="/images/cloudguru/rds-multi-az.png" width="700"></p>
 <p align="center"><img src="/images/cloudguru/rds.png" width="700"></p>
@@ -669,6 +693,7 @@
 	- Observe workload characteristics and decide
 	- Use RDS if data requires joins and relationships
 	- In RDBMS database structure cannot be dynamically altered. With DynamoDB you can
+- Local secondry indexes can be created after creating the table
 
 ## ![](/images/aws/redshift.png) [Redshift](https://aws.amazon.com/redshift)
 
