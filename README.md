@@ -137,6 +137,7 @@
 ## ![](/images/aws/ec2.png) EC2 : [Elastic Compute Cloud](https://aws.amazon.com/ec2)
 
 ### EC2 Features
+- 20 EC2 instance soft limit per region
 - On demand. Pay per hour of usage
 - EC2 Key Pairs are region specific
 - EC2 instances can be accessed either through DNS name or EIP address
@@ -935,14 +936,6 @@
 - The Dynamic Host Configuration Protocol (DHCP) provides a standard for passing configuration information to hosts on a TCP/IP network
 - The **options** field of a DHCP message contains the configuration parameters. Some of those parameters are the domain name, domain name server, and the netbios-node-type
 - DHCP options sets are associated with your AWS account so that you can use them across all of your virtual private clouds (VPC)
-
-|DHCP Option Name |Description|
-|----|----|
-|domain-name-servers |The IP addresses of up to four domain name servers, or AmazonProvidedDNS. The default DHCP option set specifies AmazonProvidedDNS. If specifying more than one domain name server, separate them with commas. Although you can specify up to four domain name servers, note that some operating systems may impose lower limits. If you want your instance to receive a custom DNS hostname as specified in domain-name, you must set domain-name-servers to a custom DNS server|
-|domain-name|If you're using AmazonProvidedDNS in us-east-1, specify ec2.internal. If you're using AmazonProvidedDNS in another region, specify region.compute.internal (for example, ap-northeast-1.compute.internal). Otherwise, specify a domain name (for example, example.com). This value is used to complete unqualified DNS hostnames|
-|ntp-servers|The IP addresses of up to four Network Time Protocol (NTP) servers : Clock synchronization|
-|netbios-name-servers|The IP addresses of up to four NetBIOS name servers|
-|netbios-node-type|The NetBIOS node type (1, 2, 4, or 8). We recommend that you specify 2 (point-to-point, or P-node)|
 
 #### VPC Samples
 
