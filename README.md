@@ -349,6 +349,7 @@
 - S3-Standard : Durability of **Eleven Nine** (99.999999999%) and availability of **Four Nine** (99.99%)
 - S3-IA (Infrequently Accessed) : Durability of **Eleven Nine** (99.999999999%) and availability of **Three Nine** (99.9%)
 - S3-RRS (Reduced Redundancy Storage) : Durability and availability of **Four Nine** (99.99%) (**Not suitable for critical data**)
+
 |Type |D|A|
 |----|----|----|
 |S3|11|4|
