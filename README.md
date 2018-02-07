@@ -787,7 +787,7 @@
 ## ![](/images/aws/cloudwatch.png) [CloudWatch](https://aws.amazon.com/cloudwatch)
 
 ### CloudWatch Features
-- Default Metrics : Network, Disk, CPU and Status check (Instance and System)
+- Default Metrics : Network, Disk, CPU (NDC) and Status check (Instance and System) 
 - Memory : RAM is a custom metric
 - You can create custom dashboards all CloudWatch metrics.
 - CloudWatch alarms – set notifications when particular thresholds are hit.
@@ -808,7 +808,8 @@
 - If your account supports the EC2-VPC platform only, it comes with a default VPC that has a default subnet in each Availability Zone
 - Each instance that you launch into a default subnet has a **private** IPv4 address and a **public** IPv4 address
 - Control over network environment, select IP address range, subnets and configure route tables and gateways
-- VPC can not span regions but VPC can span AZs
+- **VPC can not span regions
+- **VPC can span AZs but Subnet cant span AZ**
 - The default limit for the number of Amazon VPCs that a customer may have in a region is 5
 - **IPsec** is the security protocol supported by Amazon VPC
 - Can create public facing subnet (Web) having internet access and private facing subnet (DB) with no internet access
@@ -827,17 +828,18 @@
 - Custom VPC
 	- By default, each instance that you launch into a nondefault subnet has a private IPv4 address, but no public IPv4 address
 	- Unless you specifically assign one at launch, or you modify the subnet's public IP address attribute
-	- These instances can communicate with each other, but can't access the internet
+	- **These instances can communicate with each other, but can't access the internet**
 	- These instances can communicate with the internet through the internet gateway (**IGW**)
-	- You can enable internet access for an instance launched into a nondefault subnet by attaching an internet gateway to its VPC and associating an Elastic IP address with the instance
-	- Alternatively, to allow an instance in your VPC to initiate outbound connections to the internet but prevent unsolicited inbound connections from the internet, you can use a network address translation (**NAT**) device for IPv4 traffic
+	- You can enable internet access for an instance launched into a nondefault subnet by **attaching an internet gateway to its VPC and associating an Elastic IP address** with the instance
+	- Alternatively, to allow an instance in your VPC to initiate outbound connections to the internet but prevent unsolicited inbound connections from the internet, you can use a network address translation (**NAT**) **device for IPv4 traffic**
 	- Can’t attached multiple internet gateways to the VPC to boost performance
 	
 <p align="center"><img src="/images/aws/nondefault-vpc-diagram.png" width="700"></p>
 
 - Network Address Translation (NAT) and Port Address Translation (PAT)
+	- **Only IPV4 and no IPV6**
 	- Use a NAT device to enable instances in a private subnet to connect to the Internet. For example, for software updates
-	- NAT devices help to prevent the Internet from initiating connections with the instances
+	- **NAT devices help to prevent the Internet from initiating connections with the instances**
 	- A NAT device forwards traffic from the instances in the private subnet to the Internet or other AWS services, and then sends the response back to the instances
 	- When traffic goes to the Internet, the source IPv4 address is replaced with the NAT device’s address and similarly, when the response traffic goes to those instances, the NAT device translates the address back to those instances’ private IPv4 addresses
 	- NAT devices are not supported for IPv6 traffic. Use an egress-only Internet gateway instead
@@ -856,7 +858,7 @@
 		- NAT instance is single point of failure. You can place NAT instance behind Auto Scaling group, multiple subnets in different AZs and scripted failover
 		- To improve performance increase the size of the NAT instance to allow for higher throughput
 		- You can use Network ACLs to control traffic for both NAT Instance and Gateway
-		- NAT Gateways scale up to 10GBps. No need to disable source/ destination checks on Gateways
+		- **NAT Gateways scale up to 10GBps**. No need to disable source/ destination checks on Gateways
 
 <p align="center"><img src="/images/cloudguru/nat.png" width="700"></p>
 
@@ -875,7 +877,7 @@
 	- 10.0.0.255: Network broadcast address
 	
 #### Security groups, Network ACLs
-- Security groups, Network ACLs, Route Tables can span subnets/AZs
+- **Security groups, Network ACLs, Route Tables can span subnets/AZs**
 - Each subnet must be assocaited with a ACL, if subnet is not associated with a ACL, this subnet will be automatically asssociated with default network ACL
 - Leverage multiple layers of security to control access to EC2 instances
 	- Security groups **STATEFUL** (SF)
@@ -887,7 +889,7 @@
 	- User created custom ACL defaultly deines all inbound/outbound traffic
 - AWS Recommends adding ACL rules in increments of 100s
 - Ephemeral ports : allow inbound /outbound traffic from 1024–65535. As clients can initiate outbound connection from any random port. Ports < 1024 reserved for super user access
-- If you have to block a specific IP address / range, use ACLs instead of security groups. SGs can’t deny traffic (they only allow)
+- **If you have to block a specific IP address / range, use ACLs instead of security groups. SGs can’t deny traffic (they only allow)**
 
 |Security Group| Network ACL|
 |-------------|-------------| 
@@ -902,9 +904,11 @@
 #### Virtual Private Network (VPN), Interet Gateway (IGW), Route Table
 - Create hardware VPN connection between your local DC and AWS
 - AWS VPC endpoint enables you to create a private connection between your Amazon VPC and another AWS service without requiring access over the Internet or through a NAT device, VPN connection, or AWS Direct Connect
+- VPC endpoint for sending traffic directly to Amazon S3 using S3 gateway
 - Route table specifies how packets are forwarded between the subnets within VPC, internet and VPN 
-- Route table contains a route from IP : 0.0.0.0/0 to default IGW for allowing accesss of subnet to internet
+- **Route table contains a route from IP : 0.0.0.0/0** to default IGW for allowing accesss of subnet to internet
 - Only one internet gateway per VPC
+- **ENI for dual homes instances**
 
 #### VPC Configuration
 - VPC types 
@@ -915,7 +919,7 @@
 		- Each EC2 instance in default VPC will have a public and private IP address
 		- If you delete default VPC, only way to restore it is by contacting Amazon
 	- Custom VPC
-		- Default Security group, network ACL & route table are created for each custom VPC you create
+		- **Default Security group, network ACL & route table (NRS) are created for each custom VPC you create**
 		- Doesn’t create Subnets or Internet Gateways (IGW) out of the box
 		- In each VPC you create, 5 IP addresses are reserved by AWS for itself. First 4 and last IP in the CIDR block
 		- You can't change the size of a VPC after you create it
@@ -923,7 +927,7 @@
 			- To exactly replicate the old VPC, create AMIs from your running instances, and then launch replacement instances in your new, larger VPC
 			- You can then terminate your old instances, and delete your smaller VPC
 			- When creating VPCs do not modify default route table to add your custom rules. If you modify the default route, it will affect all instances
-		- Create a new route table for customization
+		- **Create a new route table for customization**
 
 <p align="center"><img src="/images/cloudguru/vpc.png" width="700"></p>
 
@@ -1009,6 +1013,8 @@
 ## ![](/images/aws/53.png) [Route 53](https://aws.amazon.com/route53)
 
 ### Route 53 Features
+- **No load balancing and only health monitoring**
+- Upto 512 KB use UDP and then use TCP
 - Convert human friendly domain names into IP addresses
 - IP6 (128 bits) : created to address IP address exhaustion in IP4 (32 bit)
 - VPCs are now IP6 compatible
@@ -1030,6 +1036,7 @@
 	- These endpoints should to be updated in your domain names nameserver section 
 - DNS Record Types
 	- SOA (Start of Authority)
+		- Provides all zones information
 		- Provides server information which provides data for the zone
 		- The administrator of zone
 	- NS (Name Server)
@@ -1053,6 +1060,8 @@
 		- Most common usage : map naked domain name (zone apex) to ELB names
 		- Always use Alias (v/s CNAME) as Alias has no charges
 		- Answering CNAME queries has a cost on Route53
+	- PTR
+		- For reverse DNS (IP to DNS names)
 - Route 53 Routing Policies (DLF GW : DLF Gurgaon)
 	1. Simple (default) : When a single resource performs function for your domain, only one webserver serves content
 	2. Weighted 
@@ -1077,7 +1086,7 @@
 - ELBs cost money – ensure to delete them when not using
 - ELBs always have DNS name. No public IP Addresses. Trick question might induce you into believing IP4 address for ELB
 - Given a choice between Alias Record vs CNAME – always choose Alias. Alias records are free and can connect to AWS resources
-- R53 supports zone apex records
+- **R53 supports zone apex records (naked domains)**
 - With Route 53, there is a default limit of 50 domain names. However, this limit can be increased by contacting AWS support
 - Naked domain – which doesn’t have the www in front of the domain e.g. acloud.guru. [www.acloud.guru](http://www.acloud.guru)
 
