@@ -640,7 +640,8 @@
 	- Async data transfer to another RDS instance. You can actually read from these instances, unlike Multi-AZ deployments
 	- Can also have read-replicas up to 5 copies (Watch out as async causes latency)
 	- Read-replicas can be used for Dev/Test environments, run certain workloads only against them and not against direct production deployment (Intensive workloads)
-	- *MySQL, MariaDB, PostgreSQL, Aurora only for read-replicas, No Oracle & SQL Server*
+	- **NO READ-REPLICAS** : MySQL, MariaDB, PostgreSQL, Aurora
+	- **NO READ-REPLICAS** : No Oracle & SQL Server
 	- **You cannot have read-replicas that have multi-AZ. However, you can create read replicas of Multi AZ source databases**
 	- Read replicas can be of a different size than source DB
 	- Each read-replica will have its own DNS end point
@@ -649,6 +650,7 @@
 	- Read Replicas can be done in a second region for MySQL and MariaDB – no PostgreSQL
 	- Application re-architecture is required to make use of Read replicas
 	- Read replicas are not used for DR. they are used for performance scaling only
+	- All DB supports multi AZ
 
 <p align="center"><img src="/images/cloudguru/rds-read-replica.png" width="700"></p>
 
@@ -676,7 +678,7 @@
 - Supports both document based & Key-value data models
 - Great fit for mobile, IoT, web, gaming etc. applications
 - Stored on SSDs
-- Stored on 3 geographically distinct DCs (not AZs)
+- Stored on 3 geographically distinct DCs (not AZs). Can't put in a specific AZ
 - Built in redundancy
 - Eventual Consistent Reads
 	1. Eventual consistent reads - Consistency reached up to 1 second (default)
@@ -699,7 +701,8 @@
 ## ![](/images/aws/redshift.png) [Redshift](https://aws.amazon.com/redshift)
 
 ### Redshift Features
-- Petabyte scale DW solution in cloud.  Used for OLAP (Sum of various columns and joining the data)
+- **1024 KB or 1 MB block suze for columner storage**
+- Petabyte scale DW solution in cloud. Used for OLAP (Sum of various columns and joining the data)
 - Redshift Configurations
 	- Single Node : 160 GB Used by Small and Medium Size businesses
 	- Multi-Node 
@@ -737,9 +740,11 @@
 - ElastiCache employs two cache engines currently
 	- Memcached
 		- All Memcached tooling can be easily ported over
+		- 20 nodes maximum on a cluster
 	- Redis
 		- Supports Master / Slave replication and multi-AZ deployment to get redundancy
 		- Use Redshift, if application is slow due to constant OLAP transactions on top of OLTP focused DB
+		- 1 node maximum on a cluster
 
 ## ![](/images/aws/aurora.png) [Aurora](https://aws.amazon.com/aurora)
 
