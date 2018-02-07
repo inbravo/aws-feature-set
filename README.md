@@ -1133,7 +1133,7 @@
 - Each messages has a visibility timeout (12 hours by default)
 - SQS can do auto-scaling. If queue grows beyond a threshold, instantiate new web/app servers. Use Auto scaling + SQS to achieve this
 
-<p align="center"><img src="/images/aws/queue.png" width="700"></p>
+<p align="center"><img src="/images/aws/queue.png" width="500"></p>
 
 ## ![](/images/aws/sws.png) SWS : [Simple Workflow Service](https://aws.amazon.com/sws)
 
