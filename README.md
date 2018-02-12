@@ -14,7 +14,7 @@
 	-	[**ECS**](https://github.com/inbravo/aws-feature-set#-ecs--ec2-container-services) : EC2 Container Services
 	-	[**EBS**](https://github.com/inbravo/aws-feature-set#-ebs--elastic-block-storage) : Elastic Block Storage
 	-	**Elastic Beanstalk** : Elastic Bean stalk will provision all infrastructure required
-	-	**Lambda** : Alexa, Echo devices rely on Lambda
+	-	**Lambda** : Serverless funtions
 	- 	**Lightsail** : Out of the box cloud e.g. WordPress, Drupal
 - **Storage** 
 	-	[**S3**](https://github.com/inbravo/aws-feature-set#-s3--simple-storage-service) : Object Store
@@ -359,6 +359,9 @@
 	- Hardware by Intel (VT-x/Vanderpool) and AMD (AMD-V)
 
 <p align="center"><img src="/images/aws/virtual.png" width="700"></p>	
+
+## ![](/images/aws/lambda.png) [Lambda](https://aws.amazon.com/lambda)
+- Automatically runs your code without requiring you to provision or manage servers
 
 ## ![](/images/aws/s3.png) S3 : [Simple Storage Service](https://aws.amazon.com/s3)
 
