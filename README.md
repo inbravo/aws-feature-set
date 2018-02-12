@@ -316,11 +316,20 @@
 - Root Volume is one where OS is installed / booted. It is not encrypted by default on AWS AMIs
   
 ### RAID, Volumes & Snapshots
-- RAID 0 – Striped, No Redundancy , Good Performance – No Backup/Failover
-- RAID 1 – mirrored, Redundancy
-- RAID 5 – Good for reads, bad for writes. AWS doesn’t recommend using RAID 5 on EBS
-- RAID 10 – Raid 0 + Raid 1
-- Use RAID Arrays when a single volume IOPs are not sufficient for your need e.g. Database. Then you create RAID Array to meet IOPs requirements
+- RAID 0 
+	- No Redundancy
+	- Good Performance 
+	– No Backup/Failover
+- RAID 1 
+	– Mirrored
+	- Redundancy
+- RAID 5 
+	– Good for reads
+	- Bad for writes
+	- AWS doesn’t recommend using RAID 5 and RAID 6 on EBS
+- RAID 10 
+	– Raid 0 + Raid 1
+- Use RAID Arrays when a single volume IOPS are not sufficient for your need e.g. Database. Then you create RAID Array to meet IOPS requirements
 - To take snapshot of RAID Array
 	- Stop the application from writing to cache and  flush all cache to Disk
 	- Freeze the file system
@@ -329,10 +338,10 @@
 - Snapshots of encrypted volumes are encrypted automatically
 - You can copy snapshot to another region while encrypting it
 - Create Image from snapshot
-- The EC2 instance thus created will have root volume encrypted.
+- The EC2 instance thus created will have root volume encrypted
 - You can’t share encrypted snapshots as the encryption key is tied to your account
 
-## EBS Backed v/s Instance store
+### EBS Backed v/s Instance store
 - You can reboot or terminate instance store backed EC2 VMs
 - You can start/stop/reboot/terminate EBS backed EC2 VMs
 - EC2 instance on instance store is lost if host hypervisor fails. Not so with EBS backed instances
@@ -341,6 +350,15 @@
 - Instance store back volume is from template in S3. Hence slower to provision
 - You will not lose data is you reboot for both
 - With EBS, you can ask AWS not to delete the volume upon instance termination
+
+## ![](/images/aws/ecs.png) ECS : [EC2 Container Services](https://aws.amazon.com/ecs)
+- Powered by Xen 
+– a Virtual Machine
+	- Different from Vmware and VPC as uses **Para-Virtualization** where the guest OS is modified to use special hyper-calls
+	- High performance
+	- Hardware by Intel (VT-x/Vanderpool) and AMD (AMD-V)
+
+<p align="center"><img src="/images/aws/virtual.png" width="700"></p>	
 
 ## ![](/images/aws/s3.png) S3 : [Simple Storage Service](https://aws.amazon.com/s3)
 
