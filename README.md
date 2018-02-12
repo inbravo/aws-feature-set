@@ -11,7 +11,7 @@
 	- 	**Artifacts** : All documentation under compliance and reports
 - **Compute** 
 	-	[**EC2**](https://github.com/inbravo/aws-feature-set#-ec2--elastic-compute-cloud) : Elastic Compute Cloud
-	-	**ECS** : EC2 Container Services
+	-	[**ECS**](https://github.com/inbravo/aws-feature-set#-ecs--ec2-container-services) : EC2 Container Services
 	-	[**EBS**](https://github.com/inbravo/aws-feature-set#-ebs--elastic-block-storage) : Elastic Block Storage
 	-	**Elastic Beanstalk** : Elastic Bean stalk will provision all infrastructure required
 	-	**Lambda** : Alexa, Echo devices rely on Lambda
@@ -320,10 +320,10 @@
 	- No Redundancy
 	- Good Performance 
 	– No Backup/Failover
-- RAID 1 
+- RAID 1
 	– Mirrored
 	- Redundancy
-- RAID 5 
+- RAID 5
 	– Good for reads
 	- Bad for writes
 	- AWS doesn’t recommend using RAID 5 and RAID 6 on EBS
