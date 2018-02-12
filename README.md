@@ -14,7 +14,7 @@
 	-	[**ECS**](https://github.com/inbravo/aws-feature-set#-ecs--ec2-container-services) : EC2 Container Services
 	-	[**EBS**](https://github.com/inbravo/aws-feature-set#-ebs--elastic-block-storage) : Elastic Block Storage
 	-	**Elastic Beanstalk** : Elastic Bean stalk will provision all infrastructure required
-	-	**Lambda** : Serverless funtions
+	-	[**Lambda**](https://github.com/inbravo/aws-feature-set#-lambda) : Serverless funtions
 	- 	**Lightsail** : Out of the box cloud e.g. WordPress, Drupal
 - **Storage** 
 	-	[**S3**](https://github.com/inbravo/aws-feature-set#-s3--simple-storage-service) : Object Store
