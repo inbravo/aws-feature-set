@@ -85,9 +85,11 @@
 	-	**Rekognition** : Image recognition, Facial recognition based on Databases
 	  
 ## Global Infrastructure
-- A Region is geographical area consisting of 2 or more availability zones.
+- A Region is geographical area consisting of 2 or more availability zones
 - Availability zone is logical data center
 - Edge Locations are CDN End Points for CloudFront. Many more edge locations exist than regions
+- [Region information](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html)
+- [Region table](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services)
 
 <p align="center"><img src="/images/cloudguru/regions.png" width="700"></p>
 
