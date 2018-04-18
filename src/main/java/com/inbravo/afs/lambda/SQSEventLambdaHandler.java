@@ -12,16 +12,16 @@ import com.amazonaws.services.s3.model.Region;
  * @author amit.dixit
  *
  */
-public class S3EventLambdaHandler implements RequestHandler<S3Event, String> {
+public class SQSEventLambdaHandler implements RequestHandler<S3Event, String> {
 
 	/* Create S3 object */
 	private AmazonS3 s3 = AmazonS3ClientBuilder.standard().build();
 
-	public S3EventLambdaHandler() {
+	public SQSEventLambdaHandler() {
 	}
 
 	/* Test purpose only */
-	S3EventLambdaHandler(final AmazonS3 s3) {
+	SQSEventLambdaHandler(final AmazonS3 s3) {
 		this.s3 = s3;
 	}
 
