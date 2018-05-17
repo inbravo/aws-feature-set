@@ -140,10 +140,14 @@
 
 ### EC2 Features
 - 20 EC2 instance soft limit per region
-- On demand. Pay per hour of usage
 - EC2 Key Pairs are region specific
 - EC2 instances can be accessed either through DNS name or EIP address
 - Applications with short term, spiky usage patterns or unpredictable workloads that cannot be interrupted
+- Instance types: On Demand, Reserved, Spot, Dedicated (**ORSD**)
+- On demand instances
+	- Pay per hour of usage
+	- No upfront payments
+	- Increased/decrease the capacity when required
 - Reserved instances
 	- Reserve capacity over significant period of time. Significant discount
 	- Applications with steady or predictable usage over a period of time. Reserved capacity required
